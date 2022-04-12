@@ -48,7 +48,7 @@ const Navbar = () => {
   useEffect(() => {}, [routeState.route]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
+    <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
       <SearchModal visible={showSearch} onClose={onCloseDrawer} />
       <AppBar
         style={{ transition: "all 200ms ease", padding: "20px 0", opacity: showSearch ? 0 : 1 }}
