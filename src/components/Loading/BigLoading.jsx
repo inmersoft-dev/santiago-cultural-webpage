@@ -3,12 +3,14 @@
 // prop-types
 import PropTypes from "prop-types";
 
+// framer-motion
+import { motion } from "framer-motion";
+
 // mui components
 import { Box } from "@mui/material";
 
 // images
-import lightLogo from "assets/images/optlogo.webp";
-import darkLogo from "assets/images/darlogo.webp";
+import logonotext from "assets/images/logonotext.png";
 
 // context
 import { useMode } from "context/ModeProvider";
@@ -29,15 +31,21 @@ const BigLoading = (props) => {
         zIndex: visible ? 99 : -1,
       }}
     >
-      {modeState.mode === "light" ? (
-        <img src={lightLogo} alt="logo trinidad" />
-      ) : (
-        <img src={darkLogo} alt="logo trinidad" />
-      )}
-
-      <Box className="progress_bar">
-        <Box className="bar_h" />
-      </Box>
+      <motion.div
+        animate={{
+          scale: [1, 2, 2, 1, 1],
+          rotate: [0, 0, 270, 270, 0],
+        }}
+        transition={{
+          duration: 2,
+          ease: "easeInOut",
+          times: [0, 0.2, 0.5, 0.8, 1],
+          repeat: Infinity,
+          repeatDelay: 1,
+        }}
+      >
+        <img className="rotate" src={logonotext} alt="logo trinidad" />
+      </motion.div>
     </Box>
   );
 };
