@@ -6,9 +6,11 @@ import { Box } from "@mui/material";
 const Hero = () => (
   <Box
     sx={{
-      backgroundImage:
-        "url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSL5cPRRn84qhx7SW0QI3tzlKyg4RLUpaxH0Q&usqp=CAU)",
+      backgroundImage: "url(https://wallpapercave.com/wp/wp3268618.jpg)",
       height: "100vh",
+      backgroundPosition: "center",
+      backgroundSize: "cover",
+      backgroundRepeat: "none",
     }}
   >
     Hola
