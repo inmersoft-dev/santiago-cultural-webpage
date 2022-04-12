@@ -1,9 +1,6 @@
 /* eslint-disable react/function-component-definition */
 import { useState, useEffect } from "react";
 
-// langs
-import es from "lang/es.json";
-
 // storage-function
 import { storageFunction } from "storage-function";
 
@@ -63,13 +60,13 @@ const App = () => {
           <Box className="App">
             <BrowserRouter>
               <Routes>
-                <Route path="/" element={<View texts={es} />}>
-                  <Route index element={<Home texts={es.Home} />} />
+                <Route path="/" element={<View />}>
+                  <Route index element={<Home />} />
                 </Route>
                 <Route exact path="/hola">
-                  <Route index element={<Home texts={es.Home} />} />
+                  <Route index element={<Home />} />
                 </Route>
-                <Route path="*" element={<NotFound texts={es.NotFound} />} />
+                <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>
           </Box>

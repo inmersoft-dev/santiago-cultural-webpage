@@ -1,0 +1,41 @@
+{
+  "es": {
+    "Home": {},
+    "NotFound": {},
+    "Navbar": {
+      "Links": [
+        {
+          "id": "home",
+          "label": "Inicio",
+          "route": "/"
+        },
+        {
+          "id": "about-us",
+          "label": "Conócenos",
+          "route": "/about-us"
+        },
+        {
+          "id": "centers",
+          "label": "Centros de Cultura",
+          "route": "/culture-centers"
+        },
+        {
+          "id": "news",
+          "label": "Actividades/Noticias",
+          "route": "/activity-news"
+        },
+        {
+          "id": "blog",
+          "label": "Blog",
+          "route": "/blog"
+        },
+        {
+          "id": "contact-us",
+          "label": "Contáctenos",
+          "route": "/contact-us"
+        }
+      ]
+    },
+    "Footer": {}
+  }
+}

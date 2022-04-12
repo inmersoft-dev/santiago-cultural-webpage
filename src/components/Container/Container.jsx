@@ -18,22 +18,22 @@ const Container = (props) => {
     align,
     justify,
     direction,
-    className,
+    sx,
     id,
     name,
     style,
   } = props;
 
-  const sx = {
+  const boxSx = {
     flexDirection: direction,
     display,
     alignItems: align,
     justifyContent: justify,
-    ...className,
+    ...sx,
   };
 
   return (
-    <Box component={component} style={style} id={id} name={name} sx={sx} {...extraProps}>
+    <Box component={component} style={style} id={id} name={name} sx={boxSx} {...extraProps}>
       {children}
     </Box>
   );
@@ -45,7 +45,7 @@ Container.defaultProps = {
   align: "left",
   justify: "left",
   direction: "row",
-  className: "",
+  sx: "",
   id: "",
   name: "",
   style: {},
@@ -59,7 +59,7 @@ Container.propTypes = {
   direction: PropTypes.string,
   align: PropTypes.string,
   justify: PropTypes.string,
-  className: PropTypes.any,
+  sx: PropTypes.any,
   id: PropTypes.string,
   name: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.any),

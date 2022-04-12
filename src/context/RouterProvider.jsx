@@ -21,7 +21,7 @@ const routeReducer = (routeState, action) => {
 
 const RouteProvider = ({ children }) => {
   const [routeState, setRouteState] = React.useReducer(routeReducer, {
-    route: 12,
+    route: 0,
     page: "",
   });
 

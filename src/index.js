@@ -5,6 +5,7 @@ import * as ReactDOMClient from "react-dom/client";
 import { ModeProvider } from "context/ModeProvider";
 import { SearchProvider } from "context/SearchContext";
 import { RouteProvider } from "context/RouterProvider";
+import { LanguageProvider } from "context/LanguageProvider";
 
 // app
 import App from "./App";
@@ -20,7 +21,9 @@ root.render(
     <ModeProvider>
       <SearchProvider>
         <RouteProvider>
-          <App />
+          <LanguageProvider>
+            <App />
+          </LanguageProvider>
         </RouteProvider>
       </SearchProvider>
     </ModeProvider>

@@ -7,17 +7,17 @@ const dark = createTheme({
     type: "dark",
     primary: {
       main: "#f29554",
-      light: "#f4aa76",
-      dark: "#b26a4a",
+      light: "#af6a00",
+      dark: "#fbac33",
       contrastText: "#ffffff",
     },
     checkbox: {
-      main: "#f4aa76",
+      main: "#f29554",
     },
     secondary: {
-      main: "#11263C",
-      light: "#0b1a2a",
-      dark: "#405163",
+      main: "#02415a",
+      light: "#012d3e",
+      dark: "#34677b",
       contrastText: "#ffffff",
     },
     error: {
@@ -59,7 +59,8 @@ const dark = createTheme({
       hint: "rgba(255,255,255,0.5)",
     },
     side: {
-      main: "rgba(255, 255, 255, 0.7)",
+      main: "#fff",
+      dark: "rgba(235, 235, 235, 0.7)",
     },
   },
   typography: {
