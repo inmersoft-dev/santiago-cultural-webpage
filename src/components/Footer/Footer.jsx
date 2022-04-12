@@ -5,17 +5,17 @@ import { useState, useEffect } from "react";
 import { Box, Button } from "@mui/material";
 
 // context
-import { useRoutes } from "react-router-dom";
+import { useRoute } from "context/RouterProvider";
 
 const Footer = () => {
-  const { routesState } = useRoutes();
+  const { routeState } = useRoute();
   const [drawer, setDrawer] = useState(false);
 
   const open = () => {
     setDrawer(!open);
   };
 
-  useEffect(() => {}, [routesState]);
+  useEffect(() => {}, [routeState]);
 
   return (
     <Box>

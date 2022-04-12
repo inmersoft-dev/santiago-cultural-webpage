@@ -64,7 +64,7 @@ const App = () => {
             <BrowserRouter>
               <Routes>
                 <Route path="/" element={<View texts={es} />}>
-                  <Route exact path="invoices" element={<Home texts={es.Home} />} />
+                  <Route index element={<Home texts={es.Home} />} />
                   <Route path="*" element={<NotFound texts={es.NotFound} />} />
                 </Route>
               </Routes>
