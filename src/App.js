@@ -42,7 +42,7 @@ const App = () => {
       setModeState({ type: "set", to: transpiledTheme });
     }
 
-    setLoading(true);
+    setLoading(false);
   };
 
   // fetching data from local storage

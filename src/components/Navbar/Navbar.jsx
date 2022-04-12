@@ -70,12 +70,7 @@ const Navbar = () => {
           <Container>
             <Box sx={{ display: { md: "none", lg: "flex" } }}>
               {languageState.texts.Navbar.Links.map((item, i) => (
-                <Box
-                  key={item.id}
-                  sx={{
-                    display: "flex",
-                  }}
-                >
+                <Container key={item.id} align="center">
                   <Link style={{ textDecoration: "none" }} to={item.route}>
                     <Button
                       id={`b${i}`}
@@ -100,7 +95,7 @@ const Navbar = () => {
                       flexItem
                     />
                   )}
-                </Box>
+                </Container>
               ))}
             </Box>
             <Button
