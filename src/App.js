@@ -65,8 +65,11 @@ const App = () => {
               <Routes>
                 <Route path="/" element={<View texts={es} />}>
                   <Route index element={<Home texts={es.Home} />} />
-                  <Route path="*" element={<NotFound texts={es.NotFound} />} />
                 </Route>
+                <Route exact path="/hola">
+                  <Route index element={<Home texts={es.Home} />} />
+                </Route>
+                <Route path="*" element={<NotFound texts={es.NotFound} />} />
               </Routes>
             </BrowserRouter>
           </Box>
