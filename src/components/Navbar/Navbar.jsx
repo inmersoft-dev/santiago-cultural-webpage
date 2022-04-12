@@ -1,19 +1,12 @@
 /* eslint-disable react/function-component-definition */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // @mui components
-import { useTheme } from "@emotion/react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Divider from "@mui/material/Divider";
+import { useTheme, AppBar, Box, Button, IconButton, Divider } from "@mui/material";
+
+// @mui icons
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-
-// own components
-import Image from "components/Image/Image";
-import Container from "components/Container/Container";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
@@ -23,21 +16,46 @@ import { Link } from "react-router-dom";
 // images
 import logo from "assets/images/logo.png";
 
+// own components
+import Image from "components/Image/Image";
+import Container from "components/Container/Container";
+import SearchModal from "./SearchModal/SearchModal";
+
 const Navbar = () => {
   const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
+
+  const [showSearch, setShowSearch] = useState(false);
 
   const handleLink = (e) => {
     const { id } = e.target;
     setRouteState({ type: "set", to: Number(id) });
   };
 
+  const toggleSearch = () => {
+    setShowSearch(true);
+  };
+
+  const onCloseDrawer = (event) => {
+    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+      return;
+    }
+
+    setShowSearch(false);
+  };
+
   useEffect(() => {}, [routeState.route]);
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar style={{ padding: "20px 0" }} elevation={0} position="static" color="secondary">
+    <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
+      <SearchModal visible={showSearch} onClose={onCloseDrawer} />
+      <AppBar
+        style={{ transition: "all 200ms ease", padding: "20px 0", opacity: showSearch ? 0 : 1 }}
+        elevation={0}
+        position="static"
+        color="secondary"
+      >
         <Container justify="space-between" sx={{ padding: "0 10rem" }}>
           <IconButton
             size="large"
@@ -52,23 +70,18 @@ const Navbar = () => {
           <Container>
             <Box sx={{ display: { md: "none", lg: "flex" } }}>
               {languageState.texts.Navbar.Links.map((item, i) => (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    display: "flex",
-                  }}
-                  key={item.id}
-                  to={item.route}
-                >
-                  <Button
-                    id={`b${i}`}
-                    onClick={handleLink}
-                    color={i === routeState.route ? "primary" : "text"}
-                    sx={{ textTransform: "none" }}
-                    size="medium"
-                  >
-                    {item.label}
-                  </Button>
+                <Container key={item.id} align="center">
+                  <Link style={{ textDecoration: "none" }} to={item.route}>
+                    <Button
+                      id={`b${i}`}
+                      onClick={handleLink}
+                      color={i === routeState.route ? "primary" : "text"}
+                      sx={{ textTransform: "none" }}
+                      size="medium"
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
                   {i < languageState.texts.Navbar.Links.length - 1 && (
                     <Divider
                       sx={{
@@ -82,7 +95,7 @@ const Navbar = () => {
                       flexItem
                     />
                   )}
-                </Link>
+                </Container>
               ))}
             </Box>
             <Button
@@ -96,6 +109,7 @@ const Navbar = () => {
               size="large"
               color="side"
               aria-label="search"
+              onClick={toggleSearch}
             >
               <SearchIcon />
             </Button>

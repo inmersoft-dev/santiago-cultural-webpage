@@ -34,7 +34,10 @@
           "label": "Contáctenos",
           "route": "/contact-us"
         }
-      ]
+      ],
+      "SearchModal": {
+        "Label": "Buscar"
+      }
     },
     "Footer": {}
   }
