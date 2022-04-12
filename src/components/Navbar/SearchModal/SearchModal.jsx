@@ -1,71 +1,88 @@
 /* eslint-disable react/function-component-definition */
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 
-const SearchModal = () => {
-  const [state, setState] = React.useState({
-    top: false,
-    left: false,
-    bottom: false,
-    right: false,
-  });
+import { useEffect, useState } from "react";
 
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
-      return;
-    }
+// prop types
+import PropTypes from "prop-types";
 
-    setState({ ...state, [anchor]: open });
+// @mui components
+import {
+  Box,
+  Drawer,
+  FormControl,
+  Input,
+  InputLabel,
+  InputAdornment,
+  IconButton,
+  useTheme,
+} from "@mui/material";
+
+// own components
+import Container from "components/Container/Container";
+
+// @mui icons
+import CloseIcon from "@mui/icons-material/Close";
+import SearchIcon from "@mui/icons-material/Search";
+
+// context
+import { useLanguage } from "context/LanguageProvider";
+
+const SearchModal = (props) => {
+  const { visible, onClose } = props;
+
+  const { languageState } = useLanguage();
+  const theme = useTheme();
+
+  const [visibleState, setVisibleState] = useState(false);
+  const [toSearch, setToSearch] = useState("");
+
+  const handleInput = (e) => {
+    const { value } = e.target;
+    setToSearch(value);
   };
 
-  const list = (anchor) => (
-    <Box
-      sx={{ width: anchor === "top" || anchor === "bottom" ? "auto" : 250 }}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}</ListItemIcon>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
+  const goSearch = () => {};
+
+  useEffect(() => {
+    setVisibleState(visible);
+  }, [visible]);
 
   return (
-    <div>
-      {["left", "right", "top", "bottom"].map((anchor) => (
-        <React.Fragment key={anchor}>
-          <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-          <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-            {list(anchor)}
-          </Drawer>
-        </React.Fragment>
-      ))}
-    </div>
+    <Drawer anchor="top" open={visibleState} onClose={onClose}>
+      <Box sx={{ background: `${theme.palette.background.paper}66` }}>
+        <Container sx={{ width: "100%", padding: "40px" }} justify="flex-end">
+          <IconButton color="side" aria-label="close drawer" onClick={onClose}>
+            <CloseIcon />
+          </IconButton>
+        </Container>
+        <Container sx={{ width: "100%", padding: "40px" }}>
+          <FormControl sx={{ m: 1, width: "100%" }} variant="standard">
+            <InputLabel htmlFor="standard-adornment-password">
+              {languageState.texts.Navbar.SearchModal.Label}
+            </InputLabel>
+            <Input
+              id="standard-adornment-password"
+              type="text"
+              value={toSearch}
+              onChange={handleInput}
+              endAdornment={
+                <InputAdornment position="end">
+                  <IconButton color="side" aria-label="search" onClick={goSearch}>
+                    <SearchIcon />
+                  </IconButton>
+                </InputAdornment>
+              }
+            />
+          </FormControl>
+        </Container>
+      </Box>
+    </Drawer>
   );
+};
+
+SearchModal.propTypes = {
+  visible: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default SearchModal;
