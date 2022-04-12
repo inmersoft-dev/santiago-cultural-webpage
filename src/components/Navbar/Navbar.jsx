@@ -2,14 +2,7 @@
 import { useEffect } from "react";
 
 // @mui components
-import { useTheme } from "@emotion/react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import Divider from "@mui/material/Divider";
-import MenuIcon from "@mui/icons-material/Menu";
-import SearchIcon from "@mui/icons-material/Search";
+import { useTheme, AppBar, Box, Button, IconButton, Divider, SearchIcon } from "@emotion/react";
 
 // own components
 import Image from "components/Image/Image";
@@ -52,23 +45,25 @@ const Navbar = () => {
           <Container>
             <Box sx={{ display: { md: "none", lg: "flex" } }}>
               {languageState.texts.Navbar.Links.map((item, i) => (
-                <Link
-                  style={{
-                    textDecoration: "none",
-                    display: "flex",
-                  }}
-                  key={item.id}
-                  to={item.route}
-                >
-                  <Button
-                    id={`b${i}`}
-                    onClick={handleLink}
-                    color={i === routeState.route ? "primary" : "text"}
-                    sx={{ textTransform: "none" }}
-                    size="medium"
+                <>
+                  <Link
+                    style={{
+                      textDecoration: "none",
+                      display: "flex",
+                    }}
+                    key={item.id}
+                    to={item.route}
                   >
-                    {item.label}
-                  </Button>
+                    <Button
+                      id={`b${i}`}
+                      onClick={handleLink}
+                      color={i === routeState.route ? "primary" : "text"}
+                      sx={{ textTransform: "none" }}
+                      size="medium"
+                    >
+                      {item.label}
+                    </Button>
+                  </Link>
                   {i < languageState.texts.Navbar.Links.length - 1 && (
                     <Divider
                       sx={{
@@ -82,7 +77,7 @@ const Navbar = () => {
                       flexItem
                     />
                   )}
-                </Link>
+                </>
               ))}
             </Box>
             <Button
