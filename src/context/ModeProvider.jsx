@@ -34,7 +34,7 @@ const modeReducer = (modeState, action) => {
 
 const ModeProvider = ({ children }) => {
   const [modeState, setModeState] = React.useReducer(modeReducer, {
-    mode: "light",
+    mode: "dark",
   });
 
   const value = { modeState, setModeState };
