@@ -77,6 +77,12 @@ const Footer = () => {
                           item.index === routeState.route
                             ? theme.palette.primary.main
                             : theme.palette.text.disabled,
+                        "&:hover": {
+                          color:
+                            item.index === routeState.route
+                              ? theme.palette.primary.main
+                              : theme.palette.text.secondary,
+                        },
                       }}
                       size="medium"
                     >
@@ -108,6 +114,12 @@ const Footer = () => {
                         textTransform: "none",
                         color:
                           item.index === routeState.route ? "primary" : theme.palette.text.disabled,
+                        "&:hover": {
+                          color:
+                            item.index === routeState.route
+                              ? theme.palette.primary.main
+                              : theme.palette.text.secondary,
+                        },
                       }}
                       variant="subtitle1"
                     >
@@ -139,6 +151,12 @@ const Footer = () => {
                         sx={{
                           textTransform: "none",
                           color: theme.palette.text.disabled,
+                          "&:hover": {
+                            color:
+                              item.index === routeState.route
+                                ? theme.palette.primary.main
+                                : theme.palette.text.secondary,
+                          },
                         }}
                         size="medium"
                       >
