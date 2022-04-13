@@ -3,42 +3,87 @@
     "Home": {},
     "NotFound": {},
     "Navbar": {
+      "Title": "Menú",
       "Links": [
         {
           "id": "home",
           "label": "Inicio",
-          "route": "/"
+          "route": "/",
+          "index": 0
         },
         {
           "id": "about-us",
           "label": "Conócenos",
-          "route": "/about-us"
+          "route": "/about-us",
+          "index": 1
         },
         {
           "id": "centers",
           "label": "Centros de Cultura",
-          "route": "/culture-centers"
+          "route": "/culture-centers",
+          "index": 2
         },
         {
           "id": "news",
-          "label": "Actividades/Noticias",
-          "route": "/activity-news"
+          "label": "Actividades / Noticias",
+          "route": "/activity-news",
+          "index": 3
         },
         {
           "id": "blog",
           "label": "Blog",
-          "route": "/blog"
+          "route": "/blog",
+          "index": 4
         },
         {
           "id": "contact-us",
           "label": "Contáctenos",
-          "route": "/contact-us"
+          "route": "/contact-us",
+          "index": 5
         }
       ],
       "SearchModal": {
         "Label": "Buscar"
       }
     },
-    "Footer": {}
+    "Footer": {
+      "UtilLinks": {
+        "Title": "Enlaces útiles",
+        "Links": [
+          {
+            "id": "privacy-policy",
+            "label": "Política de Privacidad",
+            "route": "/privacy-policy",
+            "index": 6
+          },
+          {
+            "id": "cookies-policy",
+            "label": "Política de Cookies",
+            "route": "/cookies-policy",
+            "index": 7
+          }
+        ]
+      },
+      "ContactLinks": {
+        "Title": "Contáctenos",
+        "Links": [
+          {
+            "id": "phone",
+            "label": "Teléfono: 555 555 55",
+            "action": "tel:+55555555"
+          },
+          {
+            "id": "email",
+            "label": "Correo electrónico: site@email.com",
+            "action": "mailto:site@email.com"
+          },
+          {
+            "id": "address",
+            "label": "Alguna dirección"
+          }
+        ]
+      },
+      "Copyright": "Copyright © 2021 - Santiago Cultural creado por Inmersoft"
+    }
   }
 }

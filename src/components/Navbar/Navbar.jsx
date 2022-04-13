@@ -1,6 +1,9 @@
 /* eslint-disable react/function-component-definition */
 import { useEffect, useState } from "react";
 
+// react-router-dom
+import { Link } from "react-router-dom";
+
 // @mui components
 import { useTheme, AppBar, Box, Button, IconButton, Divider } from "@mui/material";
 
@@ -11,7 +14,6 @@ import SearchIcon from "@mui/icons-material/Search";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
-import { Link } from "react-router-dom";
 
 // images
 import logo from "assets/images/logo.png";
@@ -19,6 +21,7 @@ import logo from "assets/images/logo.png";
 // own components
 import Image from "components/Image/Image";
 import Container from "components/Container/Container";
+import NavigationDrawer from "components/NavigationDrawer/NavigationDrawer";
 import SearchModal from "./SearchModal/SearchModal";
 
 const Navbar = () => {
@@ -27,17 +30,18 @@ const Navbar = () => {
   const theme = useTheme();
 
   const [showSearch, setShowSearch] = useState(false);
+  const [showDrawer, setShowDrawer] = useState(false);
 
   const handleLink = (e) => {
     const { id } = e.target;
-    setRouteState({ type: "set", to: Number(id) });
+    setRouteState({ type: "set", to: Number(id.substring(1)) });
   };
 
   const toggleSearch = () => {
     setShowSearch(true);
   };
 
-  const onCloseDrawer = (event) => {
+  const onCloseSearch = (event) => {
     if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
       return;
     }
@@ -45,37 +49,55 @@ const Navbar = () => {
     setShowSearch(false);
   };
 
+  const toggleDrawer = () => {
+    setShowDrawer(true);
+  };
+
+  const onCloseDrawer = (event) => {
+    if (event.type === "keydown" && (event.key === "Tab" || event.key === "Shift")) {
+      return;
+    }
+
+    setShowDrawer(false);
+  };
+
   useEffect(() => {}, [routeState.route]);
 
   return (
     <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
-      <SearchModal visible={showSearch} onClose={onCloseDrawer} />
+      <SearchModal visible={showSearch} onClose={onCloseSearch} />
+      <NavigationDrawer visible={showDrawer} onClose={onCloseDrawer} />
       <AppBar
         style={{ transition: "all 200ms ease", padding: "20px 0", opacity: showSearch ? 0 : 1 }}
         elevation={0}
         position="static"
         color="secondary"
       >
-        <Container justify="space-between" sx={{ padding: "0 10rem" }}>
+        <Container
+          align="center"
+          justify="space-between"
+          sx={{ padding: { lg: "0 10rem", md: "0 20px" } }}
+        >
           <IconButton
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
-            sx={{ mr: 2, display: { lg: "none", md: "initial" } }}
+            sx={{ mr: 2, display: { lg: "none", md: "flex", alignItems: "center" } }}
+            onClick={toggleDrawer}
           >
             <MenuIcon />
           </IconButton>
           <Image img={logo} width={120} height={40} />
           <Container>
-            <Box sx={{ display: { md: "none", lg: "flex" } }}>
+            <Box sx={{ display: { xs: "none", lg: "flex" } }}>
               {languageState.texts.Navbar.Links.map((item, i) => (
                 <Container key={item.id} align="center">
-                  <Link style={{ textDecoration: "none" }} to={item.route}>
+                  <Link id={`l${i}`} style={{ textDecoration: "none" }} to={item.route}>
                     <Button
                       id={`b${i}`}
                       onClick={handleLink}
-                      color={i === routeState.route ? "primary" : "text"}
+                      color={item.index === routeState.route ? "primary" : "text"}
                       sx={{ textTransform: "none" }}
                       size="medium"
                     >
