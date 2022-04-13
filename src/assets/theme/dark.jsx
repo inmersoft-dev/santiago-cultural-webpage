@@ -19,6 +19,7 @@ const dark = createTheme({
       light: "#B9B5FF",
       dark: "#012d3e",
       contrastText: "#ffffff",
+      special: "#122133",
     },
     error: {
       main: "#f44336",

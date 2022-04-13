@@ -1,6 +1,9 @@
 /* eslint-disable react/function-component-definition */
 import { useEffect, useState } from "react";
 
+// react-router-dom
+import { Link } from "react-router-dom";
+
 // @mui components
 import { useTheme, AppBar, Box, Button, IconButton, Divider } from "@mui/material";
 
@@ -11,7 +14,6 @@ import SearchIcon from "@mui/icons-material/Search";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
-import { Link } from "react-router-dom";
 
 // images
 import logo from "assets/images/logo.png";
@@ -30,7 +32,7 @@ const Navbar = () => {
 
   const handleLink = (e) => {
     const { id } = e.target;
-    setRouteState({ type: "set", to: Number(id) });
+    setRouteState({ type: "set", to: Number(id.substring(1)) });
   };
 
   const toggleSearch = () => {
@@ -71,11 +73,11 @@ const Navbar = () => {
             <Box sx={{ display: { md: "none", lg: "flex" } }}>
               {languageState.texts.Navbar.Links.map((item, i) => (
                 <Container key={item.id} align="center">
-                  <Link style={{ textDecoration: "none" }} to={item.route}>
+                  <Link id={`l${i}`} style={{ textDecoration: "none" }} to={item.route}>
                     <Button
                       id={`b${i}`}
                       onClick={handleLink}
-                      color={i === routeState.route ? "primary" : "text"}
+                      color={item.index === routeState.route ? "primary" : "text"}
                       sx={{ textTransform: "none" }}
                       size="medium"
                     >
