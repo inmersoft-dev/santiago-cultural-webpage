@@ -45,9 +45,7 @@ const Footer = () => {
         <Grid md={5} item>
           <Container direction="column" sx={{ paddingRight: "60px" }}>
             <Typography variant="subtitle1" sx={{ color: theme.palette.text.disabled }}>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos
-              deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo
-              maxime quod, libero quasi natus rem.
+              {languageState.texts.Footer.Description}
             </Typography>
             <Container>
               <SocialIcons />

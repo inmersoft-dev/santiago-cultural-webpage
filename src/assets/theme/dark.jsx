@@ -7,8 +7,8 @@ const dark = createTheme({
     type: "dark",
     primary: {
       main: "#f29554",
-      light: "#af6a00",
-      dark: "#fbac33",
+      light: "#fbac33",
+      dark: "#af6a00",
       contrastText: "#ffffff",
     },
     checkbox: {
