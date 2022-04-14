@@ -1,6 +1,8 @@
 {
   "es": {
-    "Home": {},
+    "Home": {
+      "Subtitles": ["Actualidad"]
+    },
     "NotFound": {},
     "Navbar": {
       "Title": "Menú",
@@ -47,6 +49,7 @@
       }
     },
     "Footer": {
+      "Description": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
       "UtilLinks": {
         "Title": "Enlaces útiles",
         "Links": [
@@ -84,6 +87,9 @@
         ]
       },
       "Copyright": "Copyright © 2021 - Santiago Cultural creado por Inmersoft"
+    },
+    "Card": {
+      "Button": "Ver producto"
     }
   }
 }
