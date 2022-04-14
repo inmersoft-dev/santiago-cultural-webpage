@@ -11,16 +11,17 @@ import Box from "@mui/material/Box";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 // import Swiper core and required modules
-import { Navigation } from "swiper";
+import { Navigation, Pagination } from "swiper";
 
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 // CSS
 import "./carousel.css";
 
-const Carousel = ({ CarouselItem, navigation, backgroundColor }) => {
+const Carousel = ({ CarouselItem, navigation, backgroundColor, pagination }) => {
   return (
     <Box
       className="carousel__container"
@@ -28,11 +29,11 @@ const Carousel = ({ CarouselItem, navigation, backgroundColor }) => {
     >
       <Swiper
         // install Swiper modules
-        modules={[Navigation]}
+        modules={[Navigation, Pagination]}
         spaceBetween={50}
         slidesPerView={1}
         navigation={navigation}
-        pagination={{ clickable: true }}
+        pagination={pagination}
         scrollbar={{ draggable: true }}
         onSwiper={(swiper) => console.log(swiper)}
         onSlideChange={() => console.log("slide change")}

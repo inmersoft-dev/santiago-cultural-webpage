@@ -75,11 +75,18 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
+      <Carousel
+        CarouselItem={<CarouselItemArrows />}
+        navigation={false}
+        pagination={true}
+        backgroundColor={theme.palette.primary.light}
+      />
 
       <TabScrollView />
       <Carousel
         CarouselItem={<CarouselItemArrows />}
         navigation={true}
+        pagination={false}
         backgroundColor={theme.palette.secondary.carousel}
       />
       <Box
