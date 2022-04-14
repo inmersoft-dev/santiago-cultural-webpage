@@ -75,7 +75,7 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
-      <Carousel CarouselItem={<CarouselItemArrows />} navigation={true} />
+      <Carousel CarouselItem={<CarouselItemArrows />} navigation={true} theme={theme} />
       <TabScrollView />
       <Box
         sx={{

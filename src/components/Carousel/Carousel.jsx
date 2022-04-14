@@ -3,6 +3,10 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable import/no-unresolved */
 import React from "react";
+
+// Import Material Ui Component
+import Box from "@mui/material/Box";
+
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -16,9 +20,9 @@ import "swiper/css/navigation";
 // CSS
 import "./carousel.css";
 
-const Carousel = ({ CarouselItem, navigation }) => {
+const Carousel = ({ CarouselItem, navigation, theme }) => {
   return (
-    <div className="carousel__container">
+    <Box className="carousel__container" sx={{backgroundColor}}>
       <Swiper
         // install Swiper modules
         modules={[Navigation]}
@@ -35,7 +39,7 @@ const Carousel = ({ CarouselItem, navigation }) => {
         <SwiperSlide> {CarouselItem} </SwiperSlide>
         <SwiperSlide> {CarouselItem} </SwiperSlide>
       </Swiper>
-    </div>
+    </Box>
   );
 };
 
