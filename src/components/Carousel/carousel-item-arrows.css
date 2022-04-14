@@ -1,5 +1,5 @@
 .car-item-arrows__container{
-    height: 600px;
+    height: auto;
     width: 100%;
     display: flex;
    /*  justify-content: center; */
@@ -8,19 +8,26 @@
 
 .car-item-arrows__left{
 /*    width: 33vw;    */
-flex:  0.3 1; 
-padding: 90px 60px 0 113px;
+flex:  0.35 1; 
+display: flex;
+align-items: center;
+padding: 0 0 0 50px;
    
+}
+
+.car-item-arrows__left-text-container{
+/* width: 80%; */
+padding: 0 40px;
 }
 
 
 .car-item-arrows__right{
    /*  width: 67vw; */
-    height: 600px;
-    flex:  0.6 1; 
+    height: 520px;
+    flex:  0.65 1; 
 }
 
 .car-item-arrows__right img{
-    height: 500px;
+    height: 100%;
     width: 48vw;
 }
