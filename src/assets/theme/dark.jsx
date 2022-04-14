@@ -20,6 +20,7 @@ const dark = createTheme({
       dark: "#012d3e",
       contrastText: "#ffffff",
       special: "#122133",
+      carousel: "#006485",
     },
     error: {
       main: "#f44336",

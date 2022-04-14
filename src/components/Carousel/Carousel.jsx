@@ -20,9 +20,12 @@ import "swiper/css/navigation";
 // CSS
 import "./carousel.css";
 
-const Carousel = ({ CarouselItem, navigation, theme }) => {
+const Carousel = ({ CarouselItem, navigation, backgroundColor }) => {
   return (
-    <Box className="carousel__container" sx={{backgroundColor}}>
+    <Box
+      className="carousel__container"
+      sx={{ backgroundColor: { backgroundColor }, padding: { md: "0 10rem", xs: "0 10rem" } }}
+    >
       <Swiper
         // install Swiper modules
         modules={[Navigation]}
