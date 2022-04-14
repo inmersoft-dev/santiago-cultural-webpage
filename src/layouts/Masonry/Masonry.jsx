@@ -36,7 +36,7 @@ const Masonry = () => {
       img={bruce}
       sx={{ background: "#00000000", border: `1px solid ${theme.palette.secondary.main}` }}
       contentPosition="down"
-      imageProps={{ alt: "bruce" }}
+      imageProps={{ alt: "bruce", height: "340px" }}
       elevation={0}
     >
       <Typography color="secondary" sx={{ fontWeight: "500" }}>
@@ -62,7 +62,11 @@ const Masonry = () => {
     </Card>,
     <Card
       img={bruce}
-      sx={{ background: "#00000000", border: `1px solid ${theme.palette.secondary.main}` }}
+      sx={{
+        marginTop: "-115px",
+        background: "#00000000",
+        border: `1px solid ${theme.palette.secondary.main}`,
+      }}
       contentPosition="down"
       imageProps={{ alt: "bruce" }}
       elevation={0}
@@ -74,12 +78,11 @@ const Masonry = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
-
     <Card
       img={bruce}
       sx={{ background: "#00000000", border: `1px solid ${theme.palette.secondary.main}` }}
       contentPosition="down"
-      imageProps={{ alt: "bruce" }}
+      imageProps={{ alt: "bruce", height: "340px" }}
       elevation={0}
     >
       <Typography color="secondary" sx={{ fontWeight: "500" }}>
@@ -89,10 +92,13 @@ const Masonry = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
-
     <Card
       img={bruce}
-      sx={{ background: "#00000000", border: `1px solid ${theme.palette.secondary.main}` }}
+      sx={{
+        marginTop: "-115px",
+        background: "#00000000",
+        border: `1px solid ${theme.palette.secondary.main}`,
+      }}
       contentPosition="down"
       imageProps={{ alt: "bruce" }}
       elevation={0}
