@@ -5,6 +5,9 @@
 // react-router-dom
 import { Link } from "react-router-dom";
 
+// @emotion/css
+import { css } from "@emotion/css";
+
 // prop types
 import PropTypes from "prop-types";
 
@@ -39,11 +42,16 @@ const Card = (props) => {
     ...sx,
   };
 
+  const newImageProps = css({
+    height: "220px",
+    ...imageProps,
+  });
+
   return (
     <MuiCard sx={newSx}>
       <Container direction="column">
         {contentPosition === "up" && <Content />}
-        <CardMedia component="img" height={imageProps.height} image={img} alt={imageProps.alt} />
+        <CardMedia component="img" className={newImageProps} image={img} alt={imageProps.alt} />
         {contentPosition === "down" && <Content />}
         {route !== "" && (
           <CardActions sx={{ padding: 0 }}>
