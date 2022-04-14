@@ -83,7 +83,7 @@ const Home = () => {
           <Typography variant="h5">{languageState.texts.Home.Subtitles[0]}</Typography>
         </Box>
         <ScrollView
-          sx={{ padding: "40px 0", paddingLeft: "0" }}
+          sx={{ padding: "40px 0", paddingLeft: { md: "40px", xs: "0" } }}
           title={languageState.texts.Home.Subtitles[0]}
           content={cards}
         />
