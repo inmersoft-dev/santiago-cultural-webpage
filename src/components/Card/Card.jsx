@@ -28,7 +28,7 @@ import Container from "components/Container/Container";
 import { useLanguage } from "context/LanguageProvider";
 
 const Card = (props) => {
-  const { contentPosition, route, children, img, imageProps, sx } = props;
+  const { elevation, contentPosition, route, children, img, imageProps, sx } = props;
 
   const { languageState } = useLanguage();
   const theme = useTheme();
@@ -48,10 +48,16 @@ const Card = (props) => {
   });
 
   return (
-    <MuiCard sx={newSx}>
+    <MuiCard sx={newSx} elevation={elevation}>
       <Container direction="column">
         {contentPosition === "up" && <Content />}
-        <CardMedia component="img" className={newImageProps} image={img} alt={imageProps.alt} />
+        <CardMedia
+          component="img"
+          className={newImageProps}
+          image={img}
+          alt={imageProps.alt}
+          sx={{ borderRadius: contentPosition === "up" ? "5px 5px 0 0" : "0 0 5px 5px" }}
+        />
         {contentPosition === "down" && <Content />}
         {route !== "" && (
           <CardActions sx={{ padding: 0 }}>
@@ -78,6 +84,7 @@ Card.defaultProps = {
   route: "",
   sx: {},
   imageProps: {},
+  elevation: 1,
 };
 
 Card.propTypes = {
@@ -87,6 +94,7 @@ Card.propTypes = {
   contentPosition: PropTypes.string,
   img: PropTypes.string,
   route: PropTypes.string,
+  elevation: PropTypes.number,
 };
 
 export default Card;

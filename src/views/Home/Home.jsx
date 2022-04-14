@@ -12,6 +12,7 @@ import Card from "components/Card/Card";
 // layouts
 import Hero from "layouts/Hero/Hero";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
+import Masonry from "layouts/Masonry/Masonry";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
@@ -25,34 +26,34 @@ const Home = () => {
 
   const cards = [
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
-      </Typography>
-    </Card>,
-
-    <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
 
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
-      <Typography color="secondary" sx={{ fontWeight: "500" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
+      </Typography>
+    </Card>,
+
+    <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
+      <Typography color="secondary" sx={{ fontWeight: 600, color: theme.palette.secondary.main }}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum illo, fugiat tempora
       </Typography>
     </Card>,
@@ -80,7 +81,9 @@ const Home = () => {
         }}
       >
         <Box>
-          <Typography variant="h5">{languageState.texts.Home.Subtitles[0]}</Typography>
+          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+            {languageState.texts.Home.Subtitles[0]}
+          </Typography>
         </Box>
         <ScrollView
           sx={{ padding: "40px 0", paddingLeft: { md: "40px", xs: "0" } }}
@@ -88,6 +91,7 @@ const Home = () => {
           content={cards}
         />
       </Box>
+      <Masonry />
     </Box>
   );
 };
