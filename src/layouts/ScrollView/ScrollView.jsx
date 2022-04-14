@@ -30,7 +30,7 @@ const ScrollView = (props) => {
       <div className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
         <ul className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid">
           {content.map((item, i) => (
-            <li key={`s${i}`} style={{ width: "400px", marginRight: "40px" }}>
+            <li key={`s${i}`} style={{ width: "390px", marginRight: "40px" }}>
               <div className="uk-panel">{item}</div>
             </li>
           ))}
