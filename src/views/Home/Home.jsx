@@ -67,7 +67,6 @@ const Home = () => {
   return (
     <Box sx={{ background: theme.palette.secondary.main }}>
       <Hero />
-      <Carousel CarouselItem={<CarouselItemArrows />} navigation={true} />
       <ScrollView
         sx={{
           padding: { md: "40px 0", xs: "40px 40px" },
@@ -76,6 +75,7 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
+      <Carousel CarouselItem={<CarouselItemArrows />} navigation={true} />
       <TabScrollView />
       <Box
         sx={{
