@@ -16,7 +16,7 @@ import Carousel from "components/Carousel/Carousel";
 import CarouselItemArrows from "components/Carousel/CarouselItemArrows";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
 import Masonry from "layouts/Masonry/Masonry";
-
+import CarouselItemDots from "components/Carousel/CarouselItemDots";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
@@ -76,7 +76,7 @@ const Home = () => {
         content={cards}
       />
       <Carousel
-        CarouselItem={<CarouselItemArrows />}
+        CarouselItem={<CarouselItemDots />}
         navigation={false}
         pagination={true}
         backgroundColor={theme.palette.primary.light}

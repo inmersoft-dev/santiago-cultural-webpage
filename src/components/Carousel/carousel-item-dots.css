@@ -1,0 +1,26 @@
+.carousel-item-dots__container {
+  display: flex;
+  flex-direction: row;
+  height: 520px;
+  align-items: center;
+}
+
+.carousel-item-dots__left {
+  flex: 0.25 1;
+  padding: 0 60px 0 110px;
+}
+
+.carousel-item-dots__center {
+  flex: 0.32 1;
+}
+.carousel-item-dots__right {
+  flex: 0.3 1;
+  height: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  align-items: flex-start;
+  padding: 0px 50px;
+}
