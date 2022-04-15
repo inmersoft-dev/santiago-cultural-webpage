@@ -3,6 +3,23 @@
     "Home": {
       "Subtitles": ["Actualidad"]
     },
+    "Contact": {
+      "Title": "Contáctenos",
+      "Subtitle": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
+      "Submit": "Enviar",
+      "Name": {
+        "Label": "Nombre y apellidos",
+        "Placeholder": "Ej: Juan Pablo Marinez"
+      },
+      "Email": {
+        "Label": "Correo electrónico",
+        "Placeholder": "Ej: juanpablomartines@email.com"
+      },
+      "Message": {
+        "Label": "Mensaje",
+        "Placeholder": "Algún mensaje"
+      }
+    },
     "NotFound": {},
     "Navbar": {
       "Title": "Menú",

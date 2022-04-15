@@ -6,8 +6,8 @@ const dark = createTheme({
   palette: {
     type: "dark",
     primary: {
-      main: "#f29554",
-      light: "#fbac33",
+      main: "#fbac33",
+      light: "#ffd8a3",
       dark: "#af6a00",
       contrastText: "#ffffff",
     },
@@ -20,6 +20,7 @@ const dark = createTheme({
       dark: "#012d3e",
       contrastText: "#ffffff",
       special: "#122133",
+      title: "#00435b",
     },
     error: {
       main: "#f44336",

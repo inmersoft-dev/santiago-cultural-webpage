@@ -71,10 +71,9 @@ const App = () => {
                   <Route path="/culture-centers" element={<Culture />} />
                   <Route path="/activity-news" element={<Activities />} />
                   <Route path="/blog" element={<Blog />} />
-                  <Route path="/contact-us" element={<ContactUs />} />
                 </Route>
-                <Route exact path="/hola">
-                  <Route index element={<Home />} />
+                <Route exact path="/contact-us" element={<View noFooter />}>
+                  <Route index element={<ContactUs />} />
                 </Route>
                 <Route path="*" element={<NotFound />} />
               </Routes>

@@ -16,11 +16,13 @@ import Masonry from "layouts/Masonry/Masonry";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
+import { useRoute } from "context/RouterProvider";
 
 // images
 import bruce from "assets/images/bruce-mars.jpg";
 
 const Home = () => {
+  const { setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
@@ -59,7 +61,9 @@ const Home = () => {
     </Card>,
   ];
 
-  useEffect(() => {}, []);
+  useEffect(() => {
+    setRouteState({ type: "set", to: 0 });
+  }, []);
 
   return (
     <Box sx={{ background: theme.palette.secondary.main }}>
@@ -77,11 +81,11 @@ const Home = () => {
         sx={{
           padding: "40px 0",
           paddingLeft: { md: "10rem", xs: "40px" },
-          background: theme.palette.primary.light,
+          background: theme.palette.primary.main,
         }}
       >
         <Box>
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h4" sx={{ fontWeight: "bold", color: theme.palette.primary.light }}>
             {languageState.texts.Home.Subtitles[0]}
           </Typography>
         </Box>
