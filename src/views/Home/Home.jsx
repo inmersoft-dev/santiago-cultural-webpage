@@ -22,6 +22,7 @@ import { useLanguage } from "context/LanguageProvider";
 
 // images
 import bruce from "assets/images/bruce-mars.jpg";
+import Marquee from "react-fast-marquee";
 
 const Home = () => {
   const { languageState } = useLanguage();
@@ -75,6 +76,11 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
+      <Marquee style={{ backgroundColor: theme.palette.warning.main }}>
+        <Typography variant="h1" sx={{ color: theme.palette.warning.light }}>
+          Convocatorias
+        </Typography>
+      </Marquee>
       <Carousel
         CarouselItem={<CarouselItemDots />}
         navigation={false}
