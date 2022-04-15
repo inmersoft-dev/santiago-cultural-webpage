@@ -22,13 +22,16 @@ const CarouselItemDots = () => {
         </Typography>
       </div>
       <div className="carousel-item-dots__center">
-        <Image
-          img={ImgCarouselDots}
-          width="300"
-          height="300"
-          style={{ borderRadius: "10px", position: "absolute", top: "108px" }}
-        />
-        {/*  <img src={ImgCarouselDots} alt="Imagen" /> */}
+        <div className="carousel-item-dots__center-img-container">
+          <Image
+            img={ImgCarouselDots}
+            width="100%"
+            height="100%"
+            style={{
+              borderRadius: "10px",
+            }}
+          />
+        </div>
       </div>
       <Box
         className="carousel-item-dots__right"
@@ -37,7 +40,11 @@ const CarouselItemDots = () => {
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
-        <Button className="carousel-item-dots__right-button" variant="contained" sx={{ mt: 8 }}>
+        <Button
+          className="carousel-item-dots__right-button"
+          variant="contained"
+          sx={{ mt: { md: 8, xs: 2 } }}
+        >
           Ver Producto
         </Button>
       </Box>

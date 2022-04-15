@@ -25,18 +25,19 @@ const Carousel = ({ CarouselItem, navigation, backgroundColor, pagination }) => 
   return (
     <Box
       className="carousel__container"
-      sx={{ backgroundColor: { backgroundColor }, padding: { md: "0 8rem", xs: "0 8rem" } }}
+      sx={{ backgroundColor: { backgroundColor }, padding: { md: "0 7rem", xs: "0 2rem" } }}
     >
       <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination]}
         spaceBetween={50}
         slidesPerView={1}
+        loop
         navigation={navigation}
         pagination={pagination}
         scrollbar={{ draggable: true }}
-        onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")}
+        /* onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => console.log("slide change")} */
       >
         <SwiperSlide> {CarouselItem} </SwiperSlide>
         <SwiperSlide> {CarouselItem} </SwiperSlide>
