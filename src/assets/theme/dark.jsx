@@ -11,6 +11,10 @@ const dark = createTheme({
       dark: "#af6a00",
       contrastText: "#ffffff",
     },
+    carousel: {
+      main: "#ffc77d",
+      secondary: "#ffddb0",
+    },
     checkbox: {
       main: "#f29554",
     },
@@ -29,9 +33,9 @@ const dark = createTheme({
       contrastText: "#ffffff",
     },
     warning: {
-      main: "#ff9800",
-      light: "#ffac33",
-      dark: "#b26a00",
+      main: "#ffa726",
+      light: "#ffb74d",
+      dark: "#f57c00",
       contrastText: "rgba(0,0,0,0.87)",
     },
     info: {

@@ -35,7 +35,7 @@ const CarouselItemDots = () => {
       </div>
       <Box
         className="carousel-item-dots__right"
-        sx={{ backgroundColor: theme.palette.primary.dark }}
+        sx={{ backgroundColor: theme.palette.carousel.main }}
       >
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>

@@ -76,8 +76,12 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
-      <Marquee style={{ backgroundColor: theme.palette.warning.main }}>
-        <Typography variant="h1" sx={{ color: theme.palette.warning.light }}>
+      <Marquee
+        gradient={false}
+        style={{ backgroundColor: theme.palette.warning.dark, minWidth: 59 }}
+        speed="100"
+      >
+        <Typography variant="h1" sx={{ color: theme.palette.carousel.secondary }}>
           Convocatorias
         </Typography>
       </Marquee>
@@ -85,7 +89,7 @@ const Home = () => {
         CarouselItem={<CarouselItemDots />}
         navigation={false}
         pagination={true}
-        backgroundColor={theme.palette.primary.light}
+        backgroundColor={theme.palette.carousel.secondary}
       />
 
       <TabScrollView />
