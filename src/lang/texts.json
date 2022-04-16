@@ -20,6 +20,28 @@
         "Placeholder": "Algún mensaje"
       }
     },
+    "Activities": {
+      "Title": "Lorem ipsum doro",
+      "Subtitle": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
+      "Filter": {
+        "Title": "Actualidad",
+        "Radios": [
+          {
+            "Label": "Actuales",
+            "Filter": 0
+          },
+          {
+            "Label": "Próximas",
+            "Filter": 1
+          },
+          {
+            "Label": "Históricas",
+            "Filter": 2
+          }
+        ],
+        "Button": "Búsqueda Avanzada"
+      }
+    },
     "NotFound": {},
     "Navbar": {
       "Title": "Menú",
