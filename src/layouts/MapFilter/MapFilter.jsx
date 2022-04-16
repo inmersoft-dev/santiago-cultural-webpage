@@ -14,6 +14,9 @@ import {
   useTheme,
 } from "@mui/material";
 
+// @mui icons
+import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
+
 // owm components
 import Container from "components/Container/Container";
 
@@ -31,7 +34,15 @@ const Hero = () => {
   const { languageState } = useLanguage();
   const theme = useTheme();
 
+  const [resultList, setResultList] = useState(true);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    window.onresize = () => {
+      if (window.innerWidth >= 900) setResultList(true);
+      else setResultList(false);
+    };
+  }, []);
 
   const content = [
     {
@@ -99,6 +110,10 @@ const Hero = () => {
     },
   ];
 
+  const handleResultList = () => {
+    setResultList(!resultList);
+  };
+
   const handleRadio = (e) => {
     const { id } = e.target;
     setActive(Number(id.substring(1)));
@@ -162,8 +177,26 @@ const Hero = () => {
         </Box>
       </Box>
       <Container>
-        <ResultList content={content} />
-        <Map />
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={handleResultList}
+          sx={{
+            display: { md: "none", xs: "flex" },
+            borderRadius: "100%",
+            position: "absolute",
+            minWidth: 0,
+            marginTop: "10px",
+            left: "10px",
+            zIndex: 1,
+            width: "45px",
+            height: "45px",
+          }}
+        >
+          <FormatListBulletedIcon size="30px" />
+        </Button>
+        <ResultList visible={resultList} content={content} />
+        <Map visible={resultList} />
       </Container>
     </Box>
   );

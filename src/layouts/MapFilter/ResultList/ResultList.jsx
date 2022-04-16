@@ -23,7 +23,7 @@ import Image from "components/Image/Image";
 import { useLanguage } from "context/LanguageProvider";
 
 const ResultList = (props) => {
-  const { content } = props;
+  const { content, visible } = props;
 
   const [splittedContent, setSplittedContent] = useState([]);
   const [active, setActive] = useState(0);
@@ -66,7 +66,12 @@ const ResultList = (props) => {
     <Container
       direction="column"
       align="left"
-      sx={{ background: theme.palette.secondary.main, width: "40%" }}
+      sx={{
+        background: theme.palette.secondary.main,
+        width: "600px",
+        transform: visible ? "translateX(0)" : "translateX(-600px)",
+        transition: "transform 500ms ease",
+      }}
     >
       <Box sx={{ padding: "25px 35px", height: "610px" }}>
         <motion.div variants={delay} style={{ height: "100%" }}>
@@ -134,6 +139,7 @@ const ResultList = (props) => {
 };
 
 ResultList.propTypes = {
+  visible: PropTypes.bool.isRequired,
   content: PropTypes.array.isRequired,
 };
 
