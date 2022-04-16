@@ -25,7 +25,10 @@ const Carousel = ({ CarouselItem, navigation, backgroundColor, pagination }) => 
   return (
     <Box
       className="carousel__container"
-      sx={{ backgroundColor: { backgroundColor }, padding: { md: "0 7rem", xs: "0 2rem" } }}
+      sx={{
+        backgroundColor: { backgroundColor },
+        padding: { lg: "0 7rem", md: "0 3rem", xs: "0 1rem 0 2rem" },
+      }}
     >
       <Swiper
         // install Swiper modules

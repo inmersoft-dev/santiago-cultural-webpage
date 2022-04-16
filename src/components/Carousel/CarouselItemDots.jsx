@@ -14,14 +14,37 @@ const CarouselItemDots = () => {
 
   return (
     <div className="carousel-item-dots__container">
-      <div className="carousel-item-dots__left">
+      <Box className="carousel-item-dots__wrapper" sx={{ display: { lg: "none", xs: "flex" } }}>
+        <div className="carousel-item-dots__left">
+          <Typography variant="body1">
+            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+            dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+            nascetur
+          </Typography>
+        </div>
+        <div className="carousel-item-dots__center">
+          <div className="carousel-item-dots__center-img-container">
+            <Image
+              img={ImgCarouselDots}
+              width="100%"
+              height="100%"
+              style={{
+                borderRadius: "10px",
+              }}
+            />
+          </div>
+        </div>
+      </Box>
+      <Box className="carousel-item-dots__left" sx={{ display: { lg: "flex", xs: "none" } }}>
         <Typography variant="body1">
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
           dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+          nascetur.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
           nascetur
         </Typography>
-      </div>
-      <div className="carousel-item-dots__center">
+      </Box>
+      <Box className="carousel-item-dots__center" sx={{ display: { lg: "flex", xs: "none" } }}>
         <div className="carousel-item-dots__center-img-container">
           <Image
             img={ImgCarouselDots}
@@ -32,7 +55,7 @@ const CarouselItemDots = () => {
             }}
           />
         </div>
-      </div>
+      </Box>
       <Box
         className="carousel-item-dots__right"
         sx={{ backgroundColor: theme.palette.carousel.main }}
@@ -43,7 +66,7 @@ const CarouselItemDots = () => {
         <Button
           className="carousel-item-dots__right-button"
           variant="contained"
-          sx={{ mt: { md: 8, xs: 2 } }}
+          sx={{ mt: { md: 4, xs: 2 } }}
         >
           Ver Producto
         </Button>
