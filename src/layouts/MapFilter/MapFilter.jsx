@@ -20,11 +20,75 @@ import Container from "components/Container/Container";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
+// images
+import bruce from "assets/images/bruce-mars.jpg";
+
+// layouts
+import ResultList from "./ResultList/ResultList";
+import Map from "./Map/Map";
+
 const Hero = () => {
   const { languageState } = useLanguage();
   const theme = useTheme();
 
   const [active, setActive] = useState(0);
+
+  const content = [
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+    {
+      url: bruce,
+      title:
+        "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+      text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor",
+    },
+  ];
 
   const handleRadio = (e) => {
     const { id } = e.target;
@@ -33,8 +97,13 @@ const Hero = () => {
 
   useEffect(() => {}, []);
   return (
-    <Box id="map-filter" sx={{ background: theme.palette.primary.main }}>
-      <Box sx={{ padding: { md: "40px 10rem", xs: "40px 40px" } }}>
+    <Box id="map-filter">
+      <Box
+        sx={{
+          padding: { md: "40px 10rem", xs: "40px 40px" },
+          background: theme.palette.primary.main,
+        }}
+      >
         <Box>
           <Typography variant="h4" color="secondary">
             {languageState.texts.Activities.Title}
@@ -83,6 +152,10 @@ const Hero = () => {
           <Divider sx={{ border: `1px solid ${theme.palette.secondary.main}` }} />
         </Box>
       </Box>
+      <Container>
+        <ResultList content={content} />
+        <Map />
+      </Container>
     </Box>
   );
 };

@@ -40,6 +40,9 @@
           }
         ],
         "Button": "Búsqueda Avanzada"
+      },
+      "Result": {
+        "Results": "Resultados"
       }
     },
     "NotFound": {},
