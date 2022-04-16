@@ -39,7 +39,7 @@ const Hero = () => {
 
   useEffect(() => {
     window.onresize = () => {
-      if (window.innerWidth >= 900) setResultList(true);
+      if (window.innerWidth >= 1200) setResultList(true);
       else setResultList(false);
     };
   }, []);
@@ -138,9 +138,13 @@ const Hero = () => {
         </Box>
         <Box sx={{ paddingBottom: "20px" }}>
           <Container
-            sx={{ margin: "40px", marginBottom: "15px" }}
-            justify="space-between"
-            align="end"
+            sx={{
+              margin: { md: "40px", sm: "40px 0 20px 0" },
+              marginBottom: "15px",
+              flexDirection: { sm: "row", xs: "column" },
+              alignItems: { sm: "end", xs: "baseline" },
+              justifyContent: { sm: "space-between", xs: "flex-start" },
+            }}
           >
             <FormControl>
               <Typography variant="h5" color="secondary" sx={{ fontWeight: 700 }}>
@@ -169,7 +173,11 @@ const Hero = () => {
                 ))}
               </RadioGroup>
             </FormControl>
-            <Button sx={{ padding: "10px 20px" }} variant="contained" color="secondary">
+            <Button
+              sx={{ padding: "10px 20px", marginTop: { md: "0", xs: "20px" } }}
+              variant="contained"
+              color="secondary"
+            >
               {languageState.texts.Activities.Filter.Button}
             </Button>
           </Container>
@@ -182,7 +190,7 @@ const Hero = () => {
           variant="contained"
           onClick={handleResultList}
           sx={{
-            display: { md: "none", xs: "flex" },
+            display: { lg: "none", xs: "flex" },
             borderRadius: "100%",
             position: "absolute",
             minWidth: 0,
