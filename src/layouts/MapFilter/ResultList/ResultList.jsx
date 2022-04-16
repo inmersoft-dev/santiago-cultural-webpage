@@ -1,7 +1,9 @@
-/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/function-component-definition */
 import { useEffect, useState } from "react";
+
+// framer-motion
+import { motion } from "framer-motion";
 
 // prop types
 import PropTypes from "prop-types";
@@ -48,6 +50,18 @@ const ResultList = (props) => {
     else setActive(active === splittedContent.length - 1 ? 0 : active + 1);
   };
 
+  const delay = {
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.2,
+    },
+  };
+
+  const listItem = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { y: 0, opacity: 1 },
+  };
+
   return (
     <Container
       direction="column"
@@ -55,23 +69,33 @@ const ResultList = (props) => {
       sx={{ background: theme.palette.secondary.main, width: "40%" }}
     >
       <Box sx={{ padding: "25px 35px", height: "610px" }}>
-        {splittedContent.length > 0 &&
-          splittedContent[active].map((item, i) => (
-            <Container key={`k${i}`} align="center" sx={{ marginTop: "20px" }}>
-              <Image img={item.url} width={150} height={150} style={{ borderRadius: "15px" }} />
-              <Box sx={{ marginLeft: "25px" }}>
-                <Typography variant="body1" color="primary">
-                  {item.title}
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  sx={{ color: theme.palette.primary.light, marginTop: "10px" }}
-                >
-                  {item.text}
-                </Typography>
-              </Box>
-            </Container>
-          ))}
+        <motion.div variants={delay} style={{ height: "100%" }}>
+          {splittedContent.length > 0 &&
+            splittedContent[active].map((item) => (
+              <motion.div
+                key={item.id}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={listItem}
+              >
+                <Container align="center" sx={{ marginTop: "20px" }}>
+                  <Image img={item.url} width={150} height={150} style={{ borderRadius: "15px" }} />
+                  <Box sx={{ marginLeft: "25px" }}>
+                    <Typography variant="body1" color="primary">
+                      {item.title}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{ color: theme.palette.primary.light, marginTop: "10px" }}
+                    >
+                      {item.text}
+                    </Typography>
+                  </Box>
+                </Container>
+              </motion.div>
+            ))}
+        </motion.div>
       </Box>
 
       <Container
