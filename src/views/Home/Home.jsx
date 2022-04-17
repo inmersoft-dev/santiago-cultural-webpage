@@ -76,17 +76,13 @@ const Home = () => {
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}
       />
-      <Marquee
-        gradient={false}
-        style={{ backgroundColor: theme.palette.warning.dark, minWidth: 59 }}
-        speed="100"
-      >
-        <Typography variant="h1" sx={{ color: theme.palette.carousel.secondary }}>
+      <Marquee gradient={false} style={{ backgroundColor: theme.palette.warning.dark }} speed="100">
+        <Typography variant="h1" sx={{ color: theme.palette.carousel.secondary, mx: 2 }}>
           Convocatorias
         </Typography>
       </Marquee>
       <Carousel
-        CarouselItem={<CarouselItemDots />}
+        CarouselItem={<CarouselItemDots colorColum={theme.palette.carousel.main} />}
         navigation={false}
         pagination={true}
         backgroundColor={theme.palette.carousel.secondary}
@@ -117,6 +113,12 @@ const Home = () => {
           content={cards}
         />
       </Box>
+      <Carousel
+        CarouselItem={<CarouselItemDots colorColum={theme.palette.secondary.carousel} />}
+        navigation={false}
+        pagination={true}
+        backgroundColor={theme.palette.secondary.dark}
+      />
       <Masonry />
     </Box>
   );

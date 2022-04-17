@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */ /* eslint-disable react/function-component-definition */
-import { Box, Button, Typography, useTheme } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import React from "react";
 import Image from "components/Image/Image";
 
@@ -9,9 +9,9 @@ import ImgCarouselDots from "../../assets/images/ivana-square.jpg";
 // Import Css of Component
 import "./carousel-item-dots.css";
 
-const CarouselItemDots = () => {
-  const theme = useTheme();
-
+// eslint-disable-next-line react/prop-types
+const CarouselItemDots = ({ colorColum }) => {
+  console.log(colorColum);
   return (
     <div className="carousel-item-dots__container">
       <Box className="carousel-item-dots__wrapper" sx={{ display: { lg: "none", xs: "flex" } }}>
@@ -56,10 +56,7 @@ const CarouselItemDots = () => {
           />
         </div>
       </Box>
-      <Box
-        className="carousel-item-dots__right"
-        sx={{ backgroundColor: theme.palette.carousel.main }}
-      >
+      <Box className="carousel-item-dots__right" sx={{ backgroundColor: colorColum }}>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
