@@ -5,10 +5,13 @@
 import { Typography } from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
+import Image from "components/Image/Image";
+
 
 import ImgArticle from "../../assets/images/home-decor-3.jpg";
 // CSS Component CarouselItemArrows
 import "./carousel-item-arrows.css";
+
 
 const CarouselItemArrows = () => {
   return (
@@ -27,7 +30,8 @@ const CarouselItemArrows = () => {
         </div>
       </div>
       <div className="car-item-arrows__right">
-        <img src={ImgArticle} alt="Imagen" />
+        <Image img={ImgArticle} height="100%" width="48vw" />
+
       </div>
     </div>
   );
