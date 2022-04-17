@@ -2,16 +2,14 @@
 /* eslint-disable prettier/prettier */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React from "react";
 import Button from "@mui/material/Button";
 import Image from "components/Image/Image";
 
-
 import ImgArticle from "../../assets/images/home-decor-3.jpg";
 // CSS Component CarouselItemArrows
 import "./carousel-item-arrows.css";
-
 
 const CarouselItemArrows = () => {
   return (
@@ -30,8 +28,9 @@ const CarouselItemArrows = () => {
         </div>
       </div>
       <div className="car-item-arrows__right">
-        <Image img={ImgArticle} height="100%" width="48vw" />
-
+        <Box className="car-item-arrows__right-img-container" sx={{position:{md:"relative", xs:"absolute"}}}>
+          <Image img={ImgArticle} height="100%" width="100%" style={{ objectFit: "cover" }} />
+        </Box>
       </div>
     </div>
   );
