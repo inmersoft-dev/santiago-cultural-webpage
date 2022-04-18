@@ -9,7 +9,7 @@ import { motion } from "framer-motion";
 import PropTypes from "prop-types";
 
 // @mui components
-import { Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 
 // own components
 import Container from "components/Container/Container";
@@ -60,13 +60,10 @@ const ScrollView = (props) => {
           className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid"
         >
           {content.map((item, i) => (
-            <motion.li
-              variants={ulItem}
-              viewport={{ once: true }}
-              key={`s${i}`}
-              style={{ width: "390px", marginRight: "40px" }}
-            >
-              <div className="uk-panel">{item}</div>
+            <motion.li variants={ulItem} viewport={{ once: true }} key={`s${i}`}>
+              <Box className="uk-panel" sx={{ width: "390px", marginRight: "40px" }}>
+                {item}
+              </Box>
             </motion.li>
           ))}
         </motion.ul>

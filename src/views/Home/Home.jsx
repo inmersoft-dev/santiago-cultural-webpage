@@ -80,7 +80,7 @@ const Home = () => {
       <Box
         sx={{
           padding: "40px 0",
-          paddingLeft: { md: "10rem", xs: "40px" },
+          paddingLeft: { md: "10rem", xs: "20px" },
           background: theme.palette.primary.main,
         }}
       >

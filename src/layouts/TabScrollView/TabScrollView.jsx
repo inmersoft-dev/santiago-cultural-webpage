@@ -77,7 +77,7 @@ const TabScrollView = () => {
   ];
 
   return (
-    <Box sx={{ padding: { md: "40px 10rem", xs: "40px 40px" } }}>
+    <Box sx={{ padding: { md: "40px 10rem", xs: "40px 20px" } }}>
       <Box>
         <Typography variant="h5" sx={{ fontWeight: "bold" }}>
           {languageState.texts.Home.Subtitles[0]}

@@ -127,6 +127,7 @@ const Navbar = () => {
                 padding: "5px 0px",
                 borderRadius: "10px",
                 minWidth: "45px",
+                marginRight: "0",
               }}
               size="large"
               color="side"

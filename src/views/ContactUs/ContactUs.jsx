@@ -44,14 +44,14 @@ const ContactUs = () => {
         <Box>
           <Container
             direction="column"
-            justify="end"
+            justify="flex-start"
             sx={{
               background: `${theme.palette.secondary.main}Cc`,
               height: "100vh",
               width: { lg: "50vw", md: "60vw", xs: "100vw" },
               marginLeft: { md: "10rem", xs: 0 },
-              padding: { md: "0 60px", xs: "0 30px" },
-              paddingBottom: { md: "80px", xs: "20px" },
+              padding: { md: "9rem 60px 2rem 60px", xs: "10rem 30px 5rem 30px" },
+              overflow: "auto",
             }}
           >
             <Typography variant="h3" color="primary">
@@ -123,6 +123,8 @@ const ContactUs = () => {
                     required
                     inputProps={{ autoComplete: "xyz12asdsad3" }}
                     color="primary"
+                    maxRows={4}
+                    minRows={4}
                     id="xyz123"
                     name="xyz123"
                     autoComplete="nope"
