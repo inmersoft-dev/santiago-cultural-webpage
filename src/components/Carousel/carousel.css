@@ -3,6 +3,12 @@
   width: 100vw;  
 }
 
+.swiper-button-next , .swiper-button-prev{
+  --swiper-navigation-size: 25px;
+}
+
+
+
 
 @media (max-width: 1059px) {
   
