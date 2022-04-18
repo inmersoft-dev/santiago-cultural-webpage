@@ -1,0 +1,22 @@
+.know-us__container{
+    height: auto;
+    padding: 3rem 0 6rem 8rem;
+}
+
+.know-us__images-container-img {
+  height: 400px;
+  max-width: 450px;
+  padding: 4rem;
+  flex: 0.5 1;
+}
+
+
+.know-us__images-container {
+  display: flex;
+}
+
+.know-us__container-text{
+    flex: 0.5 1;
+    padding: 4rem;
+
+}

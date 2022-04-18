@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 
 // layouts
 import Hero from "layouts/Hero/Hero";
+import KnowUs from "components/KnowUs/KnowUs";
 
 const AboutUs = () => {
   useEffect(() => {}, []);
@@ -13,6 +14,7 @@ const AboutUs = () => {
   return (
     <Box>
       <Hero />
+      <KnowUs />
     </Box>
   );
 };
