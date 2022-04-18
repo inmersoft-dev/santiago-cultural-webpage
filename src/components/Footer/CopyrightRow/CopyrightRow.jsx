@@ -1,6 +1,6 @@
 /* eslint-disable react/function-component-definition */
 // @mui components
-import { useTheme } from "@mui/material";
+import { Typography, useTheme } from "@mui/material";
 
 // own components
 import Container from "components/Container/Container";
@@ -17,7 +17,9 @@ const CopyrightRow = () => {
       sx={{ width: "100%", background: theme.palette.secondary.special, padding: "20px" }}
       justify="center"
     >
-      {languageState.texts.Footer.Copyright}
+      <Typography variant="subtitle1" align="center">
+        {languageState.texts.Footer.Copyright}
+      </Typography>
     </Container>
   );
 };

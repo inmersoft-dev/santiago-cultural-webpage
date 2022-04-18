@@ -12,7 +12,7 @@ import Card from "components/Card/Card";
 // layouts
 import Hero from "layouts/Hero/Hero";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
-import Masonry from "layouts/Masonry/Masonry";
+// import Masonry from "layouts/Masonry/Masonry";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";

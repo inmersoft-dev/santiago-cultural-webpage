@@ -60,12 +60,15 @@ const SearchModal = (props) => {
       onClose={onClose}
     >
       <Box sx={{ background: theme.palette.secondary.main }}>
-        <Container sx={{ width: "100%", padding: "40px 10rem" }} justify="flex-end">
+        <Container
+          sx={{ width: "100%", padding: { md: "40px 10rem", xs: "20px 20px" } }}
+          justify="flex-end"
+        >
           <IconButton color="side" aria-label="close drawer" onClick={onClose}>
             <CloseIcon />
           </IconButton>
         </Container>
-        <Container sx={{ width: "100%", padding: "40px 10rem" }}>
+        <Container sx={{ width: "100%", padding: { md: "40px 10rem", xs: "20px 20px" } }}>
           <FormControl sx={{ m: 1, width: "100%" }} variant="standard">
             <InputLabel
               sx={{ color: theme.palette.secondary.light, display: "flex" }}
