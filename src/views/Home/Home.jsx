@@ -70,8 +70,8 @@ const Home = () => {
       <Hero />
       <ScrollView
         sx={{
-          padding: { md: "40px 0", xs: "40px 40px" },
-          paddingLeft: { md: "10rem", xs: "40px" },
+          padding: { md: "40px 0", xs: "40px 20px" },
+          paddingLeft: { md: "10rem", xs: "20px" },
         }}
         title={languageState.texts.Home.Subtitles[0]}
         content={cards}

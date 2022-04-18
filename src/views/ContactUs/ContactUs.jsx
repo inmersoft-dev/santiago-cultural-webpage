@@ -50,8 +50,8 @@ const ContactUs = () => {
               height: "100vh",
               width: { lg: "50vw", md: "60vw", xs: "100vw" },
               marginLeft: { md: "10rem", xs: 0 },
-              padding: "0 60px",
-              paddingBottom: "80px",
+              padding: { md: "0 60px", xs: "0 30px" },
+              paddingBottom: { md: "80px", xs: "20px" },
             }}
           >
             <Typography variant="h3" color="primary">
