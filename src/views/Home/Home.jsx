@@ -95,7 +95,7 @@ const Home = () => {
           content={cards}
         />
       </Box>
-      <Masonry />
+      {/* <Masonry /> */}
     </Box>
   );
 };
