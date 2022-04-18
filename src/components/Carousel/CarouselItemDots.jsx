@@ -11,7 +11,6 @@ import "./carousel-item-dots.css";
 
 // eslint-disable-next-line react/prop-types
 const CarouselItemDots = ({ colorColum }) => {
-  console.log(colorColum);
   return (
     <div className="carousel-item-dots__container">
       <Box className="carousel-item-dots__wrapper" sx={{ display: { lg: "none", xs: "flex" } }}>
