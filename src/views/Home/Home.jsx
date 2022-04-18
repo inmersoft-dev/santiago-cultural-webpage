@@ -15,7 +15,7 @@ import Hero from "layouts/Hero/Hero";
 import Carousel from "components/Carousel/Carousel";
 import CarouselItemArrows from "components/Carousel/CarouselItemArrows";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
-import Masonry from "layouts/Masonry/Masonry";
+// import Masonry from "layouts/Masonry/Masonry";
 import CarouselItemDots from "components/Carousel/CarouselItemDots";
 // import Masonry from "layouts/Masonry/Masonry";
 
@@ -125,7 +125,6 @@ const Home = () => {
         pagination={true}
         backgroundColor={theme.palette.secondary.dark}
       />
-      <Masonry />
       {/* <Masonry /> */}
     </Box>
   );
