@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 
 // layouts
 import Hero from "layouts/Hero/Hero";
+import MapFilter from "layouts/MapFilter/MapFilter";
 
 const Activities = () => {
   useEffect(() => {}, []);
@@ -13,6 +14,7 @@ const Activities = () => {
   return (
     <Box>
       <Hero />
+      <MapFilter />
     </Box>
   );
 };

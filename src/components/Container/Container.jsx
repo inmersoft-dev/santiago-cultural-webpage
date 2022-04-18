@@ -63,7 +63,7 @@ Container.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   style: PropTypes.objectOf(PropTypes.any),
-  extraProps: PropTypes.objectOf(PropTypes.any),
+  extraProps: PropTypes.any,
 };
 
 export default Container;

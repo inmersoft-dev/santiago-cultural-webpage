@@ -33,7 +33,7 @@ const Footer = () => {
       <Grid
         sx={{
           flexGrow: 1,
-          padding: "40px 10rem",
+          padding: { md: "40px 10rem", xs: "20px 40px" },
           justifyContent: {
             xs: "left",
             md: "space-around",
@@ -43,7 +43,7 @@ const Footer = () => {
         spacing={4}
       >
         <Grid md={5} item>
-          <Container direction="column" sx={{ paddingRight: "60px" }}>
+          <Container direction="column" sx={{ paddingRight: "20px" }}>
             <Typography variant="subtitle1" sx={{ color: theme.palette.text.disabled }}>
               {languageState.texts.Footer.Description}
             </Typography>

@@ -76,7 +76,7 @@ const Navbar = () => {
         <Container
           align="center"
           justify="space-between"
-          sx={{ padding: { lg: "0 10rem", md: "0 20px" } }}
+          sx={{ padding: { lg: "0 10rem", xs: "0 20px" } }}
         >
           <IconButton
             size="large"
