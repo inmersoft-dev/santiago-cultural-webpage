@@ -51,7 +51,7 @@ const ScrollView = (props) => {
       <Typography variant="subtitle1" sx={{ marginBottom: "20px" }}>
         {title}
       </Typography>
-      <div className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
+      <Box className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
         <motion.ul
           variants={container}
           initial="hidden"
@@ -60,14 +60,18 @@ const ScrollView = (props) => {
           className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid"
         >
           {content.map((item, i) => (
-            <motion.li variants={ulItem} viewport={{ once: true }} key={`s${i}`}>
-              <Box className="uk-panel" sx={{ width: "390px", marginRight: "40px" }}>
+            <Box
+              key={`s${i}`}
+              className="uk-panel"
+              sx={{ width: { md: "390px", xs: "335px" }, marginRight: "40px" }}
+            >
+              <motion.div variants={ulItem} viewport={{ once: true }}>
                 {item}
-              </Box>
-            </motion.li>
+              </motion.div>
+            </Box>
           ))}
         </motion.ul>
-      </div>
+      </Box>
     </Container>
   );
 };

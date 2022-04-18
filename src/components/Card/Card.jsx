@@ -37,7 +37,7 @@ const Card = (props) => {
 
   const newSx = {
     background: theme.palette.text.main,
-    width: "389px",
+    width: { md: "389px", xs: "335px" },
     marginRight: "30px",
     ...sx,
   };
