@@ -68,9 +68,9 @@
           "index": 2
         },
         {
-          "id": "news",
+          "id": "activities",
           "label": "Actividades",
-          "route": "/activity-news",
+          "route": "/activities",
           "index": 3,
           "menu": [
             {

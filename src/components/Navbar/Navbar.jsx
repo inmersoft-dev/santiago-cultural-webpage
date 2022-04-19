@@ -65,7 +65,7 @@ const Navbar = () => {
 
   const handleClose = (event) => {
     const { id } = event.target;
-    setRouteState({ type: "jndex", to: id.substring(2) });
+    setRouteState({ type: "jndex", to: Number(id.substring(2)) });
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -218,9 +218,19 @@ const Navbar = () => {
                     onKeyDown={handleListKeyDown}
                   >
                     {languageState.texts.Navbar.Links[menu].menu.map((item) => (
-                      <MenuItem key={item.label} onClick={handleClose} id={`ml${item.jndex}`}>
-                        {item.label}
-                      </MenuItem>
+                      <Link
+                        key={item.label}
+                        to={languageState.texts.Navbar.Links[menu].route}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <MenuItem
+                          onClick={handleClose}
+                          id={`ml${item.jndex}`}
+                          sx={{ color: theme.palette.text.main }}
+                        >
+                          {item.label}
+                        </MenuItem>
+                      </Link>
                     ))}
                   </MenuList>
                 </ClickAwayListener>

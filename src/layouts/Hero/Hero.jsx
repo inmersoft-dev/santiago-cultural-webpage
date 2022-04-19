@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/function-component-definition */
 
 // prop types
@@ -7,7 +8,7 @@ import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 
 const Hero = (props) => {
-  const { children } = props;
+  const { children, sx } = props;
 
   return (
     <Box
@@ -18,6 +19,7 @@ const Hero = (props) => {
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "none",
+        ...sx,
       }}
     >
       {children}
@@ -27,10 +29,12 @@ const Hero = (props) => {
 
 Hero.defaultProps = {
   children: <div />,
+  sx: {},
 };
 
 Hero.propTypes = {
   children: PropTypes.node,
+  sx: PropTypes.object,
 };
 
 export default Hero;
