@@ -1,11 +1,25 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/function-component-definition */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // react-router-dom
 import { Link } from "react-router-dom";
 
 // @mui components
-import { useTheme, AppBar, Box, Button, IconButton, Divider } from "@mui/material";
+import {
+  useTheme,
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Divider,
+  MenuItem,
+  MenuList,
+  Popper,
+  Grow,
+  Paper,
+  ClickAwayListener,
+} from "@mui/material";
 
 // @mui icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -31,6 +45,42 @@ const Navbar = () => {
 
   const [showSearch, setShowSearch] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+  const [menu, setMenu] = useState(-1);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setMenu(3);
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  const handleClose = (event) => {
+    const { id } = event.target;
+    setRouteState({ type: "jndex", to: id.substring(2) });
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+
+    setOpen(false);
+  };
+
+  const prevOpen = useRef(open);
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   const handleLink = (e) => {
     const { id } = e.target;
@@ -100,6 +150,11 @@ const Navbar = () => {
                       color={item.index === routeState.route ? "primary" : "text"}
                       sx={{ textTransform: "none" }}
                       size="medium"
+                      ref={item.menu ? anchorRef : null}
+                      aria-controls={open ? "composition-menu" : undefined}
+                      aria-expanded={open ? "true" : undefined}
+                      aria-haspopup="true"
+                      onMouseOver={item.menu ? handleToggle : null}
                     >
                       {item.label}
                     </Button>
@@ -138,6 +193,41 @@ const Navbar = () => {
             </Button>
           </Container>
         </Container>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement="bottom-start"
+          transition
+          disablePortal
+          onMouseLeave={handleClose}
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
+              }}
+            >
+              <Paper sx={{ background: theme.palette.secondary.main }}>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="composition-menu"
+                    aria-labelledby="composition-button"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    {languageState.texts.Navbar.Links[menu].menu.map((item, i) => (
+                      <MenuItem key={item.label} onClick={handleClose} id={`ml${item.jndex}`}>
+                        {item.label}
+                      </MenuItem>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
       </AppBar>
     </Box>
   );

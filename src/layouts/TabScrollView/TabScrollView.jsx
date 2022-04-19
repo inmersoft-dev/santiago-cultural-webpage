@@ -14,6 +14,9 @@ import { useLanguage } from "context/LanguageProvider";
 // images
 import bruce from "assets/images/bruce-mars.jpg";
 
+// styles
+import "./style.css";
+
 const TabScrollView = () => {
   const { languageState } = useLanguage();
   const tabs = ["Fotograía", "Fotograía", "Fotograía", "Fotograía"];
@@ -55,22 +58,22 @@ const TabScrollView = () => {
 
   const content = [
     <ScrollView
-      sx={{ padding: "0", paddingLeft: "0" }}
+      sx={{ padding: 0, paddingLeft: 0 }}
       title={languageState.texts.Home.Subtitles[0]}
       content={cards}
     />,
     <ScrollView
-      sx={{ padding: "0", paddingLeft: "0" }}
+      sx={{ padding: 0, paddingLeft: 0 }}
       title={languageState.texts.Home.Subtitles[0]}
       content={cards}
     />,
     <ScrollView
-      sx={{ padding: "0", paddingLeft: "0" }}
+      sx={{ padding: 0, paddingLeft: 0 }}
       title={languageState.texts.Home.Subtitles[0]}
       content={cards}
     />,
     <ScrollView
-      sx={{ padding: "0", paddingLeft: "0" }}
+      sx={{ padding: 0, paddingLeft: 0 }}
       title={languageState.texts.Home.Subtitles[0]}
       content={cards}
     />,

@@ -54,13 +54,7 @@ const TabView = (props) => {
   return (
     <Box sx={{ width: "100%" }}>
       <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-        <Tabs
-          textColor="primary"
-          indicatorColor="primary"
-          value={value}
-          onChange={handleChange}
-          aria-label="basic tabs example"
-        >
+        <Tabs textColor="primary" indicatorColor="primary" value={value} onChange={handleChange}>
           {tabs.map((item, i) => (
             <Tab key={item} label={item} {...a11yProps(i)} />
           ))}
