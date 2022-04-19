@@ -155,7 +155,7 @@ const dark = createTheme({
   components: {
     MuiCssBaseline: {
       styleOverrides: {
-        body: darkScrollbar({ track: "#FFFFFF00", thumb: "#405163", active: "#405163" }),
+        body: darkScrollbar({ track: "rgba(255,0,0,0)", thumb: "#405163", active: "#405163" }),
       },
     },
   },

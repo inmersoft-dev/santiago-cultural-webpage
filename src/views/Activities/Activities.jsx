@@ -297,7 +297,7 @@ const Activities = () => {
             >
               {languageState.texts.Activities.Filter.Button}
             </Button> */}
-            <Container>
+            <Container sx={{ margin: { xs: "20px 0", md: 0 } }}>
               <Button
                 id="v1"
                 sx={{ minWidth: 0, padding: "5px 5px", marginRight: "5px" }}
@@ -329,7 +329,7 @@ const Activities = () => {
           />
           <ScrollView
             sx={{
-              padding: { md: "0 6rem 80px 11rem", xs: "0 30px 80px 45px" },
+              padding: { md: "0 6rem 80px 11rem", xs: "0 25px 80px 25px" },
             }}
             titleProps={{
               variant: "h4",
