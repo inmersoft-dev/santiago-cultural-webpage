@@ -29,6 +29,7 @@ const RouteProvider = ({ children }) => {
   const [routeState, setRouteState] = React.useReducer(routeReducer, {
     route: 0,
     page: "",
+    jndex: 0,
   });
 
   const value = { routeState, setRouteState };

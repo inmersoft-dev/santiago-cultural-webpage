@@ -68,9 +68,9 @@
           "index": 2
         },
         {
-          "id": "news",
-          "label": "Actividades / Noticias",
-          "route": "/activity-news",
+          "id": "activities",
+          "label": "Actividades",
+          "route": "/activities",
           "index": 3,
           "menu": [
             {
@@ -88,9 +88,9 @@
           ]
         },
         {
-          "id": "blog",
-          "label": "Blog",
-          "route": "/blog",
+          "id": "news",
+          "label": "Noticias",
+          "route": "/news",
           "index": 4
         },
         {

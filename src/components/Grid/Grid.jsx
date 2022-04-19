@@ -1,3 +1,4 @@
+/* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
 
@@ -32,6 +33,7 @@ const Grid = (props) => {
       opacity: 1,
     },
   };
+
   return (
     <MuiGrid sx={{ ...sx, flexGrow: 1 }} container spacing={0}>
       <MuiGrid item>
@@ -62,7 +64,7 @@ Grid.defaultProps = {
 
 Grid.propTypes = {
   content: PropTypes.arrayOf(PropTypes.node).isRequired,
-  sx: PropTypes.objectOf(PropTypes.string),
+  sx: PropTypes.object,
 };
 
 export default Grid;

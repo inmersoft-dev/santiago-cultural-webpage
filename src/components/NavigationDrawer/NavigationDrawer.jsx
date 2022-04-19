@@ -27,7 +27,7 @@ import { useRoute } from "context/RouterProvider";
 const NavigationDrawer = (props) => {
   const { visible, onClose } = props;
 
-  const { routeState } = useRoute();
+  const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
@@ -38,6 +38,12 @@ const NavigationDrawer = (props) => {
   }, [visible]);
 
   useEffect(() => {}, [routeState.route]);
+
+  const clickJtem = (e) => {
+    const { id } = e.target;
+    setRouteState({ type: "jndex", to: Number(id.substring(1)) });
+    onClose(e);
+  };
 
   return (
     <Drawer
@@ -64,36 +70,74 @@ const NavigationDrawer = (props) => {
           <Image img={logo} width={120} height={40} />
           <Box sx={{ marginTop: "20px" }}>
             {languageState.texts.Navbar.Links.map((item, i) => (
-              <Link
-                id={`l${i}`}
-                key={item.id}
-                style={{
-                  textDecoration: "none",
-                  color:
-                    item.index === routeState.route
-                      ? theme.palette.primary.main
-                      : theme.palette.text.main,
-                }}
-                onClick={onClose}
-                to={item.route}
-              >
-                <Typography
-                  id={`b${i}`}
-                  sx={{
-                    textTransform: "none",
-                    marginTop: "10px",
-                    "&:hover": {
-                      color:
-                        item.index === routeState.route
-                          ? theme.palette.primary.main
-                          : theme.palette.text.disabled,
-                    },
+              <Box key={item.id}>
+                <Link
+                  id={`l${i}`}
+                  style={{
+                    textDecoration: "none",
+                    color:
+                      item.index === routeState.route
+                        ? theme.palette.primary.main
+                        : theme.palette.text.main,
                   }}
-                  variant="subtitle1"
+                  onClick={onClose}
+                  to={item.route}
                 >
-                  {item.label}
-                </Typography>
-              </Link>
+                  <Typography
+                    id={`b${i}`}
+                    sx={{
+                      textTransform: "none",
+                      marginTop: "10px",
+                      "&:hover": {
+                        color:
+                          item.index === routeState.route
+                            ? theme.palette.primary.main
+                            : theme.palette.text.disabled,
+                      },
+                    }}
+                    variant="subtitle1"
+                  >
+                    {item.label}
+                  </Typography>
+                </Link>
+                {item.menu && (
+                  <Container direction="column">
+                    {item.menu.map((jtem, j) => (
+                      <Link
+                        id={`l${j}`}
+                        key={jtem.jndex}
+                        style={{
+                          textDecoration: "none",
+                          paddingLeft: "10px",
+                          paddingTop: "10px",
+                        }}
+                        onClick={clickJtem}
+                        to={item.route}
+                      >
+                        <Typography
+                          id={`b${j}`}
+                          sx={{
+                            textTransform: "none",
+                            color:
+                              item.index === routeState.route && jtem.jndex === routeState.jndex
+                                ? theme.palette.primary.main
+                                : theme.palette.text.main,
+                            "&:hover": {
+                              color:
+                                item.index === routeState.route && jtem.jndex === routeState.jndex
+                                  ? theme.palette.primary.main
+                                  : theme.palette.text.disabled,
+                            },
+                          }}
+                          variant="subtitle2  "
+                        >
+                          {jtem.label}
+                        </Typography>
+                      </Link>
+                    ))}
+                  </Container>
+                )}
+              </Box>
             ))}
           </Box>
         </Container>

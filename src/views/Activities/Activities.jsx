@@ -328,12 +328,12 @@ const Activities = () => {
       {view === 0 && (
         <Box>
           <Grid
-            sx={{ padding: { md: "80px 10rem 40px 10rem", xs: "40px 20px 0 20px" } }}
+            sx={{ padding: { lg: "80px 10rem 40px 10rem", xs: "40px 20px 0 20px" } }}
             content={cards}
           />
           <ScrollView
             sx={{
-              padding: { md: "0 6rem 80px 11rem", xs: "0 25px 80px 25px" },
+              padding: { md: "0 6rem 80px 7rem", xs: "0 25px 80px 25px" },
             }}
             titleProps={{
               variant: "h4",
