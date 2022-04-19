@@ -25,7 +25,7 @@ import View from "layouts/View/View";
 import Home from "views/Home/Home";
 import AboutUs from "views/AboutUs/AboutUs";
 import Activities from "views/Activities/Activities";
-import Blog from "views/Blog/Blog";
+import News from "views/News/News";
 import ContactUs from "views/ContactUs/ContactUs";
 import Culture from "views/Culture/Culture";
 import NotFound from "views/NotFound/NotFound";
@@ -70,7 +70,7 @@ const App = () => {
                   <Route path="/about-us" element={<AboutUs />} />
                   <Route path="/culture-centers" element={<Culture />} />
                   <Route path="/activity-news" element={<Activities />} />
-                  <Route path="/blog" element={<Blog />} />
+                  <Route path="/news" element={<News />} />
                 </Route>
                 <Route exact path="/contact-us" element={<View noFooter />}>
                   <Route index element={<ContactUs />} />
