@@ -23,8 +23,8 @@ Image.defaultProps = {
 
 Image.propTypes = {
   img: PropTypes.string.isRequired,
-  width: PropTypes.number.isRequired,
-  height: PropTypes.number.isRequired,
+  width: PropTypes.string.isRequired,
+  height: PropTypes.string.isRequired,
   className: PropTypes.objectOf(PropTypes.string || PropTypes.number),
   style: PropTypes.objectOf(PropTypes.string || PropTypes.number),
 };
