@@ -18,7 +18,7 @@ import Container from "components/Container/Container";
 import "./uikit/css/uikit.css";
 
 const ScrollView = (props) => {
-  const { title, content, sx } = props;
+  const { title, content, sx, titleProps } = props;
 
   const newSx = {
     padding: "60px 0",
@@ -48,9 +48,7 @@ const ScrollView = (props) => {
 
   return (
     <Container direction="column" sx={newSx}>
-      <Typography variant="subtitle1" sx={{ marginBottom: "20px" }}>
-        {title}
-      </Typography>
+      <Typography {...titleProps}>{title}</Typography>
       <Box className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
         <motion.ul
           variants={container}
@@ -78,11 +76,13 @@ const ScrollView = (props) => {
 
 ScrollView.defaultProps = {
   sx: {},
+  titleProps: { variant: "subtitle1", sx: { marginBottom: "20px" } },
   title: "",
 };
 
 ScrollView.propTypes = {
   sx: PropTypes.object,
+  titleProps: PropTypes.object,
   title: PropTypes.string,
   content: PropTypes.arrayOf(PropTypes.node).isRequired,
 };

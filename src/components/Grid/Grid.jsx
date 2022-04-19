@@ -1,70 +1,68 @@
-import * as React from 'react';
-import Grid from '@mui/material/Grid';
-import FormLabel from '@mui/material/FormLabel';
-import FormControl from '@mui/material/FormControl';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import HighlightedCode from 'docs/src/modules/components/HighlightedCode';
-import RadioGroup from '@mui/material/RadioGroup';
-import Radio from '@mui/material/Radio';
-import Paper from '@mui/material/Paper';
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable react/function-component-definition */
 
-export default function SpacingGrid() {
-  const [spacing, setSpacing] = React.useState(2);
+// framer-motion
+import { motion } from "framer-motion";
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSpacing(Number((event.target as HTMLInputElement).value));
+// prop types
+import PropTypes from "prop-types";
+
+// @mui components
+import { Grid as MuiGrid } from "@mui/material";
+
+const Grid = (props) => {
+  const { content, sx } = props;
+
+  const container = {
+    hidden: { opacity: 1, scale: 0 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delayChildren: 0.3,
+        staggerChildren: 0.2,
+      },
+    },
   };
 
-  const jsx = `
-<Grid container spacing={${spacing}}>
-`;
-
+  const ulItem = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
   return (
-    <Grid sx={{ flexGrow: 1 }} container spacing={2}>
-      <Grid item xs={12}>
-        <Grid container justifyContent="center" spacing={spacing}>
-          {[0, 1, 2].map((value) => (
-            <Grid key={value} item>
-              <Paper
-                sx={{
-                  height: 140,
-                  width: 100,
-                  backgroundColor: (theme) =>
-                    theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-                }}
-              />
-            </Grid>
-          ))}
-        </Grid>
-      </Grid>
-      <Grid item xs={12}>
-        <Paper sx={{ p: 2 }}>
-          <Grid container>
-            <Grid item>
-              <FormControl component="fieldset">
-                <FormLabel component="legend">spacing</FormLabel>
-                <RadioGroup
-                  name="spacing"
-                  aria-label="spacing"
-                  value={spacing.toString()}
-                  onChange={handleChange}
-                  row
-                >
-                  {[0, 0.5, 1, 2, 3, 4, 8, 12].map((value) => (
-                    <FormControlLabel
-                      key={value}
-                      value={value.toString()}
-                      control={<Radio />}
-                      label={value.toString()}
-                    />
-                  ))}
-                </RadioGroup>
-              </FormControl>
-            </Grid>
-          </Grid>
-        </Paper>
-        <HighlightedCode code={jsx} language="jsx" />
-      </Grid>
-    </Grid>
+    <MuiGrid sx={{ ...sx, flexGrow: 1 }} container spacing={0}>
+      <MuiGrid item>
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <MuiGrid container justifyContent="center" spacing={0}>
+            {content.map((item, i) => (
+              <MuiGrid key={`grid${i}`} sx={{ paddingRight: 0, marginBottom: "30px" }} item>
+                <motion.div variants={ulItem} viewport={{ once: true }}>
+                  {item}
+                </motion.div>
+              </MuiGrid>
+            ))}
+          </MuiGrid>
+        </motion.div>
+      </MuiGrid>
+    </MuiGrid>
   );
-}
+};
+
+Grid.defaultProps = {
+  sx: {},
+};
+
+Grid.propTypes = {
+  content: PropTypes.arrayOf(PropTypes.node).isRequired,
+  sx: PropTypes.objectOf(PropTypes.string),
+};
+
+export default Grid;

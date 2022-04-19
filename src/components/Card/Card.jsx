@@ -28,7 +28,7 @@ import Container from "components/Container/Container";
 import { useLanguage } from "context/LanguageProvider";
 
 const Card = (props) => {
-  const { elevation, contentPosition, route, children, img, imageProps, sx } = props;
+  const { elevation, contentPosition, route, children, img, imageProps, sx, border } = props;
 
   const { languageState } = useLanguage();
   const theme = useTheme();
@@ -39,6 +39,7 @@ const Card = (props) => {
     background: theme.palette.text.main,
     width: { md: "389px", xs: "335px" },
     marginRight: "30px",
+    border: border ? `1px solid ${theme.palette.secondary.another}` : "",
     ...sx,
   };
 
@@ -80,6 +81,7 @@ const Card = (props) => {
 
 Card.defaultProps = {
   contentPosition: "up",
+  border: false,
   img: "",
   route: "",
   sx: {},
@@ -95,6 +97,7 @@ Card.propTypes = {
   img: PropTypes.string,
   route: PropTypes.string,
   elevation: PropTypes.number,
+  border: PropTypes.bool,
 };
 
 export default Card;
