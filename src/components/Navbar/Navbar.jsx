@@ -217,7 +217,7 @@ const Navbar = () => {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    {languageState.texts.Navbar.Links[menu].menu.map((item) => (
+                    {languageState.texts.Navbar.Links[menu].menu.map((item, i) => (
                       <MenuItem key={item.label} onClick={handleClose} id={`ml${item.jndex}`}>
                         {item.label}
                       </MenuItem>
