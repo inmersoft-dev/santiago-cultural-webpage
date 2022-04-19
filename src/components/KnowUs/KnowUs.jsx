@@ -28,7 +28,7 @@ const KnowUs = () => {
           sx={{
             borderWidth: " 1px",
             borderStyle: "solid",
-            borderColor: "#f8ca83",
+            borderColor: "#ffd8a3",
             width: "80px",
             mb: 2,
           }}
