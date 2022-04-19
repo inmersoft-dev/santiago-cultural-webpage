@@ -45,10 +45,12 @@ const Navbar = () => {
 
   const [showSearch, setShowSearch] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+  const [menu, setMenu] = useState(-1);
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
   const handleToggle = () => {
+    setMenu(3);
     setOpen((prevOpen) => !prevOpen);
   };
 
@@ -62,6 +64,8 @@ const Navbar = () => {
   }
 
   const handleClose = (event) => {
+    const { id } = event.target;
+    setRouteState({ type: "jndex", to: id.substring(2) });
     if (anchorRef.current && anchorRef.current.contains(event.target)) {
       return;
     }
@@ -205,7 +209,7 @@ const Navbar = () => {
                 transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
               }}
             >
-              <Paper>
+              <Paper sx={{ background: theme.palette.secondary.main }}>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList
                     autoFocusItem={open}
@@ -213,9 +217,11 @@ const Navbar = () => {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    {languageState.texts.Navbar.Links[menu].menu.map((item) => (
+                      <MenuItem key={item.label} onClick={handleClose} id={`ml${item.jndex}`}>
+                        {item.label}
+                      </MenuItem>
+                    ))}
                   </MenuList>
                 </ClickAwayListener>
               </Paper>

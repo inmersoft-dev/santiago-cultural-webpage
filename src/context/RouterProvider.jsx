@@ -9,8 +9,14 @@ const RouteContext = React.createContext();
 
 const routeReducer = (routeState, action) => {
   switch (action.type) {
+    case "jndex":
+      return {
+        ...routeState,
+        jndex: action.to,
+      };
     case "set":
       return {
+        ...routeState,
         route: action.to,
         page: action.page,
       };

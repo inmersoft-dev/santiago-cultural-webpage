@@ -36,7 +36,7 @@ import { useRoute } from "context/RouterProvider";
 import bruce from "assets/images/bruce-mars.jpg";
 
 const Activities = () => {
-  const { setRouteState } = useRoute();
+  const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
@@ -220,6 +220,10 @@ const Activities = () => {
   useEffect(() => {
     setRouteState({ type: "set", to: 3 });
   }, []);
+
+  useEffect(() => {
+    if (routeState.jndex) setView(Number(routeState.jndex));
+  }, [routeState.jndex]);
 
   const handleRadio = (e) => {
     const { id } = e.target;
