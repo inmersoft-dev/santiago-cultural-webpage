@@ -99,7 +99,7 @@ const Hero = () => {
 
   useEffect(() => {}, []);
   return (
-    <Box id="map-filter">
+    <Box id="map-filter" sx={{ marginBottom: "32px" }}>
       <Container>
         <Button
           color="primary"

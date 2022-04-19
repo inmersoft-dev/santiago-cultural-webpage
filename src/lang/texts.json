@@ -71,7 +71,21 @@
           "id": "news",
           "label": "Actividades / Noticias",
           "route": "/activity-news",
-          "index": 3
+          "index": 3,
+          "menu": [
+            {
+              "label": "Tabla",
+              "jndex": "0"
+            },
+            {
+              "label": "Mapa",
+              "jndex": "1"
+            },
+            {
+              "label": "Calendario",
+              "jndex": "2"
+            }
+          ]
         },
         {
           "id": "blog",
