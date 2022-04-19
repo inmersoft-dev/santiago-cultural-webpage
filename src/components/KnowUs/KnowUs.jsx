@@ -13,13 +13,30 @@ import "./know-us.css";
 const KnowUs = () => {
   const theme = useTheme();
   return (
-    <Box className="know-us__container">
+    <Box
+      className="know-us__container"
+      sx={{
+        backgroundColor: theme.palette.secondary.main,
+        /* padding: { md: "4rem 0 8rem 10rem", sm: "4rem 0 8rem 6rem", xs: "4rem 1rem 8rem 1rem" }, */
+      }}
+    >
       <div className="know-us__texts-container">
-        <Typography variant="h4">Title Title</Typography>
+        <Typography variant="h4" sx={{ color: theme.palette.primary.main }}>
+          Title Title
+        </Typography>
         <Divider
-          sx={{ borderWidth: " 1px", borderStyle: "solid", borderColor: "#f8ca83", width: "80px" }}
+          sx={{
+            borderWidth: " 1px",
+            borderStyle: "solid",
+            borderColor: "#f8ca83",
+            width: "80px",
+            mb: 2,
+          }}
         />
-        <Typography variant="body1">
+        <Typography
+          variant="body1"
+          sx={{ width: { md: "40vw", xs: "60vw" }, color: theme.palette.primary.light }}
+        >
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
           dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
           nascetur
@@ -31,13 +48,17 @@ const KnowUs = () => {
           sx={{
             backgroundImage: `url(${misionImg})`,
             backgroundSize: "cover",
+            backgroundPosition: "center",
           }}
         >
-          <Box className="know-us__images-text-container">
-            <Typography variant="h4">
+          <Box
+            className="know-us__images-text-container"
+            sx={{ padding: { md: "5rem", /* sm: "4rem", */ xs: "4rem" } }}
+          >
+            <Typography className="know-us__title-section" variant="h4" sx={{ mb: 2 }}>
               <ApiIcon /> Mision
             </Typography>
-            <Typography variant="body2">
+            <Typography variant="body1" className="know-us__text-section1">
               Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
               dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
               nascetur
@@ -46,16 +67,21 @@ const KnowUs = () => {
         </Box>
         <Box
           className="know-us__container-text"
-          sx={{ backgroundColor: theme.palette.warning.main }}
+          sx={{ backgroundColor: theme.palette.warning.main, padding: { md: "5rem", xs: "4rem" } }}
         >
-          <Typography variant="h4">
-            <ApiIcon /> Mision
-          </Typography>
-          <Typography variant="body2">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-            dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-            nascetur
-          </Typography>
+          <Box
+            className="know-us__container-text-container"
+            /* sx={{ padding: { md: "5rem", xs: "2rem" } }} */
+          >
+            <Typography className="know-us__title-section" variant="h4" sx={{ mb: 2 }}>
+              <ApiIcon /> Mision
+            </Typography>
+            <Typography variant="body1" className="know-us__text-section2">
+              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
+              dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
+              nascetur
+            </Typography>
+          </Box>
         </Box>
       </div>
     </Box>
