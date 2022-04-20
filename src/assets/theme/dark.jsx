@@ -49,10 +49,10 @@ const dark = createTheme({
     },
     divider: "rgba(0,0,0,0.12)",
     background: {
-      default: "#322742",
-      paper: "#3e3151",
-      button: "#3e3151",
-      paper2: "#3e3151",
+      default: "#02415a",
+      paper: "#00435b",
+      button: "#00435b",
+      paper2: "#00435b",
     },
     text: {
       main: "#fff",

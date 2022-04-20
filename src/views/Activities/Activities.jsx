@@ -21,6 +21,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 // own components
 import Container from "components/Container/Container";
 import Grid from "components/Grid/Grid";
+import Calendar from "components/Calendar/Calendar";
 import ScrollView from "layouts/ScrollView/ScrollView";
 import Card from "components/Card/Card";
 
@@ -222,7 +223,7 @@ const Activities = () => {
   }, []);
 
   useEffect(() => {
-    if (routeState.jndex) setView(Number(routeState.jndex));
+    if (routeState.jndex || routeState.jndex === 0) setView(routeState.jndex);
   }, [routeState.jndex]);
 
   const handleRadio = (e) => {
@@ -345,7 +346,11 @@ const Activities = () => {
         </Box>
       )}
       {view === 1 && <MapFilter />}
-      {view === 2}
+      {view === 2 && (
+        <Container sx={{ padding: { lg: "40px 10rem 40px 10rem", xs: "40px 20px 0 20px" } }}>
+          <Calendar />
+        </Container>
+      )}
     </Box>
   );
 };

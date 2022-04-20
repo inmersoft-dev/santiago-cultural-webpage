@@ -64,11 +64,11 @@ const Navbar = () => {
   }
 
   const handleClose = (event) => {
-    const { id } = event.target;
-    setRouteState({ type: "jndex", to: Number(id.substring(2)) });
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
+    if (event.type === "click") {
+      const { id } = event.target;
+      setRouteState({ type: "jndex", to: Number(id.substring(2)) });
     }
+    if (anchorRef.current && anchorRef.current.contains(event.target)) return;
 
     setOpen(false);
   };
