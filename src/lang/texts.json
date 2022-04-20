@@ -41,6 +41,23 @@
         ],
         "Button": "Búsqueda Avanzada"
       },
+      "Calendar": {
+        "Months": [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Noviembre",
+          "Diciembre"
+        ],
+        "Days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        "ReduxDays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+      },
       "Result": {
         "Results": "Resultados"
       }
