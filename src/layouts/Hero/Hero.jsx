@@ -1,3 +1,4 @@
+/* eslint-disable react/require-default-props */
 /* eslint-disable react/forbid-prop-types */
 /* eslint-disable react/function-component-definition */
 
@@ -8,15 +9,14 @@ import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 
 const Hero = (props) => {
-  const { children, height } = props;
-  console.log(height);
+  const { children, sx } = props;
 
   return (
     <Box
       id="hero-section"
       sx={{
         backgroundImage: "url(https://wallpapercave.com/wp/wp3268618.jpg)",
-        height: { height },
+        height: "100vh",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "none",
@@ -30,12 +30,12 @@ const Hero = (props) => {
 
 Hero.defaultProps = {
   children: <div />,
-  height: "100vh",
+  sx: {},
 };
 
 Hero.propTypes = {
   children: PropTypes.node,
-  height: PropTypes.string,
+  sx: PropTypes.object,
 };
 
 export default Hero;

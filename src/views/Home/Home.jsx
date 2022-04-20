@@ -3,6 +3,8 @@
 /* eslint-disable react/function-component-definition */
 import { useEffect } from "react";
 
+import Marquee from "react-fast-marquee";
+
 // @mui components
 import { Box, Typography, useTheme } from "@mui/material";
 
@@ -25,7 +27,6 @@ import { useRoute } from "context/RouterProvider";
 
 // images
 import bruce from "assets/images/bruce-mars.jpg";
-import Marquee from "react-fast-marquee";
 
 const Home = () => {
   const { setRouteState } = useRoute();
