@@ -7,6 +7,7 @@ import { Box } from "@mui/material";
 // layouts
 import Hero from "layouts/Hero/Hero";
 import Search from "components/Search/Search";
+import GridItem from "components/GridItem/GridItem";
 
 const News = () => {
   useEffect(() => {}, []);
@@ -15,6 +16,7 @@ const News = () => {
     <Box>
       <Hero />
       <Search />
+      <GridItem />
     </Box>
   );
 };
