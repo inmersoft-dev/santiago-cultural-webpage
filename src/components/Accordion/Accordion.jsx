@@ -15,8 +15,6 @@ import {
 
 // @mui icons
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-// Css Component
-import "./accordion.css";
 
 const Accordion = (props) => {
   const { title, details } = props;
@@ -31,9 +29,7 @@ const Accordion = (props) => {
       </AccordionSummary>
       <AccordionDetails>
         {details.map((item, i) => (
-          <Box key={i} className="accordion__event">
-            {item}
-          </Box>
+          <Box key={i}>{item}</Box>
         ))}
       </AccordionDetails>
     </MuiAccordion>

@@ -68,15 +68,29 @@
           "index": 2
         },
         {
-          "id": "news",
-          "label": "Actividades / Noticias",
-          "route": "/activity-news",
-          "index": 3
+          "id": "activities",
+          "label": "Actividades",
+          "route": "/activities",
+          "index": 3,
+          "menu": [
+            {
+              "label": "Tabla",
+              "jndex": "0"
+            },
+            {
+              "label": "Mapa",
+              "jndex": "1"
+            },
+            {
+              "label": "Calendario",
+              "jndex": "2"
+            }
+          ]
         },
         {
-          "id": "blog",
-          "label": "Blog",
-          "route": "/blog",
+          "id": "news",
+          "label": "Noticias",
+          "route": "/news",
           "index": 4
         },
         {

@@ -19,11 +19,8 @@ const CCalendar = () => {
   const [year, setYear] = useState(new Date().getFullYear());
 
   const events = [
-    {
-      title: "Hola",
-      details: ["Hola,Bienvenido al evento de Caridad, para la recogida de dinero", "Sito"],
-    },
-    { title: "Sito", details: ["Hola", "Hola,Bienvenido al evento de Caridad"] },
+    { title: "Hola", details: ["Hola", "Sito"] },
+    { title: "Sito", details: ["Hola", "Sito"] },
   ];
 
   const arrayOfDays = () => {

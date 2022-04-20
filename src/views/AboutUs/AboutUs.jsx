@@ -14,7 +14,7 @@ const AboutUs = () => {
 
   return (
     <Box>
-      <Hero height="75vh" />
+      <Hero sx={{ height: "75vh" }} />
       <KnowUs />
       <OurValues />
     </Box>

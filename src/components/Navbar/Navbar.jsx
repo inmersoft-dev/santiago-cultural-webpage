@@ -1,11 +1,25 @@
+/* eslint-disable react/jsx-no-bind */
 /* eslint-disable react/function-component-definition */
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 // react-router-dom
 import { Link } from "react-router-dom";
 
 // @mui components
-import { useTheme, AppBar, Box, Button, IconButton, Divider } from "@mui/material";
+import {
+  useTheme,
+  AppBar,
+  Box,
+  Button,
+  IconButton,
+  Divider,
+  MenuItem,
+  MenuList,
+  Popper,
+  Grow,
+  Paper,
+  ClickAwayListener,
+} from "@mui/material";
 
 // @mui icons
 import MenuIcon from "@mui/icons-material/Menu";
@@ -24,13 +38,52 @@ import Container from "components/Container/Container";
 import NavigationDrawer from "components/NavigationDrawer/NavigationDrawer";
 import SearchModal from "./SearchModal/SearchModal";
 
+let timeout = null;
+
 const Navbar = () => {
   const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
+  const [onScroll, setOnScroll] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
+  const [menu, setMenu] = useState(-1);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+
+  const handleToggle = () => {
+    setMenu(3);
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  function handleListKeyDown(event) {
+    if (event.key === "Tab") {
+      event.preventDefault();
+      setOpen(false);
+    } else if (event.key === "Escape") {
+      setOpen(false);
+    }
+  }
+
+  const handleClose = (event) => {
+    if (event.type === "click") {
+      const { id } = event.target;
+      setRouteState({ type: "jndex", to: Number(id.substring(2)) });
+    }
+    if (anchorRef.current && anchorRef.current.contains(event.target)) return;
+
+    setOpen(false);
+  };
+
+  const prevOpen = useRef(open);
+  useEffect(() => {
+    if (prevOpen.current === true && open === false) {
+      anchorRef.current.focus();
+    }
+
+    prevOpen.current = open;
+  }, [open]);
 
   const handleLink = (e) => {
     const { id } = e.target;
@@ -63,14 +116,38 @@ const Navbar = () => {
 
   useEffect(() => {}, [routeState.route]);
 
+  const toggleOnScroll = () => {
+    setOnScroll(true);
+  };
+
+  // scroll handler
+  useEffect(() => {
+    window.addEventListener("scroll", toggleOnScroll);
+    return () => {
+      window.removeEventListener("scroll", toggleOnScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (onScroll) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      setOnScroll(false);
+    }, 505);
+  }, [onScroll]);
+
   return (
     <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
       <SearchModal visible={showSearch} onClose={onCloseSearch} />
       <NavigationDrawer visible={showDrawer} onClose={onCloseDrawer} />
       <AppBar
-        style={{ transition: "all 200ms ease", padding: "20px 0", opacity: showSearch ? 0 : 1 }}
+        sx={{
+          transition: "all 500ms ease",
+          padding: "20px 0",
+          opacity: showSearch ? 0 : 1,
+          transform: onScroll ? "translateY(-80px)" : "translateY(0)",
+        }}
         elevation={0}
-        position="static"
+        position="fixed"
         color="secondary"
       >
         <Container
@@ -100,6 +177,11 @@ const Navbar = () => {
                       color={item.index === routeState.route ? "primary" : "text"}
                       sx={{ textTransform: "none" }}
                       size="medium"
+                      ref={item.menu ? anchorRef : null}
+                      aria-controls={open ? "composition-menu" : undefined}
+                      aria-expanded={open ? "true" : undefined}
+                      aria-haspopup="true"
+                      onMouseOver={item.menu ? handleToggle : null}
                     >
                       {item.label}
                     </Button>
@@ -138,6 +220,51 @@ const Navbar = () => {
             </Button>
           </Container>
         </Container>
+        <Popper
+          open={open}
+          anchorEl={anchorRef.current}
+          role={undefined}
+          placement="bottom-start"
+          transition
+          disablePortal
+          onMouseLeave={handleClose}
+        >
+          {({ TransitionProps, placement }) => (
+            <Grow
+              {...TransitionProps}
+              style={{
+                transformOrigin: placement === "bottom-start" ? "left top" : "left bottom",
+              }}
+            >
+              <Paper sx={{ background: theme.palette.secondary.main }}>
+                <ClickAwayListener onClickAway={handleClose}>
+                  <MenuList
+                    autoFocusItem={open}
+                    id="composition-menu"
+                    aria-labelledby="composition-button"
+                    onKeyDown={handleListKeyDown}
+                  >
+                    {languageState.texts.Navbar.Links[menu].menu.map((item) => (
+                      <Link
+                        key={item.label}
+                        to={languageState.texts.Navbar.Links[menu].route}
+                        style={{ textDecoration: "none" }}
+                      >
+                        <MenuItem
+                          onClick={handleClose}
+                          id={`ml${item.jndex}`}
+                          sx={{ color: theme.palette.text.main }}
+                        >
+                          {item.label}
+                        </MenuItem>
+                      </Link>
+                    ))}
+                  </MenuList>
+                </ClickAwayListener>
+              </Paper>
+            </Grow>
+          )}
+        </Popper>
       </AppBar>
     </Box>
   );

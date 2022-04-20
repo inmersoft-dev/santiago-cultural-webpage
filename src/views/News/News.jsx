@@ -7,7 +7,7 @@ import { Box } from "@mui/material";
 // layouts
 import Hero from "layouts/Hero/Hero";
 
-const Blog = () => {
+const News = () => {
   useEffect(() => {}, []);
 
   return (
@@ -17,4 +17,4 @@ const Blog = () => {
   );
 };
 
-export default Blog;
+export default News;
