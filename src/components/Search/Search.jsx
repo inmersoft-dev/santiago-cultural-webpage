@@ -15,14 +15,19 @@ const text = "Noticias";
 const Search = () => {
   const theme = useTheme();
   return (
-    <Box className="search__container" sx={{ backgroundColor: theme.palette.primary.main }}>
+    <Box
+      className="search__container"
+      sx={{
+        backgroundColor: theme.palette.primary.main,
+      }}
+    >
       <div className="search__title-container">
         <Typography variant="h4">{text}</Typography>
       </div>
       <Box className="search__search-area-container" sx={{ mt: 2 }}>
         <Box className="search__input-container" sx={{ backgroundColor: "rgba(175,106,0, .4)" }}>
           <SearchIcon />
-          <input className="search__search-input" type="search" name="search" />
+          <input className="search__search-input" type="search" />
         </Box>
         <Button
           className="search__search-area-button"
