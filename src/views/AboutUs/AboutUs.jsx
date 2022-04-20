@@ -6,13 +6,17 @@ import { Box } from "@mui/material";
 
 // layouts
 import Hero from "layouts/Hero/Hero";
+import KnowUs from "components/KnowUs/KnowUs";
+import OurValues from "components/OurValues/OurValues";
 
 const AboutUs = () => {
   useEffect(() => {}, []);
 
   return (
     <Box>
-      <Hero />
+      <Hero height="75vh" />
+      <KnowUs />
+      <OurValues />
     </Box>
   );
 };

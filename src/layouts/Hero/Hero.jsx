@@ -8,14 +8,15 @@ import PropTypes from "prop-types";
 import { Box } from "@mui/material";
 
 const Hero = (props) => {
-  const { children, sx } = props;
+  const { children, height } = props;
+  console.log(height);
 
   return (
     <Box
       id="hero-section"
       sx={{
         backgroundImage: "url(https://wallpapercave.com/wp/wp3268618.jpg)",
-        height: "100vh",
+        height: { height },
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "none",
@@ -29,12 +30,12 @@ const Hero = (props) => {
 
 Hero.defaultProps = {
   children: <div />,
-  sx: {},
+  height: "100vh",
 };
 
 Hero.propTypes = {
   children: PropTypes.node,
-  sx: PropTypes.object,
+  height: PropTypes.string,
 };
 
 export default Hero;
