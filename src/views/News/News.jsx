@@ -6,6 +6,7 @@ import { Box } from "@mui/material";
 
 // layouts
 import Hero from "layouts/Hero/Hero";
+import Search from "components/Search/Search";
 
 const News = () => {
   useEffect(() => {}, []);
@@ -13,6 +14,7 @@ const News = () => {
   return (
     <Box>
       <Hero />
+      <Search />
     </Box>
   );
 };

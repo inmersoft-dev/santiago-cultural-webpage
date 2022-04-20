@@ -16,7 +16,7 @@ const Hero = (props) => {
       id="hero-section"
       sx={{
         backgroundImage: "url(https://wallpapercave.com/wp/wp3268618.jpg)",
-        height: { height },
+        height: "100vh",
         backgroundPosition: "center",
         backgroundSize: "cover",
         backgroundRepeat: "none",
