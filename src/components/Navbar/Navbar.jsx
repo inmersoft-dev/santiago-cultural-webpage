@@ -38,11 +38,14 @@ import Container from "components/Container/Container";
 import NavigationDrawer from "components/NavigationDrawer/NavigationDrawer";
 import SearchModal from "./SearchModal/SearchModal";
 
+let timeout = null;
+
 const Navbar = () => {
   const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
+  const [onScroll, setOnScroll] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [showDrawer, setShowDrawer] = useState(false);
   const [menu, setMenu] = useState(-1);
@@ -113,14 +116,38 @@ const Navbar = () => {
 
   useEffect(() => {}, [routeState.route]);
 
+  const toggleOnScroll = () => {
+    setOnScroll(true);
+  };
+
+  // scroll handler
+  useEffect(() => {
+    window.addEventListener("scroll", toggleOnScroll);
+    return () => {
+      window.removeEventListener("scroll", toggleOnScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (onScroll) clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      setOnScroll(false);
+    }, 505);
+  }, [onScroll]);
+
   return (
     <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
       <SearchModal visible={showSearch} onClose={onCloseSearch} />
       <NavigationDrawer visible={showDrawer} onClose={onCloseDrawer} />
       <AppBar
-        style={{ transition: "all 200ms ease", padding: "20px 0", opacity: showSearch ? 0 : 1 }}
+        sx={{
+          transition: "all 500ms ease",
+          padding: "20px 0",
+          opacity: showSearch ? 0 : 1,
+          transform: onScroll ? "translateY(-80px)" : "translateY(0)",
+        }}
         elevation={0}
-        position="static"
+        position="fixed"
         color="secondary"
       >
         <Container
