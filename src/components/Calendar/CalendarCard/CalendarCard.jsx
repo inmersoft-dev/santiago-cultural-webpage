@@ -3,6 +3,9 @@
 // @mui components
 import { useTheme, Paper } from "@mui/material";
 
+// own components
+import Container from "components/Container/Container";
+
 // prop types
 import PropTypes from "prop-types";
 
@@ -23,7 +26,9 @@ const CalendarCard = (props) => {
         borderRadius: 0,
       }}
     >
-      {children}
+      <Container direction="column" align="center">
+        {children}
+      </Container>
     </Paper>
   );
 };
