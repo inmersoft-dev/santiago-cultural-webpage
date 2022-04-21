@@ -24,8 +24,9 @@ const Accordion = (props) => {
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
         id="panel1a-header"
+        sx={{ minHeight: "30px", height: "30px" }}
       >
-        <Typography>{title}</Typography>
+        <Typography sx={{ margin: 0 }}>{title}</Typography>
       </AccordionSummary>
       <AccordionDetails>
         {details.map((item, i) => (

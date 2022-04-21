@@ -4,7 +4,7 @@
 import React, { useEffect, useState } from "react";
 
 // @mui components
-import { useTheme, Box, Paper, Typography } from "@mui/material";
+import { useTheme, Box, Paper, Typography, Divider } from "@mui/material";
 
 // own components
 import Container from "components/Container/Container";
@@ -15,6 +15,7 @@ import { useLanguage } from "context/LanguageProvider";
 
 // styles
 import "./style.css";
+import CalendarCard from "./CalendarCard/CalendarCard";
 
 const CCalendar = () => {
   const [days, setDays] = useState(new Date(2022, 4, 0).getDate());
@@ -36,44 +37,53 @@ const CCalendar = () => {
     const aDays = [[], [], [], [], [], [], []];
     for (let i = 0; i < days; i += 1) {
       const tDate = new Date(year, month, i);
-      aDays[tDate.getDay()].push(i + 1);
+      if (i === 0) {
+        if (tDate.getDay() !== 6) {
+          let j = 0;
+          const totalDays = new Date(year, month, 0).getDate() - tDate.getDay();
+          while (j !== tDate.getDay() + 1) {
+            aDays[j].push({ other: true, day: totalDays + j });
+            j += 1;
+          }
+        }
+      }
+      /* changing monday by sunday */
+      if (tDate.getDay() === 6) aDays[0].push({ other: false, day: i + 1 });
+      else aDays[tDate.getDay() + 1].push({ other: false, day: i + 1 });
     }
     return aDays;
   };
 
   return (
-    <Container>
-      <Typography>{languageState.texts.Activities.Calendar.Months[month]}</Typography>
+    <Container direction="column">
+      <Typography variant="h5" color="primary">
+        {languageState.texts.Activities.Calendar.Months[month]}
+      </Typography>
+      <Divider sx={{ margin: "20px 0", border: `1px solid ${theme.palette.primary.main}` }} />
       <Container>
-        {arrayOfDays().map((item, i) => (
-          <Container direction="column">
-            {item.map((jtem, j) => (
-              <Paper
-                elevation={0}
-                key={j}
-                sx={{
-                  padding: "10px",
-                  paddingLeft: "0",
-                  minWidth: "150px",
-                  minHeight: "150px",
-                  background: "#00000000",
-                  border: `1px solid ${theme.palette.secondary.main}`,
-                  borderRadius: 0,
-                }}
-              >
-                <Typography sx={{ textAlign: "center" }}>
-                  {jtem}
-                  {events.map(
-                    (ktem, k) =>
-                      ktem.date.getDate() === jtem && (
-                        <Accordion key={k} title={ktem.title} details={ktem.details} />
-                      )
+        {arrayOfDays().length === 7 &&
+          arrayOfDays().map((item, i) => (
+            <Container direction="column">
+              {item.map((jtem, j) => (
+                <CalendarCard key={`card${jtem.day}`} background={jtem.other}>
+                  {j === 0 && (
+                    <Typography sx={{ textAlign: "center" }}>
+                      {languageState.texts.Activities.Calendar.ReduxDays[i]}
+                    </Typography>
                   )}
-                </Typography>
-              </Paper>
-            ))}
-          </Container>
-        ))}
+                  <Typography sx={{ textAlign: "center" }}>
+                    {jtem.day}
+                    {events.map(
+                      (ktem, k) =>
+                        ktem.date.getDate() === jtem.day && (
+                          <Accordion key={k} title={ktem.title} details={ktem.details} />
+                        )
+                    )}
+                  </Typography>
+                </CalendarCard>
+              ))}
+            </Container>
+          ))}
       </Container>
     </Container>
   );
