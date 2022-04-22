@@ -31,7 +31,7 @@ const GridItem = () => {
       <Typography
         variant="body1"
         sx={{
-          padding: { md: "80px 10rem 40px 10rem", xs: "80px 5rem 40px 5rem" },
+          padding: { md: "60px 11rem 40px 11rem", xs: "60px 40px 40px 40px" },
           textAlign: "left",
           width: "100%",
         }}

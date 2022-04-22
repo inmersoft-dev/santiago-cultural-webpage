@@ -5,7 +5,6 @@ import { useEffect } from "react";
 import { Box } from "@mui/material";
 
 // layouts
-import Hero from "layouts/Hero/Hero";
 import GridItem from "components/GridItem/GridItem";
 
 // contexts
@@ -23,7 +22,6 @@ const News = () => {
 
   return (
     <Box>
-      <Hero />
       <Search />
       <GridItem />
     </Box>
