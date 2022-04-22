@@ -21,7 +21,7 @@ const CalendarCard = (props) => {
         padding: "10px",
         minWidth: "150px",
         minHeight: "150px",
-        background: background ? `${theme.palette.secondary.dark}Ac` : "#00000000",
+        background: background ? `${theme.palette.secondary.dark}4f` : "#00000000",
         border: `1px solid ${theme.palette.primary.main}`,
         borderRadius: 0,
       }}

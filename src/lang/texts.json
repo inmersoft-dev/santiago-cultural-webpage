@@ -42,6 +42,7 @@
         "Button": "Búsqueda Avanzada"
       },
       "Calendar": {
+        "Today": "Hoy",
         "Months": [
           "Enero",
           "Febrero",
@@ -55,6 +56,7 @@
           "Noviembre",
           "Diciembre"
         ],
+        "of": "de",
         "Days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
         "ReduxDays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
       },

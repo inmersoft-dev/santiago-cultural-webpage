@@ -7,7 +7,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 // @mui components
-import { useTheme, Button, Typography, Divider } from "@mui/material";
+import { useTheme, IconButton, Button, Typography, Divider } from "@mui/material";
+
+// @mui icons
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRight from "@mui/icons-material/ChevronRight";
 
 // own components
 import Container from "components/Container/Container";
@@ -21,6 +25,7 @@ import CalendarCard from "./CalendarCard/CalendarCard";
 
 const CCalendar = () => {
   const [days, setDays] = useState(new Date(2022, 4, 0).getDate());
+  const [currentDay, setCurrentDay] = useState(new Date().getDate());
   const [month, setMonth] = useState(new Date().getMonth());
   const [year, setYear] = useState(new Date().getFullYear());
 
@@ -56,31 +61,94 @@ const CCalendar = () => {
     return aDays;
   };
 
+  const now = () => {
+    setDays(new Date(2022, 4, 0).getDate());
+    setMonth(new Date().getMonth());
+    setYear(new Date().getFullYear());
+  };
+
+  const lastMonth = () => {
+    setMonth(month - 1);
+  };
+
+  const nextMonth = () => {
+    setMonth(month + 1);
+  };
+
   return (
     <Container direction="column">
-      <Typography variant="h5" color="primary">
-        {languageState.texts.Activities.Calendar.Months[month]}
-      </Typography>
+      <Container align="center">
+        <Button onClick={now} variant="outlined" sx={{ marginRight: "20px" }}>
+          {languageState.texts.Activities.Calendar.Today}
+        </Button>
+        <Typography variant="h5">
+          {languageState.texts.Activities.Calendar.Months[month]}{" "}
+          {languageState.texts.Activities.Calendar.of} {year}
+        </Typography>
+        <IconButton
+          onClick={lastMonth}
+          sx={{ marginLeft: "10px" }}
+          color="primary"
+          aria-label="last month"
+        >
+          <ChevronLeftIcon />
+        </IconButton>
+        <IconButton
+          onClick={nextMonth}
+          sx={{ marginRight: "10px" }}
+          color="primary"
+          aria-label="next month"
+        >
+          <ChevronRight />
+        </IconButton>
+      </Container>
+
       <Divider sx={{ margin: "20px 0", border: `1px solid ${theme.palette.primary.main}` }} />
       <Container>
         {arrayOfDays().length === 7 &&
           arrayOfDays().map((item, i) => (
             <Container direction="column">
               {item.map((jtem, j) => (
-                <CalendarCard key={`card${jtem.day}`} background={jtem.other}>
+                <CalendarCard key={`${i}card${jtem.day}$${j}`} background={jtem.other}>
                   {j === 0 && (
                     <Typography sx={{ textAlign: "center" }}>
                       {languageState.texts.Activities.Calendar.ReduxDays[i]}
                     </Typography>
                   )}
-                  <Typography sx={{ textAlign: "center" }}>{jtem.day}</Typography>
+                  <Typography
+                    sx={{
+                      textAlign: "center",
+                      padding: "5px 10px",
+                      borderRadius: "100%",
+                      background: jtem.day === currentDay ? theme.palette.primary.light : "none",
+                      color: jtem.day === currentDay ? theme.palette.secondary.main : "default",
+                    }}
+                  >
+                    {jtem.day}
+                  </Typography>
                   {events.map(
                     (ktem, k) =>
-                      ktem.date.getDate() === jtem.day && (
-                        <Button>
+                      ktem.date.getDate() === jtem.day &&
+                      ktem.date.getMonth() - 1 === month &&
+                      ktem.date.getFullYear() === year && (
+                        <Button
+                          variant="contained"
+                          sx={{
+                            margin: "5px 0",
+                            height: "25px",
+                            width: "100%",
+                            textAlign: "left",
+                            textTransform: "capitalize",
+                          }}
+                          disableElevation
+                        >
                           <Link
                             key={k}
-                            style={{ textDecoration: "none", width: "100%" }}
+                            style={{
+                              textDecoration: "none",
+                              width: "100%",
+                              color: theme.palette.text.main,
+                            }}
                             to={`/events?id${ktem.id}`}
                           >
                             {ktem.title}

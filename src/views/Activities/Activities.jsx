@@ -344,7 +344,7 @@ const Activities = () => {
           justify="center"
           sx={{
             background: theme.palette.secondary.main,
-            padding: { lg: "40px 10rem 40px 10rem", xs: "40px 20px 0 20px" },
+            padding: { lg: "40px 10rem 100px 10rem", xs: "40px 20px 0 20px" },
           }}
         >
           <Calendar />
