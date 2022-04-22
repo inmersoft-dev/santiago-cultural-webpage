@@ -63,7 +63,7 @@ const App = () => {
         <BigLoading visible={loading} />
         {!loading && (
           <Box className="App">
-            <BrowserRouter>
+            <BrowserRouter basename={process.env.PUBLIC_URL}>
               <Routes>
                 <Route path="/" element={<View />}>
                   <Route index element={<Home />} />
