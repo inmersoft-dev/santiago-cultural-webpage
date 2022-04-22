@@ -295,13 +295,6 @@ const Activities = () => {
                 ))}
               </RadioGroup>
             </FormControl>
-            {/* <Button
-              sx={{ padding: "10px 20px", marginTop: { md: "0", xs: "20px" } }}
-              variant="contained"
-              color="secondary"
-            >
-              {languageState.texts.Activities.Filter.Button}
-            </Button> */}
             <Container sx={{ margin: { xs: "20px 0", md: 0 } }}>
               <Button
                 id="v1"
@@ -347,7 +340,13 @@ const Activities = () => {
       )}
       {view === 1 && <MapFilter />}
       {view === 2 && (
-        <Container sx={{ padding: { lg: "40px 10rem 40px 10rem", xs: "40px 20px 0 20px" } }}>
+        <Container
+          justify="center"
+          sx={{
+            background: theme.palette.secondary.main,
+            padding: { lg: "40px 10rem 100px 10rem", xs: "40px 20px 0 20px" },
+          }}
+        >
           <Calendar />
         </Container>
       )}
