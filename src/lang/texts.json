@@ -64,6 +64,9 @@
         "Results": "Resultados"
       }
     },
+    "News": {
+      "Results": "resultados"
+    },
     "NotFound": {},
     "Navbar": {
       "Title": "Menú",

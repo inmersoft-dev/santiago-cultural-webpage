@@ -13,14 +13,14 @@ import { useTheme, IconButton, Button, Typography, Divider } from "@mui/material
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRight from "@mui/icons-material/ChevronRight";
 
-// own components
-import Container from "components/Container/Container";
-
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
 // styles
 import "./style.css";
+
+// own components
+import Container from "components/Container/Container";
 import CalendarCard from "./CalendarCard/CalendarCard";
 
 const CCalendar = () => {

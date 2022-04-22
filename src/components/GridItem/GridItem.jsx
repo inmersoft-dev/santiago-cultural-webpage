@@ -1,26 +1,48 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import { Box, Typography } from "@mui/material";
-import ItemGrid from "components/ItemGrid/ItemGrid";
-import React from "react";
 
-// Import css Componet
+// @mui components
+import { Typography } from "@mui/material";
+
+// own components
+import Container from "components/Container/Container";
+import Grid from "components/Grid/Grid";
+import ItemGrid from "components/ItemGrid/ItemGrid";
+
+// contexts
+import { useLanguage } from "context/LanguageProvider";
+
+// styles
 import "./grid-item.css";
 
-const items = [1, 2, 3, 4, 5, 6, 7, 8];
+const items = [<ItemGrid />, <ItemGrid />, <ItemGrid />, <ItemGrid />, <ItemGrid />, <ItemGrid />];
 
 const GridItem = () => {
+  const { languageState } = useLanguage();
+
   return (
-    <Box className="grid-item__container">
-      <Typography variant="body1" sx={{ ml: "2rem" }}>
-        20 Resultados
+    <Container
+      align="center"
+      direction="column"
+      sx={{
+        width: "100vw",
+      }}
+    >
+      <Typography
+        variant="body1"
+        sx={{
+          padding: { md: "80px 10rem 40px 10rem", xs: "80px 5rem 40px 5rem" },
+          textAlign: "left",
+          width: "100%",
+        }}
+      >
+        {items.length} {languageState.texts.News.Results}
       </Typography>
-      <Box className="grid-item__items-container">
-        {items.map((i) => (
-          <ItemGrid key={i} />
-        ))}
-      </Box>
-    </Box>
+      <Grid
+        sx={{ padding: { lg: "10px 5rem 40px 5rem", xs: "40px 20px 0 20px" } }}
+        content={items}
+      />
+    </Container>
   );
 };
 

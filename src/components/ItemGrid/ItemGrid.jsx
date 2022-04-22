@@ -10,7 +10,14 @@ import CardImage from "../../assets/images/bruce-mars.jpg";
 
 const ItemGrid = () => {
   return (
-    <Card sx={{ maxWidth: 325, border: "1px outset #fbac33", borderRadius: "10px", m: 2 }}>
+    <Card
+      sx={{
+        width: { md: "389px", xs: "335px" },
+        border: "1px outset #fbac33",
+        borderRadius: "10px",
+        m: 2,
+      }}
+    >
       <CardMedia
         component="img"
         height="180"
