@@ -1,0 +1,9 @@
+.accordion__event {
+    background-color: aquamarine;
+    padding: 0.1rem 0.5rem;
+    text-align: center;
+    border-radius: 15px;
+    margin: 0.2rem 0;
+    font-size: small;
+    max-width: 12vw;
+}

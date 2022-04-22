@@ -1,0 +1,10 @@
+.carousel__container {
+  height: auto;
+  width: 100vw;  
+}
+
+.swiper-button-next , .swiper-button-prev{
+  --swiper-navigation-size: 25px;
+}
+
+

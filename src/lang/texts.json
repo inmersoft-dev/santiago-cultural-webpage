@@ -1,0 +1,177 @@
+{
+  "es": {
+    "Home": {
+      "Subtitles": ["Actualidad"]
+    },
+    "Contact": {
+      "Title": "Contáctenos",
+      "Subtitle": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
+      "Submit": "Enviar",
+      "Name": {
+        "Label": "Nombre y apellidos",
+        "Placeholder": "Ej: Juan Pablo Marinez"
+      },
+      "Email": {
+        "Label": "Correo electrónico",
+        "Placeholder": "Ej: juanpablomartines@email.com"
+      },
+      "Message": {
+        "Label": "Mensaje",
+        "Placeholder": "Algún mensaje"
+      }
+    },
+    "Activities": {
+      "Title": "Lorem ipsum doro",
+      "Subtitle": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
+      "Filter": {
+        "Title": "Actualidad",
+        "Radios": [
+          {
+            "Label": "Actuales",
+            "Filter": 0
+          },
+          {
+            "Label": "Próximas",
+            "Filter": 1
+          },
+          {
+            "Label": "Históricas",
+            "Filter": 2
+          }
+        ],
+        "Button": "Búsqueda Avanzada"
+      },
+      "Calendar": {
+        "Today": "Hoy",
+        "Months": [
+          "Enero",
+          "Febrero",
+          "Marzo",
+          "Abril",
+          "Mayo",
+          "Junio",
+          "Julio",
+          "Agosto",
+          "Septiembre",
+          "Noviembre",
+          "Diciembre"
+        ],
+        "of": "de",
+        "Days": ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"],
+        "ReduxDays": ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+      },
+      "Result": {
+        "Results": "Resultados"
+      }
+    },
+    "News": {
+      "Results": "resultados"
+    },
+    "Culture": {
+      "Title": "Centros Culturales",
+      "Paragraph": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit."
+    },
+    "NotFound": {},
+    "Navbar": {
+      "Title": "Menú",
+      "Links": [
+        {
+          "id": "home",
+          "label": "Inicio",
+          "route": "/",
+          "index": 0
+        },
+        {
+          "id": "about-us",
+          "label": "Conócenos",
+          "route": "/about-us",
+          "index": 1
+        },
+        {
+          "id": "centers",
+          "label": "Centros de Cultura",
+          "route": "/culture-centers",
+          "index": 2
+        },
+        {
+          "id": "activities",
+          "label": "Actividades",
+          "route": "/activities",
+          "index": 3,
+          "menu": [
+            {
+              "label": "Tabla",
+              "jndex": "0"
+            },
+            {
+              "label": "Mapa",
+              "jndex": "1"
+            },
+            {
+              "label": "Calendario",
+              "jndex": "2"
+            }
+          ]
+        },
+        {
+          "id": "news",
+          "label": "Noticias",
+          "route": "/news",
+          "index": 4
+        },
+        {
+          "id": "contact-us",
+          "label": "Contáctenos",
+          "route": "/contact-us",
+          "index": 5
+        }
+      ],
+      "SearchModal": {
+        "Label": "Buscar"
+      }
+    },
+    "Footer": {
+      "Description": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",
+      "UtilLinks": {
+        "Title": "Enlaces útiles",
+        "Links": [
+          {
+            "id": "privacy-policy",
+            "label": "Política de Privacidad",
+            "route": "/privacy-policy",
+            "index": 6
+          },
+          {
+            "id": "cookies-policy",
+            "label": "Política de Cookies",
+            "route": "/cookies-policy",
+            "index": 7
+          }
+        ]
+      },
+      "ContactLinks": {
+        "Title": "Contáctenos",
+        "Links": [
+          {
+            "id": "phone",
+            "label": "Teléfono: 555 555 55",
+            "action": "tel:+55555555"
+          },
+          {
+            "id": "email",
+            "label": "Correo electrónico: site@email.com",
+            "action": "mailto:site@email.com"
+          },
+          {
+            "id": "address",
+            "label": "Alguna dirección"
+          }
+        ]
+      },
+      "Copyright": "Copyright © 2021 - Santiago Cultural creado por Inmersoft"
+    },
+    "Card": {
+      "Button": "Ver producto"
+    }
+  }
+}
