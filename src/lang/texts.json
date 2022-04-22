@@ -67,6 +67,10 @@
     "News": {
       "Results": "resultados"
     },
+    "Culture": {
+      "Title": "Centros Culturales",
+      "Paragraph": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit."
+    },
     "NotFound": {},
     "Navbar": {
       "Title": "Menú",

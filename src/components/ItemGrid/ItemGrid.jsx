@@ -1,21 +1,40 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
-import { Card, CardActions, CardContent, CardMedia, Button, Typography } from "@mui/material";
-import React from "react";
+
+// prop types
+import PropTypes from "prop-types";
+
+// @mui components
+import {
+  useTheme,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
+} from "@mui/material";
+
 // Import Css Component
 import "./item-grid.css";
 
 // Img import
 import CardImage from "../../assets/images/bruce-mars.jpg";
 
-const ItemGrid = () => {
+const ItemGrid = (props) => {
+  const { borderColor } = props;
+
+  const theme = useTheme();
+
   return (
     <Card
+      elevation={0}
       sx={{
         width: { md: "389px", xs: "335px" },
-        border: "1px outset #fbac33",
+        border: `1px outset ${theme.palette[borderColor].main}`,
         borderRadius: "10px",
         m: 2,
+        background: "#00000000",
       }}
     >
       <CardMedia
@@ -41,6 +60,14 @@ const ItemGrid = () => {
       </CardActions>
     </Card>
   );
+};
+
+ItemGrid.defaultProps = {
+  borderColor: "primary",
+};
+
+ItemGrid.propTypes = {
+  borderColor: PropTypes.string,
 };
 
 export default ItemGrid;
