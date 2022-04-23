@@ -24,8 +24,8 @@ Parámetros:
 
 ```/post``` Method: POST. Para cargar una lista de objetos de una colección. 
 Parámetros:  
-- lang lenguaje de la página [es | en]
-- what atributos que se van a pedir de los modelos
+- lang ```string``` lenguaje de la página [es | en]
+- what arreglo de ```string```, atributos que se van a pedir de los modelos
     - id ```number```
     - name ```string```
     - date ```number```
@@ -44,3 +44,7 @@ Parámetros:
     - pano objeto ```{ type: "text" | "video" | "image" }```
     - services arrglo de ```string```
     - socialMedia arreglo de ```string```
+
+```/form``` Method: GET. Para cargar el formulario para el usuario
+Parámetros:
+- lang lenguaje de la página [es | en]
