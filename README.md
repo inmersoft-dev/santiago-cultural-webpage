@@ -25,6 +25,7 @@ Parámetros:
 ```/post``` Method: POST. Para cargar una lista de objetos de una colección. 
 Parámetros:  
 - lang ```string``` lenguaje de la página [es | en]
+- collection ```string``` tipo del objeto: places, news, events, etc
 - what arreglo de ```string```, atributos que se van a pedir de los modelos
     - id ```number```
     - name ```string```
