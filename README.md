@@ -12,3 +12,35 @@ santiago-cultural-webpage
     - Actividades
     - Noticias
     - Contáctenos
+
+### Rutas del servidor
+
+```/api/load/``` para cargar cosas del servidor
+
+```/get```  Method: GET. Para cargar un objeto en específico. 
+Parámetros:
+- id del objeto
+- collection tipo del objeto: lugares, rutas, noticias, eventos, etc
+
+```/post``` Method: POST. Para cargar una lista de objetos de una colección. 
+Parámetros:  
+- lang lenguaje de la página [es | en]
+- what atributos que se van a pedir de los modelos
+    - id ```number```
+    - name ```string```
+    - date ```number```
+    - startDate ```number``` _solo eventos_
+    - endDate ```number``` _solo eventos_
+    - video ```stringUrl```
+    - web ```stringUrl```
+    - location ```stringLatLon```
+    - description ```string```
+    - placeType arreglo de ```number``` _solo lugares_
+    - routes arreglo de ```number``` _solo lugares_
+    - stars arreglo de ```number``` _solo lugares_
+    - comments arreglo de ```string``` _solo lugares_
+    - content arreglo de ```{ type: "text" | "video" | "image", value: stringHtml, url: string }```
+    - headerImages arreglo de ```{ url: string, blurHash: string, id: string }```
+    - pano objeto ```{ type: "text" | "video" | "image" }```
+    - services arrglo de ```string```
+    - socialMedia arreglo de ```string```
