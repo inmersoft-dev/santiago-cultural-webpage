@@ -20,7 +20,7 @@ santiago-cultural-webpage
 ```/get```  Method: GET. Para cargar un objeto en específico. 
 Parámetros:
 - id del objeto
-- collection tipo del objeto: lugares, rutas, noticias, eventos, etc
+- collection tipo del objeto: places, news, events, etc
 
 ```/post``` Method: POST. Para cargar una lista de objetos de una colección. 
 Parámetros:  
