@@ -1,7 +1,7 @@
 /* eslint-disable import/prefer-default-export */
 import axios from "axios";
 import { getAuth } from "auth/auth";
-import config from "config";
+import config from "../config";
 
 /**
  * @param {string} from - The name of the endpoint to load data from.

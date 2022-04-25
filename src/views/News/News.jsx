@@ -11,9 +11,17 @@ import { useRoute } from "context/RouterProvider";
 import GridItem from "components/GridItem/GridItem";
 import ItemGrid from "components/ItemGrid/ItemGrid";
 import Search from "./Search/Search";
+import post from "../../services/post";
 
 const News = () => {
   const { setRouteState } = useRoute();
+
+  const fetchNews = async () => {
+    const news = await post("news");
+    console.log(news);
+  };
+
+  fetchNews();
 
   const items = [
     <ItemGrid />,
