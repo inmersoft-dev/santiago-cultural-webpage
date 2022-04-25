@@ -62,7 +62,7 @@ _Datos extras_
 export const loadFromServerPost = async (collection = "", what = []) => {
   try {
     const response = await axios.post(
-      `${config.serverUrl}/${from}`,
+      `${config.serverUrl}/post`,
       {
         collection,
         what,
@@ -92,7 +92,7 @@ export const loadFromServerPost = async (collection = "", what = []) => {
 export const loadFromServerGet = async (collection = "", id = "", lang = "") => {
   try {
     const response = await axios.get(
-      `${config.serverUrl}/${from}${collection !== "" ? `?collection=${collection}` : ""}${
+      `${config.serverUrl}/get${collection !== "" ? `?collection=${collection}` : ""}${
         id !== "" ? `&id=${id}` : ""
       }${lang !== "" ? `&lang=${lang}` : ""}`,
       {
