@@ -49,3 +49,61 @@ Parámetros:
 ```/form``` Method: GET. Para cargar el formulario para el usuario
 Parámetros:
 - lang lenguaje de la página [es | en]
+
+_Datos extras_
+
+```
+/**
+ * @param {string} [collection] - the name of the collection to load from the server
+ * @param {string[]} [what] - an array of strings that are the names of the fields you want to retrieve from the
+ * server.
+ * @returns The data returned from the server.
+ */
+export const loadFromServerPost = async (collection = "", what = []) => {
+  try {
+    const response = await axios.post(
+      `${config.serverUrl}/${from}`,
+      {
+        collection,
+        what,
+      },
+      {
+        headers: getAuth,
+      }
+    );
+    const data = await response.data;
+    if (data.error === undefined) return data;
+    return { error: response.statusText };
+  } catch (err) {
+    return { error: String(err) };
+  }
+};
+```
+
+```
+/**
+ * It then makes a GET request to the server using the axios library.
+ * If the request is successful, it returns the data.
+ * If the request is unsuccessful, it returns an error.
+ * @param {string} [collection] - the name of the collection to load from
+ * @param {string} [id] - the id of the object to load
+ * @returns The data returned from the server.
+ */
+export const loadFromServerGet = async (collection = "", id = "", lang = "") => {
+  try {
+    const response = await axios.get(
+      `${config.serverUrl}/${from}${collection !== "" ? `?collection=${collection}` : ""}${
+        id !== "" ? `&id=${id}` : ""
+      }${lang !== "" ? `&lang=${lang}` : ""}`,
+      {
+        headers: getAuth,
+      }
+    );
+    const data = await response.data;
+    if (data.error === undefined) return data;
+    return { error: response.statusText };
+  } catch (err) {
+    return { error: String(err) };
+  }
+};
+```
