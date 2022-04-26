@@ -11,7 +11,7 @@ import config from "../config";
 const loadFromServerPost = async (collection = "", what = []) => {
   try {
     const response = await axios.post(
-      `${config.serverUrl}/post`,
+      `${config.serverUrl}/api/load/post`,
       { collection, what },
       {
         headers: getAuth,
