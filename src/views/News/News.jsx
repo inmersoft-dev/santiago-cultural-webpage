@@ -32,6 +32,7 @@ const News = () => {
   useEffect(() => {
     fetchNews();
   }, []);
+  console.log(news);
 
   /* const items = [
     <ItemGrid />,

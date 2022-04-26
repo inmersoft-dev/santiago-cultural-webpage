@@ -42,7 +42,7 @@ const ItemGrid = (props) => {
         component="img"
         height="180"
         image={headerImage.url}
-        alt="green iguana"
+        alt="Imagen de Noticia"
         sx={{ borderRadius: "0 0 8px 8px" }}
       />
       <CardContent>
