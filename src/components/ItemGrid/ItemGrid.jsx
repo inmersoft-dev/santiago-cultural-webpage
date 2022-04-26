@@ -1,5 +1,6 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
+/* eslint-disable react/forbid-prop-types */
 
 // prop types
 import PropTypes from "prop-types";
@@ -19,10 +20,10 @@ import {
 import "./item-grid.css";
 
 // Img import
-import CardImage from "../../assets/images/bruce-mars.jpg";
+/* import CardImage from "../../assets/images/bruce-mars.jpg"; */
 
 const ItemGrid = (props) => {
-  const { borderColor } = props;
+  const { borderColor, headerImage } = props;
 
   const theme = useTheme();
 
@@ -40,7 +41,7 @@ const ItemGrid = (props) => {
       <CardMedia
         component="img"
         height="180"
-        image={CardImage}
+        image={headerImage.url}
         alt="green iguana"
         sx={{ borderRadius: "0 0 8px 8px" }}
       />
@@ -64,10 +65,12 @@ const ItemGrid = (props) => {
 
 ItemGrid.defaultProps = {
   borderColor: "primary",
+  headerImage: {},
 };
 
 ItemGrid.propTypes = {
   borderColor: PropTypes.string,
+  headerImage: PropTypes.object,
 };
 
 export default ItemGrid;
