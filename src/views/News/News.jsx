@@ -20,19 +20,18 @@ const News = () => {
   const [news, setNews] = useState([]);
 
   const fetchNews = async () => {
-    const data = await post("news");
-    console.log(data);
+    const { result } = await post("news");
+
     const items = [];
-    data.result.forEach((item) => {
+    result.forEach((item) => {
       items.push(<ItemGrid element={item} />);
     });
     setNews(items);
   };
-
+  console.log(news);
   useEffect(() => {
     fetchNews();
   }, []);
-  console.log(news);
 
   /* const items = [
     <ItemGrid />,

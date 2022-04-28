@@ -23,7 +23,8 @@ import "./item-grid.css";
 /* import CardImage from "../../assets/images/bruce-mars.jpg"; */
 
 const ItemGrid = (props) => {
-  const { borderColor, headerImage } = props;
+  const { borderColor, element } = props;
+  const { headerImage } = element;
 
   const theme = useTheme();
 
@@ -65,12 +66,12 @@ const ItemGrid = (props) => {
 
 ItemGrid.defaultProps = {
   borderColor: "primary",
-  headerImage: {},
+  element: {},
 };
 
 ItemGrid.propTypes = {
   borderColor: PropTypes.string,
-  headerImage: PropTypes.object,
+  element: PropTypes.object,
 };
 
 export default ItemGrid;
