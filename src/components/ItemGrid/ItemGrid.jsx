@@ -18,15 +18,26 @@ import {
 
 // Import Css Component
 import "./item-grid.css";
+/* import { useEffect, useState } from "react"; */
 
 // Img import
 /* import CardImage from "../../assets/images/bruce-mars.jpg"; */
 
 const ItemGrid = (props) => {
   const { borderColor, element } = props;
-  const { headerImage } = element;
+  const { headerImage, texts } = element;
+  /*  const [bodyText, setBodyText] = useState(""); */
 
   const theme = useTheme();
+
+  /* useEffect(() => {
+    if (texts) {
+      console.log(texts.content[0].value.slice(0, 100));
+      setBodyText(`${texts?.content[0].value.slice(0, 100)}...`);
+    }
+  }, []); */
+
+  /* console.log(bodyText); */
 
   return (
     <Card
@@ -48,11 +59,18 @@ const ItemGrid = (props) => {
       />
       <CardContent>
         <Typography gutterBottom variant="body1" component="div">
-          Lizard
+          {texts.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-          across all continents except Antarctica
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {texts.content[0].value ? `${texts.content[0].value.slice(0, 160)}...` : ""}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
