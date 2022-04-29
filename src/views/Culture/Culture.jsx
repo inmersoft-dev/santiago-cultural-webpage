@@ -1,5 +1,5 @@
 /* eslint-disable react/function-component-definition */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // @mui components
 import { Box, Typography } from "@mui/material";
@@ -8,6 +8,7 @@ import { Box, Typography } from "@mui/material";
 import Container from "components/Container/Container";
 import GridItem from "components/GridItem/GridItem";
 import ItemGrid from "components/ItemGrid/ItemGrid";
+import Loading from "components/Loading/Loading";
 
 // layouts
 import Hero from "layouts/Hero/Hero";
@@ -15,19 +16,36 @@ import Hero from "layouts/Hero/Hero";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
+// services
+import post from "../../services/post";
 
 const Culture = () => {
   const { setRouteState } = useRoute();
   const { languageState } = useLanguage();
+  const [centers, setCenters] = useState([]);
 
-  const items = [
+  const fetchCenters = async () => {
+    const { result } = await post("events");
+    const items = [];
+    result.forEach((item) => {
+      items.push(<ItemGrid element={item} />);
+    });
+    setCenters(items);
+  };
+
+  useEffect(() => {
+    fetchCenters();
+  }, []);
+  console.log(centers);
+
+  /* const items = [
     <ItemGrid borderColor="secondary" />,
     <ItemGrid borderColor="secondary" />,
     <ItemGrid borderColor="secondary" />,
     <ItemGrid borderColor="secondary" />,
     <ItemGrid borderColor="secondary" />,
     <ItemGrid borderColor="secondary" />,
-  ];
+  ]; */
 
   useEffect(() => {
     setRouteState({ type: "set", to: 2 });
@@ -56,7 +74,12 @@ const Culture = () => {
           </Typography>
         </Container>
       </Hero>
-      <GridItem background="primary" content={items} />
+      {centers.length > 0 ? (
+        <GridItem background="primary" content={centers} />
+      ) : (
+        <Loading visible />
+      )}
+      {/*  <GridItem background="primary" content={centers} /> */}
     </Box>
   );
 };

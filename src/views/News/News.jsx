@@ -28,7 +28,7 @@ const News = () => {
     });
     setNews(items);
   };
-  console.log(news);
+
   useEffect(() => {
     fetchNews();
   }, []);

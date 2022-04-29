@@ -48,6 +48,10 @@ const ItemGrid = (props) => {
         borderRadius: "10px",
         m: 2,
         background: "#00000000",
+        height: "340px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
       <CardMedia
