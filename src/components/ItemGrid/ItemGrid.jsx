@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable react/forbid-prop-types */
@@ -26,6 +27,7 @@ import "./item-grid.css";
 const ItemGrid = (props) => {
   const { borderColor, element } = props;
   const { headerImage, texts } = element;
+  console.log(borderColor);
   /*  const [bodyText, setBodyText] = useState(""); */
 
   const theme = useTheme();
@@ -57,7 +59,7 @@ const ItemGrid = (props) => {
       <CardMedia
         component="img"
         height="180"
-        image={headerImage.url}
+        image={headerImage}
         alt="Imagen de Noticia"
         sx={{ borderRadius: "0 0 8px 8px" }}
       />
@@ -74,7 +76,7 @@ const ItemGrid = (props) => {
             textOverflow: "ellipsis",
           }}
         >
-          {texts.content[0].value ? `${texts.content[0].value.slice(0, 160)}...` : ""}
+          {texts.description}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>

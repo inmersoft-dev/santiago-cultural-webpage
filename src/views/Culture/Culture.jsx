@@ -16,8 +16,11 @@ import Hero from "layouts/Hero/Hero";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
+
 // services
 import post from "../../services/post";
+
+import ImagCrash from "../../assets/images/crash.webp";
 
 const Culture = () => {
   const { setRouteState } = useRoute();
@@ -25,18 +28,35 @@ const Culture = () => {
   const [centers, setCenters] = useState([]);
 
   const fetchCenters = async () => {
-    const { result } = await post("events");
-    const items = [];
-    result.forEach((item) => {
-      items.push(<ItemGrid element={item} />);
-    });
-    setCenters(items);
+    try {
+      const { result } = await post("places");
+
+      if (result.indexOf("Error") > -1) {
+        // hi mom
+      } else {
+        const items = [];
+        result.forEach((item) => {
+          const element = {
+            headerImage: item.headerImages.length > 0 ? item.headerImages[0].url : `${ImagCrash}`,
+            texts: {
+              title: item.texts.name,
+              description: item.texts.description,
+            },
+          };
+          items.push(<ItemGrid element={element} />);
+        });
+        setCenters(items);
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     fetchCenters();
   }, []);
-  console.log(centers);
+
+  /* console.log(centers); */
 
   /* const items = [
     <ItemGrid borderColor="secondary" />,
@@ -75,11 +95,10 @@ const Culture = () => {
         </Container>
       </Hero>
       {centers.length > 0 ? (
-        <GridItem background="primary" content={centers} />
+        <GridItem background="primary" borderColor="secondary" content={centers} />
       ) : (
         <Loading visible />
       )}
-      {/*  <GridItem background="primary" content={centers} /> */}
     </Box>
   );
 };
