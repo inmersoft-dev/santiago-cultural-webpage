@@ -80,7 +80,14 @@ const ItemGrid = (props) => {
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" size="small" sx={{ textTransform: "capitalize" }}>
+        <Button
+          variant="contained"
+          size="small"
+          sx={{
+            textTransform: "capitalize",
+            backgroundColor: `${theme.palette[borderColor].main}`,
+          }}
+        >
           Learn More
         </Button>
       </CardActions>

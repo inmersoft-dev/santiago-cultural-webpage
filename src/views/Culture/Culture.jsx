@@ -43,7 +43,7 @@ const Culture = () => {
               description: item.texts.description,
             },
           };
-          items.push(<ItemGrid element={element} />);
+          items.push(<ItemGrid element={element} borderColor="secondary" />);
         });
         setCenters(items);
       }
@@ -95,7 +95,7 @@ const Culture = () => {
         </Container>
       </Hero>
       {centers.length > 0 ? (
-        <GridItem background="primary" borderColor="secondary" content={centers} />
+        <GridItem background="primary" content={centers} />
       ) : (
         <Loading visible />
       )}
