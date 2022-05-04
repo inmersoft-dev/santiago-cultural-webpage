@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // @mui components
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, useTheme } from "@mui/material";
 
 // own components
 import Container from "components/Container/Container";
@@ -26,6 +26,7 @@ const Culture = () => {
   const { setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const [centers, setCenters] = useState([]);
+  const theme = useTheme();
 
   const fetchCenters = async () => {
     try {
@@ -56,17 +57,6 @@ const Culture = () => {
     fetchCenters();
   }, []);
 
-  /* console.log(centers); */
-
-  /* const items = [
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-  ]; */
-
   useEffect(() => {
     setRouteState({ type: "set", to: 2 });
   }, []);
@@ -94,11 +84,10 @@ const Culture = () => {
           </Typography>
         </Container>
       </Hero>
-      {centers.length > 0 ? (
+      <Container sx={{ minHeight: "500px", background: theme.palette.primary.main }}>
+        <Loading height="500px" width="100%" visible={!(centers.length > 0)} />
         <GridItem background="primary" content={centers} />
-      ) : (
-        <Loading visible />
-      )}
+      </Container>
     </Box>
   );
 };
