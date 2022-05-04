@@ -7,6 +7,9 @@ import { Box } from "@mui/material";
 // contexts
 import { useRoute } from "context/RouterProvider";
 
+// Import Components
+import { FullModal } from "../FullModal/FullModal";
+
 // own components
 import GridItem from "components/GridItem/GridItem";
 import ItemGrid from "components/ItemGrid/ItemGrid";

@@ -1,0 +1,49 @@
+.full-modal {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    top: 0;
+    left: 0;
+    transition: all 200ms ease;
+  }
+  
+  .full-modal .column {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 50%;
+  }
+  
+  .full-modal .column-image {
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .full-modal .padding {
+    padding: 150px;
+  }
+  
+  .full-modal .midium-padding {
+    padding: 100px;
+  }
+  
+  .full-modal h4 {
+    font-weight: bold;
+  }
+  
+  .back-button {
+    border: 2px solid aliceblue !important;
+    border-radius: 100% !important;
+    width: 0px !important;
+    height: 0 !important;
+    min-width: 0 !important;
+    padding: 10px 9px 11px 12px !important;
+    line-height: 0px !important;
+  }
+  
+  .back-button svg {
+    color: aliceblue;
+    font-size: 13px !important;
+  }
