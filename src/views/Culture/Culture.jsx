@@ -32,8 +32,8 @@ const Culture = () => {
     try {
       const { result } = await post("places");
 
-      if (result.indexOf("Error") > -1) {
-        // hi mom
+      if (result.indexOf("Error") > -1 || !result) {
+        // show an error :)
       } else {
         const items = [];
         result.forEach((item) => {
