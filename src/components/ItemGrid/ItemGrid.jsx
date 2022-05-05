@@ -17,8 +17,6 @@ import {
   Typography,
 } from "@mui/material";
 
-
-
 // Import Css Component
 import "./item-grid.css";
 /* import { useEffect, useState } from "react"; */
@@ -90,7 +88,7 @@ const ItemGrid = (props) => {
             backgroundColor: `${theme.palette[borderColor].main}`,
           }}
         >
-          Learn More
+          Leer Más..
         </Button>
       </CardActions>
     </Card>
