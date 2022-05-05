@@ -18,7 +18,7 @@ import { useLanguage } from "context/LanguageProvider";
 import "./grid-item.css";
 
 const GridItem = (props) => {
-  const { background, content } = props;
+  const { background, borderColor, content } = props;
 
   const { languageState } = useLanguage();
   const theme = useTheme();
@@ -45,6 +45,7 @@ const GridItem = (props) => {
       <Grid
         sx={{ padding: { lg: "10px 5rem 40px 5rem", xs: "0 20px 0 20px" } }}
         content={content}
+        borderColor={borderColor}
       />
     </Container>
   );
@@ -52,10 +53,12 @@ const GridItem = (props) => {
 
 GridItem.defaultProps = {
   background: "secondary",
+  borderColor: "secondary",
 };
 
 GridItem.propTypes = {
   background: PropTypes.string,
+  borderColor: PropTypes.string,
   content: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 

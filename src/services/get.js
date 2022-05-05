@@ -1,3 +1,8 @@
+/* eslint-disable import/prefer-default-export */
+import axios from "axios";
+import { getAuth } from "auth/auth";
+import config from "../config";
+
 /**
  * It then makes a GET request to the server using the axios library.
  * If the request is successful, it returns the data.
