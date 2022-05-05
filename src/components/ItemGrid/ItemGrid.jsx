@@ -1,5 +1,7 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
+/* eslint-disable react/forbid-prop-types */
 
 // prop types
 import PropTypes from "prop-types";
@@ -17,14 +19,27 @@ import {
 
 // Import Css Component
 import "./item-grid.css";
+/* import { useEffect, useState } from "react"; */
 
 // Img import
-import CardImage from "../../assets/images/bruce-mars.jpg";
+/* import CardImage from "../../assets/images/bruce-mars.jpg"; */
 
 const ItemGrid = (props) => {
-  const { borderColor } = props;
+  const { borderColor, element } = props;
+  const { headerImage, texts } = element;
+  console.log(borderColor);
+  /*  const [bodyText, setBodyText] = useState(""); */
 
   const theme = useTheme();
+
+  /* useEffect(() => {
+    if (texts) {
+      console.log(texts.content[0].value.slice(0, 100));
+      setBodyText(`${texts?.content[0].value.slice(0, 100)}...`);
+    }
+  }, []); */
+
+  /* console.log(bodyText); */
 
   return (
     <Card
@@ -35,27 +50,45 @@ const ItemGrid = (props) => {
         borderRadius: "10px",
         m: 2,
         background: "#00000000",
+        height: "340px",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-between",
       }}
     >
       <CardMedia
         component="img"
         height="180"
-        image={CardImage}
-        alt="green iguana"
+        image={headerImage}
+        alt="Imagen de Noticia"
         sx={{ borderRadius: "0 0 8px 8px" }}
       />
       <CardContent>
         <Typography gutterBottom variant="body1" component="div">
-          Lizard
+          {texts.title}
         </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-          across all continents except Antarctica
+        <Typography
+          variant="body2"
+          color="text.secondary"
+          sx={{
+            whiteSpace: "nowrap",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+          }}
+        >
+          {texts.description}
         </Typography>
       </CardContent>
       <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button variant="contained" size="small" sx={{ textTransform: "capitalize" }}>
-          Learn More
+        <Button
+          variant="contained"
+          size="small"
+          sx={{
+            textTransform: "capitalize",
+            backgroundColor: `${theme.palette[borderColor].main}`,
+          }}
+        >
+          Leer Más..
         </Button>
       </CardActions>
     </Card>
@@ -64,10 +97,12 @@ const ItemGrid = (props) => {
 
 ItemGrid.defaultProps = {
   borderColor: "primary",
+  element: {},
 };
 
 ItemGrid.propTypes = {
   borderColor: PropTypes.string,
+  element: PropTypes.object,
 };
 
 export default ItemGrid;
