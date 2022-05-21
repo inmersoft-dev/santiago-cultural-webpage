@@ -120,12 +120,12 @@ const Home = () => {
           content={cards}
         />
       </Box>
-      <Carousel
+      {/* <Carousel
         CarouselItem={<CarouselItemDots colorColum={theme.palette.secondary.carousel} />}
         navigation={false}
         pagination={true}
         backgroundColor={theme.palette.secondary.dark}
-      />
+      /> */}
       {/* <Masonry /> */}
     </Box>
   );
