@@ -3,6 +3,53 @@
     "Home": {
       "Subtitles": ["Actualidad"]
     },
+    "AboutUs": {
+      "Title": "Conócenos",
+      "Subtitle": "Santiago Cultural es un proyecto fundado por varios profesionales de la cultura y con el apoyo de varias  instituciones culturales y educativas y en especial con la ayuda del gobierno de Santiago de los Caballeros.",
+      "Mission": {
+        "Title": "Misión",
+        "Text": "Unificar, fortalecer e impulsar la indentidad cultural de Santiago de los Caballeros"
+      },
+      "Vision": {
+        "Title": "Visión",
+        "Text": "Posicionar a Santiago de los Caballeros como destino turístico de excelencia cultural del Caribe"
+      },
+      "Values": {
+        "Title": "Nuestros Valores",
+        "Values": [
+          {
+            "Title": "Excelencia",
+            "Content": "Gestionamos nuestra organización y logramos resultados basados en conceptos fundamentales orientados hacia los resultados y  hacia nuestros clientes",
+            "Icon": 0
+          },
+          {
+            "Title": "Integridad",
+            "Content": "La integridad laboral es una de las partes fundamentales dentro de nuestro proyecto, ya que su correcto desarrollo lleva a que cada acción que realicemos cumpla con los principios que caracterizan a nuestra organización y a nuestros empleados.",
+            "Icon": 1
+          },
+          {
+            "Title": "Liderazgo",
+            "Content": "Las visiones de los representantes de esta orfganización vayan más allá del resultado final, aprovechan cada oportunidad  para enfocarse en las posibilidades y encontrar soluciones creativas a los desafíos globales.",
+            "Icon": 2
+          },
+          {
+            "Title": "Sostenibilidad",
+            "Content": "La sostenibilidad empresarial son los esfuerzos que una empresa realiza para sostener su actividad económica, considerando factores sociales y medioambientales, y haciendo de su gestión, una acción responsable con los recursos",
+            "Icon": 3
+          },
+          {
+            "Title": "Diversidad",
+            "Content": "Estamos conformados  por personas de diferente origen socioeconómico, diferente raza, género, capacidades y edad; manteniendo así una espacio abierto para todos.",
+            "Icon": 4
+          },
+          {
+            "Title": "Participación",
+            "Content": "Nuestros colaboradores tienen un grado alto de compromiso con nuestra entidad por lo que siempre realizan actividades de apoyo mutuo en pro de la misma.",
+            "Icon": 5
+          }
+        ]
+      }
+    },
     "Contact": {
       "Title": "Contáctenos",
       "Subtitle": " Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officia laborum hic eos deserunt ipsum quas corrupti pariatur magnam voluptas odit, possimus vitae unde quo maxime quod, libero quasi natus rem.",

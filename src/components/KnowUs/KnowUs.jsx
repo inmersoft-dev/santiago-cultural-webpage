@@ -1,16 +1,27 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable arrow-body-style */
 
+// @mui components
 import { Box, Divider, Typography, useTheme } from "@mui/material";
-import React from "react";
-import ApiIcon from "@mui/icons-material/Api";
-import misionImg from "../../assets/images/ivana-squares.jpg";
+
+// own components
+import Image from "components/Image/Image";
+import Container from "components/Container/Container";
+
+// contexts
+import { useLanguage } from "context/LanguageProvider";
 
 // Import CSS Component
 import "./know-us.css";
 
+// images
+import vision from "assets/images/vision.png";
+import mission from "assets/images/mission.png";
+import misionImg from "assets/images/ivana-squares.jpg";
+
 const KnowUs = () => {
+  const { languageState } = useLanguage();
+
   const theme = useTheme();
   return (
     <Box
@@ -22,7 +33,7 @@ const KnowUs = () => {
     >
       <div className="know-us__texts-container">
         <Typography variant="h4" sx={{ color: theme.palette.primary.main }}>
-          Title Title
+          {languageState.texts.AboutUs.Title}
         </Typography>
         <Divider
           sx={{
@@ -37,9 +48,7 @@ const KnowUs = () => {
           variant="body1"
           sx={{ width: { md: "40vw", xs: "60vw" }, color: theme.palette.primary.light }}
         >
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-          dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-          nascetur
+          {languageState.texts.AboutUs.Subtitle}
         </Typography>
       </div>
       <div className="know-us__images-container">
@@ -55,13 +64,26 @@ const KnowUs = () => {
             className="know-us__images-text-container"
             sx={{ padding: { md: "5rem", /* sm: "4rem", */ xs: "4rem" } }}
           >
-            <Typography className="know-us__title-section" variant="h4" sx={{ mb: 2 }}>
-              <ApiIcon /> Mision
-            </Typography>
+            <Container
+              align="center"
+              sx={{
+                marginBottom: "10px",
+                img: {
+                  filter: "invert(1)",
+                },
+              }}
+            >
+              <Image img={mission} width="35px" height="35px" />
+              <Typography
+                sx={{ marginLeft: "10px" }}
+                className="know-us__title-section"
+                variant="h4"
+              >
+                {languageState.texts.AboutUs.Mission.Title}
+              </Typography>
+            </Container>
             <Typography variant="body1" className="know-us__text-section1">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-              dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-              nascetur
+              {languageState.texts.AboutUs.Mission.Text}
             </Typography>
           </Box>
         </Box>
@@ -73,13 +95,27 @@ const KnowUs = () => {
             className="know-us__container-text-container"
             /* sx={{ padding: { md: "5rem", xs: "2rem" } }} */
           >
-            <Typography className="know-us__title-section" variant="h4" sx={{ mb: 2 }}>
-              <ApiIcon /> Mision
-            </Typography>
+            <Container
+              align="center"
+              sx={{
+                marginBottom: "10px",
+                img: {
+                  filter: "invert(1)",
+                },
+              }}
+            >
+              <Image img={vision} width="35px" height="35px" />
+              <Typography
+                sx={{ marginLeft: "10px" }}
+                className="know-us__title-section"
+                variant="h4"
+              >
+                {languageState.texts.AboutUs.Vision.Title}
+              </Typography>
+            </Container>
+
             <Typography variant="body1" className="know-us__text-section2">
-              Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
-              dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
-              nascetur
+              {languageState.texts.AboutUs.Vision.Text}
             </Typography>
           </Box>
         </Box>
