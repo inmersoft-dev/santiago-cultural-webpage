@@ -8,7 +8,6 @@ import { Box } from "@mui/material";
 import { useRoute } from "context/RouterProvider";
 
 // Import Components
-// import { FullModal } from "../FullModal/FullModal";
 
 // own components
 import Container from "components/Container/Container";

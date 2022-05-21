@@ -88,7 +88,7 @@ const ItemGrid = (props) => {
             backgroundColor: `${theme.palette[borderColor].main}`,
           }}
         >
-          Learn More
+          Leer Más..
         </Button>
       </CardActions>
     </Card>
