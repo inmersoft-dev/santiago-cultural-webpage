@@ -54,12 +54,17 @@ const Home = () => {
         result.forEach((item) => {
           const element = (
             <Card route="/home" img={item.headerImage.url} imageProps={{ alt: "bruce" }}>
-              <Typography>{item.texts.title}</Typography>
               <Typography
                 color="secondary"
-                sx={{ fontWeight: 600, color: theme.palette.secondary.main }}
+                sx={{
+                  fontWeight: 600,
+                  color: theme.palette.secondary.main,
+                  whiteSpace: "nowrap",
+                  textOverflow: "ellipsis",
+                  overflow: "hidden",
+                }}
               >
-                {item.texts.content[0].value}
+                {item.texts.title}
               </Typography>
             </Card>
           );

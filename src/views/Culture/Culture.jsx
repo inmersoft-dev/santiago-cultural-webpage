@@ -48,6 +48,8 @@ const Culture = () => {
         result.forEach((item) => {
           const element = {
             headerImage: item.headerImages.length > 0 ? item.headerImages[0].url : `${ImagCrash}`,
+            id: item.id,
+            type: "place",
             texts: {
               title: item.texts.name,
               description: item.texts.description,

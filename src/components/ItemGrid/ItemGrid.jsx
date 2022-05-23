@@ -17,29 +17,22 @@ import {
   Typography,
 } from "@mui/material";
 
+// contexts
+import { useLanguage } from "context/LanguageProvider";
+
 // Import Css Component
 import "./item-grid.css";
-/* import { useEffect, useState } from "react"; */
-
-// Img import
-/* import CardImage from "../../assets/images/bruce-mars.jpg"; */
+import { Link } from "react-router-dom";
 
 const ItemGrid = (props) => {
+  const { languageState } = useLanguage();
+
   const { borderColor, element } = props;
   const { headerImage, texts } = element;
-  console.log(borderColor);
-  /*  const [bodyText, setBodyText] = useState(""); */
 
   const theme = useTheme();
 
-  /* useEffect(() => {
-    if (texts) {
-      console.log(texts.content[0].value.slice(0, 100));
-      setBodyText(`${texts?.content[0].value.slice(0, 100)}...`);
-    }
-  }, []); */
-
-  /* console.log(bodyText); */
+  console.log(element);
 
   return (
     <Card
@@ -79,17 +72,27 @@ const ItemGrid = (props) => {
           {texts.description}
         </Typography>
       </CardContent>
-      <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-        <Button
-          variant="contained"
-          size="small"
-          sx={{
-            textTransform: "capitalize",
-            backgroundColor: `${theme.palette[borderColor].main}`,
-          }}
-        >
-          Leer Más..
-        </Button>
+      <CardActions
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          a: {
+            textDecoration: "none",
+          },
+        }}
+      >
+        <Link to={`/details:${element.id}:${element.type}`} target="_blank" rel="noreferrer">
+          <Button
+            variant="contained"
+            size="small"
+            sx={{
+              textTransform: "capitalize",
+              backgroundColor: `${theme.palette[borderColor].main}`,
+            }}
+          >
+            {languageState.texts.Home.ReadMore}
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

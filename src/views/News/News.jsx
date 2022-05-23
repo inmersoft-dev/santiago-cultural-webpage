@@ -46,6 +46,7 @@ const News = () => {
         result.forEach((item) => {
           const element = {
             headerImage: item.headerImage.url,
+            id: item.id,
             texts: {
               title: item.texts.title,
               description: item.texts.content[0].value,
@@ -73,10 +74,12 @@ const News = () => {
     const filteredNews = news.filter(filter);
     filteredNews.forEach((item) => {
       const element = {
-        headerImage: item.headerImage.url,
+        id: item.id,
+        type: "news",
+        headerImage: item.headerImage,
         texts: {
           title: item.texts.title,
-          description: item.texts.content[0].value,
+          description: item.texts.description,
         },
       };
       items.push(<ItemGrid element={element} />);
