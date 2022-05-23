@@ -11,13 +11,13 @@ import Container from "components/Container/Container";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
-// Import CSS Component
-import "./know-us.css";
-
 // images
 import vision from "assets/images/vision.png";
 import mission from "assets/images/mission.png";
-import misionImg from "assets/images/ivana-squares.jpg";
+import cocinaDominicana from "assets/images/cocina-dominicana-1.png";
+
+// Import CSS Component
+import "./know-us.css";
 
 const KnowUs = () => {
   const { languageState } = useLanguage();
@@ -28,7 +28,6 @@ const KnowUs = () => {
       className="know-us__container"
       sx={{
         backgroundColor: theme.palette.secondary.main,
-        /* padding: { md: "4rem 0 8rem 10rem", sm: "4rem 0 8rem 6rem", xs: "4rem 1rem 8rem 1rem" }, */
       }}
     >
       <div className="know-us__texts-container">
@@ -55,7 +54,7 @@ const KnowUs = () => {
         <Box
           className="know-us__images-container-img"
           sx={{
-            backgroundImage: `url(${misionImg})`,
+            backgroundImage: `url(${cocinaDominicana})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}

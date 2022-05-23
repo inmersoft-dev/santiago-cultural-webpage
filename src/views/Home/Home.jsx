@@ -17,15 +17,14 @@ import Hero from "layouts/Hero/Hero";
 import Carousel from "components/Carousel/Carousel";
 import CarouselItemArrows from "components/Carousel/CarouselItemArrows";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
-// import Masonry from "layouts/Masonry/Masonry";
 import CarouselItemDots from "components/Carousel/CarouselItemDots";
-// import Masonry from "layouts/Masonry/Masonry";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
 // images
+import bg1 from "assets/images/bg1.jpg";
 import bruce from "assets/images/bruce-mars.jpg";
 
 const Home = () => {
@@ -74,7 +73,7 @@ const Home = () => {
 
   return (
     <Box sx={{ background: theme.palette.secondary.main }}>
-      <Hero />
+      <Hero bg={bg1} />
       <ScrollView
         sx={{
           padding: { md: "40px 0", xs: "40px 20px" },

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 
 // @mui components
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, useTheme } from "@mui/material";
 
 // own components
 import Container from "components/Container/Container";
@@ -14,17 +14,17 @@ import Loading from "components/Loading/Loading";
 import Hero from "layouts/Hero/Hero";
 
 // contexts
-import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
 // services
-import post from "../../services/post";
+import post from "services/post";
 
-import ImagCrash from "../../assets/images/crash.webp";
+// images
+import bg4 from "assets/images/bg4.jpg";
+import ImagCrash from "assets/images/crash.webp";
 
 const Culture = () => {
   const { setRouteState } = useRoute();
-  const { languageState } = useLanguage();
   const [centers, setCenters] = useState([]);
   const theme = useTheme();
 
@@ -63,27 +63,7 @@ const Culture = () => {
 
   return (
     <Box>
-      <Hero sx={{ height: "600px" }}>
-        <Container
-          sx={{
-            height: "100%",
-            padding: { md: "0 10rem 60px 10rem", xs: "40px" },
-            flexDirection: { md: "row", xs: "column" },
-            justifyContent: { md: "space-between", xs: "flex-end" },
-            alignItems: { md: "end", xs: "start" },
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: "bold", marginBottom: { md: "0", xs: "40px" } }}
-          >
-            {languageState.texts.Culture.Title}
-          </Typography>
-          <Typography sx={{ width: { md: "600px", xs: "100%" } }}>
-            {languageState.texts.Culture.Paragraph}
-          </Typography>
-        </Container>
-      </Hero>
+      <Hero sx={{ height: "600px" }} bg={bg4} />
       <Container sx={{ minHeight: "500px", background: theme.palette.primary.main }}>
         <Loading height="500px" width="100%" visible={!(centers.length > 0)} />
         <GridItem background="primary" content={centers} />

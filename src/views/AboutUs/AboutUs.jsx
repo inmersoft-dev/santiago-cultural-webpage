@@ -9,12 +9,24 @@ import Hero from "layouts/Hero/Hero";
 import KnowUs from "components/KnowUs/KnowUs";
 import OurValues from "components/OurValues/OurValues";
 
+// contexts
+import { useRoute } from "context/RouterProvider";
+
+// images
+import bg2 from "assets/images/bg2.jpg";
+
 const AboutUs = () => {
+  const { setRouteState } = useRoute();
+
   useEffect(() => {}, []);
+
+  useEffect(() => {
+    setRouteState({ type: "set", to: 1 });
+  }, []);
 
   return (
     <Box>
-      <Hero sx={{ height: "75vh" }} />
+      <Hero sx={{ height: "75vh" }} bg={bg2} />
       <KnowUs />
       <OurValues />
     </Box>

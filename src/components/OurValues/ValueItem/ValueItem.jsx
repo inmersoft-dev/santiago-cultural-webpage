@@ -14,6 +14,9 @@ import Image from "components/Image/Image";
 import excellence from "assets/images/trophy.png";
 import integrity from "assets/images/integrity.png";
 import leadership from "assets/images/leadership.png";
+import diversity from "assets/images/diversity.png";
+import diagram from "assets/images/diagram.png";
+import stake from "assets/images/stake.png";
 
 // styles
 import "./value-item.css";
@@ -21,7 +24,7 @@ import "./value-item.css";
 const ValueItem = (props) => {
   const { content } = props;
 
-  const ValuesIcon = [excellence, integrity, leadership];
+  const ValuesIcon = [excellence, integrity, leadership, diagram, diversity, stake];
 
   const theme = useTheme();
   return (

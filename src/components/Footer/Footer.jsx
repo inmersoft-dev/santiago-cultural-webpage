@@ -45,7 +45,13 @@ const Footer = () => {
         <Grid md={5} item>
           <Container direction="column" sx={{ paddingRight: "20px" }}>
             <Typography variant="subtitle1" sx={{ color: theme.palette.text.disabled }}>
-              {languageState.texts.Footer.Description}
+              {languageState.texts.Footer.Description1}
+            </Typography>
+            <Typography
+              variant="subtitle1"
+              sx={{ color: theme.palette.text.disabled, marginTop: "20px" }}
+            >
+              {languageState.texts.Footer.Description2}
             </Typography>
             <Container>
               <SocialIcons />
