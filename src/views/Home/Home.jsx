@@ -1,14 +1,18 @@
 /* eslint-disable import/no-named-as-default-member */
 /* eslint-disable react/jsx-boolean-value */
 /* eslint-disable react/function-component-definition */
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import Marquee from "react-fast-marquee";
 
 // @mui components
-import { Box, Typography, useTheme } from "@mui/material";
+import { Box, Typography, useTheme, IconButton } from "@mui/material";
+
+// @mui icons
+import ReplayIcon from "@mui/icons-material/Replay";
 
 // own components
+import Container from "components/Container/Container";
 import ScrollView from "layouts/ScrollView/ScrollView";
 import Card from "components/Card/Card";
 
@@ -18,6 +22,7 @@ import Carousel from "components/Carousel/Carousel";
 import CarouselItemArrows from "components/Carousel/CarouselItemArrows";
 import TabScrollView from "layouts/TabScrollView/TabScrollView";
 import CarouselItemDots from "components/Carousel/CarouselItemDots";
+import Loading from "components/Loading/Loading";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
@@ -27,10 +32,53 @@ import { useRoute } from "context/RouterProvider";
 import bg1 from "assets/images/bg1.jpg";
 import bruce from "assets/images/bruce-mars.jpg";
 
+// services
+import post from "services/post";
+
 const Home = () => {
   const { setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
+
+  const [news, setNews] = useState([]);
+  const [loadingNews, setLoadingNews] = useState(1);
+
+  const fetchNews = async () => {
+    try {
+      const { result } = await post("news");
+      if (result.indexOf("Error") > -1 || !result) {
+        // show an error :)
+        setLoadingNews(-1);
+      } else {
+        const items = [];
+        result.forEach((item) => {
+          const element = (
+            <Card route="/home" img={item.headerImage.url} imageProps={{ alt: "bruce" }}>
+              <Typography>{item.texts.title}</Typography>
+              <Typography
+                color="secondary"
+                sx={{ fontWeight: 600, color: theme.palette.secondary.main }}
+              >
+                {item.texts.content[0].value}
+              </Typography>
+            </Card>
+          );
+
+          items.push(element);
+        });
+        setNews(items);
+        setLoadingNews(0);
+      }
+    } catch (error) {
+      console.log(error);
+      setLoadingNews(-1);
+    }
+  };
+
+  const reloadNews = async () => {
+    setLoadingNews(1);
+    fetchNews();
+  };
 
   const cards = [
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>
@@ -68,20 +116,38 @@ const Home = () => {
   ];
 
   useEffect(() => {
+    fetchNews();
     setRouteState({ type: "set", to: 0 });
   }, []);
 
   return (
     <Box sx={{ background: theme.palette.secondary.main }}>
       <Hero bg={bg1} />
-      <ScrollView
-        sx={{
-          padding: { md: "40px 0", xs: "40px 20px" },
-          paddingLeft: { md: "10rem", xs: "20px" },
-        }}
-        title={languageState.texts.Home.Subtitles[0]}
-        content={cards}
-      />
+      <Box sx={{ height: "428px" }}>
+        <Loading height="428px" width="100%" visible={loadingNews === 1} />
+        {loadingNews === 0 && (
+          <ScrollView
+            sx={{
+              padding: { md: "40px 0", xs: "40px 20px" },
+              paddingLeft: { md: "10rem", xs: "20px" },
+            }}
+            title={languageState.texts.Home.Subtitles[0]}
+            empty={languageState.texts.Error.NoNews}
+            content={news}
+          />
+        )}
+        {loadingNews === -1 && (
+          <Container justify="center" align="center" sx={{ height: "100%" }}>
+            <Typography sx={{ marginRight: "20px" }}>
+              {languageState.texts.Error.Connection}
+            </Typography>
+            <IconButton color="primary" onClick={reloadNews} variant="contained">
+              <ReplayIcon />
+            </IconButton>
+          </Container>
+        )}
+      </Box>
+
       <Marquee gradient={false} style={{ backgroundColor: theme.palette.warning.dark }} speed="100">
         <Typography variant="h1" sx={{ color: theme.palette.carousel.secondary, mx: 2 }}>
           Convocatorias

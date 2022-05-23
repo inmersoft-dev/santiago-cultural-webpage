@@ -1,5 +1,10 @@
 {
   "es": {
+    "Error": {
+      "NoNews": "No hay noticias",
+      "Connection": "Hay problemas de conexión",
+      "Reload": "Recargar"
+    },
     "Home": {
       "Subtitles": ["Actualidad"]
     },

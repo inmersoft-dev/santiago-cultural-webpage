@@ -14,7 +14,7 @@ import { useLanguage } from "context/LanguageProvider";
 // images
 import vision from "assets/images/vision.png";
 import mission from "assets/images/mission.png";
-import cocinaDominicana from "assets/images/cocina-dominicana-1.png";
+import cocinaDominicana from "assets/images/cocina-dominicana-1.jpg";
 
 // Import CSS Component
 import "./know-us.css";
@@ -30,7 +30,7 @@ const KnowUs = () => {
         backgroundColor: theme.palette.secondary.main,
       }}
     >
-      <div className="know-us__texts-container">
+      <Box className="know-us__texts-container">
         <Typography variant="h4" sx={{ color: theme.palette.primary.main }}>
           {languageState.texts.AboutUs.Title}
         </Typography>
@@ -49,8 +49,8 @@ const KnowUs = () => {
         >
           {languageState.texts.AboutUs.Subtitle}
         </Typography>
-      </div>
-      <div className="know-us__images-container">
+      </Box>
+      <Box className="know-us__images-container" sx={{ height: "400px" }}>
         <Box
           className="know-us__images-container-img"
           sx={{
@@ -118,7 +118,7 @@ const KnowUs = () => {
             </Typography>
           </Box>
         </Box>
-      </div>
+      </Box>
     </Box>
   );
 };

@@ -2,12 +2,17 @@
 import { useEffect, useState } from "react";
 
 // @mui components
-import { Box } from "@mui/material";
+import { Box, Typography, IconButton } from "@mui/material";
+
+// @mui icons
+import ReplayIcon from "@mui/icons-material/Replay";
 
 // contexts
+import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
-// Import Components
+// services
+import post from "services/post";
 
 // own components
 import Container from "components/Container/Container";
@@ -16,14 +21,14 @@ import ItemGrid from "components/ItemGrid/ItemGrid";
 import Loading from "components/Loading/Loading";
 import Search from "./Search/Search";
 
-// services
-import post from "../../services/post";
-
 const News = () => {
   const { setRouteState } = useRoute();
+  const { languageState } = useLanguage();
 
   const [news, setNews] = useState([]);
   const [search, setSearch] = useState("");
+
+  const [loading, setLoading] = useState(1);
 
   const newsFilter = (e) => {
     const { value } = e.target;
@@ -35,6 +40,7 @@ const News = () => {
       const { result } = await post("news");
       if (result.indexOf("Error") > -1 || !result) {
         // show an error :)
+        setLoading(-1);
       } else {
         const items = [];
         result.forEach((item) => {
@@ -48,9 +54,11 @@ const News = () => {
           items.push(element);
         });
         setNews(items);
+        setLoading(0);
       }
     } catch (error) {
       console.log(error);
+      setLoading(-1);
     }
   };
 
@@ -76,8 +84,13 @@ const News = () => {
     return items;
   };
 
-  useEffect(() => {
+  const reloadNews = async () => {
+    setLoading(1);
     fetchNews();
+  };
+
+  useEffect(() => {
+    reloadNews();
   }, []);
 
   useEffect(() => {
@@ -88,8 +101,18 @@ const News = () => {
     <Box>
       <Search onChange={newsFilter} value={search} />
       <Container sx={{ minHeight: "500px" }}>
-        <GridItem content={toRender()} />
-        <Loading visible={news.length > 0 ? 0 : 1} />
+        {loading === 0 && <GridItem content={toRender()} />}
+        {loading === -1 && (
+          <Container justify="center" align="center" sx={{ height: "500px", width: "100%" }}>
+            <Typography sx={{ marginRight: "20px" }}>
+              {languageState.texts.Error.Connection}
+            </Typography>
+            <IconButton color="primary" onClick={reloadNews} variant="contained">
+              <ReplayIcon />
+            </IconButton>
+          </Container>
+        )}
+        <Loading height="500px" visible={loading === 1} />
       </Container>
     </Box>
   );
