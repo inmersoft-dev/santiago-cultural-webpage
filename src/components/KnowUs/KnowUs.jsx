@@ -69,10 +69,12 @@ const KnowUs = () => {
                 marginBottom: "10px",
                 img: {
                   filter: "invert(1)",
+                  width: "35px !important",
+                  height: "35px !important",
                 },
               }}
             >
-              <Image img={mission} width="35px" height="35px" />
+              <Image img={mission} />
               <Typography
                 sx={{ marginLeft: "10px" }}
                 className="know-us__title-section"
@@ -100,10 +102,12 @@ const KnowUs = () => {
                 marginBottom: "10px",
                 img: {
                   filter: "invert(1)",
+                  width: "35px !important",
+                  height: "35px !important",
                 },
               }}
             >
-              <Image img={vision} width="35px" height="35px" />
+              <Image img={vision} />
               <Typography
                 sx={{ marginLeft: "10px" }}
                 className="know-us__title-section"

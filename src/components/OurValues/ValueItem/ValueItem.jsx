@@ -41,7 +41,7 @@ const ValueItem = (props) => {
             background: theme.palette.secondary.main,
           }}
         >
-          <Image img={ValuesIcon[content.Icon]} width="35px" height="35px" />
+          <Image img={ValuesIcon[content.Icon]} width={35} height={35} />
         </Box>
       </div>
       <div className="value-item__text-container">
