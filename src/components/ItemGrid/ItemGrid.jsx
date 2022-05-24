@@ -81,7 +81,7 @@ const ItemGrid = (props) => {
           },
         }}
       >
-        <Link to={`/details:${element.id}:${element.type}`} target="_blank" rel="noreferrer">
+        <Link to={`/details:${element.id}-${element.type}`} target="_blank" rel="noreferrer">
           <Button
             variant="contained"
             size="small"

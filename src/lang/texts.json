@@ -208,17 +208,17 @@
         "Links": [
           {
             "id": "phone",
-            "label": "Teléfono: 555 555 55",
-            "action": "tel:+55555555"
+            "label": "Teléfono: (+1) 829-284-6343",
+            "action": "tel:(+1) 829-284-6343"
           },
           {
             "id": "email",
-            "label": "Correo electrónico: site@email.com",
-            "action": "mailto:site@email.com"
+            "label": "Correo electrónico: cineserviceg@gmail.com",
+            "action": "mailto:cineserviceg@gmail.com"
           },
           {
             "id": "address",
-            "label": "Alguna dirección"
+            "label": "Warehouse 14, F2JG+MV6, Santo Domingo, Dominican Republic"
           }
         ]
       },
