@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable arrow-body-style */
 
@@ -14,6 +15,7 @@ import { Typography, IconButton } from "@mui/material";
 import Container from "components/Container/Container";
 import Loading from "components/Loading/Loading";
 import Image from "components/Image/Image";
+import HtmlEditor from "components/HtmlEditor/HtmlEditor";
 
 // services
 import { loadFromServerGet } from "services/get";
@@ -79,7 +81,7 @@ const Details = () => {
         }}
       >
         {loading === 0 && (
-          <Container sx={{ width: "80%" }}>
+          <Container sx={{ width: { lg: "80%", md: "90%" } }}>
             <Container
               sx={{
                 width: " 400px",
@@ -97,7 +99,14 @@ const Details = () => {
             </Container>
             <Container sx={{ marginTop: "20px", flex: 1, flexDirection: "column" }}>
               <Typography variant="h5">{object.texts.title}</Typography>
-              <Typography variant="subtitle1">{object.texts.subtitle}</Typography>
+              <Typography variant="subtitle1" sx={{ marginBottom: "20px" }}>
+                {object.texts.subtitle}
+              </Typography>
+              {object.texts.content.map((item, i) => (
+                <Container key={`${i}`}>
+                  {item.type === "text" && <HtmlEditor value={item.value} />}
+                </Container>
+              ))}
             </Container>
           </Container>
         )}
