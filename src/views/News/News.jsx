@@ -54,6 +54,7 @@ const News = () => {
           };
           items.push(element);
         });
+
         setNews(items);
         setLoading(0);
       }

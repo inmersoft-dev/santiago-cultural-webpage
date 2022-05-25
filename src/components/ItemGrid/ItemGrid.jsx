@@ -6,6 +6,8 @@
 // prop types
 import PropTypes from "prop-types";
 
+import { Link } from "react-router-dom";
+
 // @mui components
 import {
   useTheme,
@@ -20,9 +22,11 @@ import {
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
+// own components
+import HtmlEditor from "components/HtmlEditor/HtmlEditor";
+
 // Import Css Component
 import "./item-grid.css";
-import { Link } from "react-router-dom";
 
 const ItemGrid = (props) => {
   const { languageState } = useLanguage();
@@ -31,8 +35,6 @@ const ItemGrid = (props) => {
   const { headerImage, texts } = element;
 
   const theme = useTheme();
-
-  console.log(element);
 
   return (
     <Card
@@ -60,17 +62,7 @@ const ItemGrid = (props) => {
         <Typography gutterBottom variant="body1" component="div">
           {texts.title}
         </Typography>
-        <Typography
-          variant="body2"
-          color="text.secondary"
-          sx={{
-            whiteSpace: "nowrap",
-            overflow: "hidden",
-            textOverflow: "ellipsis",
-          }}
-        >
-          {texts.description}
-        </Typography>
+        <HtmlEditor value={texts.description} />
       </CardContent>
       <CardActions
         sx={{
