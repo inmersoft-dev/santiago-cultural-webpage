@@ -19,7 +19,7 @@ const SocialIcons = () => {
       <Link
         target="_blank"
         rel="noreferrer"
-        href="https://www.facebook.com/inmersoftstudio"
+        href="https://www.facebook.com/Cine-Service-Group-131315229117003"
         sx={{ marginRight: "20px" }}
       >
         <IconButton
@@ -36,7 +36,7 @@ const SocialIcons = () => {
       <Link
         target="_blank"
         rel="noreferrer"
-        href="https://twitter.com/Inmersoft_"
+        href="https://twitter.com/cineserviceg"
         sx={{ marginRight: "20px" }}
       >
         <IconButton
@@ -53,7 +53,7 @@ const SocialIcons = () => {
       <Link
         target="_blank"
         rel="noreferrer"
-        href="https://www.instagram.com/inmersoft/"
+        href="https://www.instagram.com/insectarefeed/"
         sx={{ marginRight: "20px" }}
       >
         <IconButton
@@ -70,7 +70,7 @@ const SocialIcons = () => {
       <Link
         target="_blank"
         rel="noreferrer"
-        href="https://www.linkedin.com/company/inmersoft/"
+        href="https://www.linkedin.com/company/cine-service-group?lipi=urn%3Ali%3Apage%3Acompanies_company_index%3BRFpk7qr9S7aLCSP6edwJQg%3D%3D"
         sx={{ marginRight: "20px" }}
       >
         <IconButton
