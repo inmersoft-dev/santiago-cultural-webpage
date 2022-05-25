@@ -29,6 +29,7 @@ import News from "views/News/News";
 import ContactUs from "views/ContactUs/ContactUs";
 import Culture from "views/Culture/Culture";
 import NotFound from "views/NotFound/NotFound";
+import Details from "views/Details/Details";
 
 // contexts
 import { useMode } from "context/ModeProvider";
@@ -71,6 +72,7 @@ const App = () => {
                   <Route path="/culture-centers" element={<Culture />} />
                   <Route path="/activities" element={<Activities />} />
                   <Route path="/news" element={<News />} />
+                  <Route path="/details:data" element={<Details />} />
                 </Route>
                 <Route exact path="/contact-us" element={<View noFooter />}>
                   <Route index element={<ContactUs />} />

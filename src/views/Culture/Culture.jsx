@@ -2,7 +2,10 @@
 import { useEffect, useState } from "react";
 
 // @mui components
-import { Box, Typography } from "@mui/material";
+import { Box, useTheme, Typography, IconButton } from "@mui/material";
+
+// @mui icons
+import ReplayIcon from "@mui/icons-material/Replay";
 
 // own components
 import Container from "components/Container/Container";
@@ -18,26 +21,35 @@ import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
 // services
-import post from "../../services/post";
+import post from "services/post";
 
-import ImagCrash from "../../assets/images/crash.webp";
+// images
+import bg4 from "assets/images/bg4.jpg";
+import ImagCrash from "assets/images/crash.webp";
 
 const Culture = () => {
   const { setRouteState } = useRoute();
   const { languageState } = useLanguage();
+
   const [centers, setCenters] = useState([]);
+  const theme = useTheme();
+
+  const [loading, setLoading] = useState(1);
 
   const fetchCenters = async () => {
     try {
       const { result } = await post("places");
 
-      if (result.indexOf("Error") > -1) {
-        // hi mom
+      if (result.indexOf("Error") > -1 || !result) {
+        // show an error :)
+        setLoading(-1);
       } else {
         const items = [];
         result.forEach((item) => {
           const element = {
             headerImage: item.headerImages.length > 0 ? item.headerImages[0].url : `${ImagCrash}`,
+            id: item.id,
+            type: "place",
             texts: {
               title: item.texts.name,
               description: item.texts.description,
@@ -46,26 +58,22 @@ const Culture = () => {
           items.push(<ItemGrid element={element} borderColor="secondary" />);
         });
         setCenters(items);
+        setLoading(0);
       }
     } catch (error) {
       console.log(error);
+      setLoading(-1);
     }
   };
 
-  useEffect(() => {
+  const reloadCenters = async () => {
+    setLoading(1);
     fetchCenters();
+  };
+
+  useEffect(() => {
+    reloadCenters();
   }, []);
-
-  /* console.log(centers); */
-
-  /* const items = [
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-    <ItemGrid borderColor="secondary" />,
-  ]; */
 
   useEffect(() => {
     setRouteState({ type: "set", to: 2 });
@@ -73,32 +81,21 @@ const Culture = () => {
 
   return (
     <Box>
-      <Hero sx={{ height: "600px" }}>
-        <Container
-          sx={{
-            height: "100%",
-            padding: { md: "0 10rem 60px 10rem", xs: "40px" },
-            flexDirection: { md: "row", xs: "column" },
-            justifyContent: { md: "space-between", xs: "flex-end" },
-            alignItems: { md: "end", xs: "start" },
-          }}
-        >
-          <Typography
-            variant="h5"
-            sx={{ fontWeight: "bold", marginBottom: { md: "0", xs: "40px" } }}
-          >
-            {languageState.texts.Culture.Title}
-          </Typography>
-          <Typography sx={{ width: { md: "600px", xs: "100%" } }}>
-            {languageState.texts.Culture.Paragraph}
-          </Typography>
-        </Container>
-      </Hero>
-      {centers.length > 0 ? (
-        <GridItem background="primary" content={centers} />
-      ) : (
-        <Loading visible />
-      )}
+      <Hero sx={{ height: "600px" }} bg={bg4} />
+      <Container sx={{ minHeight: "500px", background: theme.palette.primary.main }}>
+        <Loading height="500px" visible={loading === 1} />
+        {loading === 0 && <GridItem background="primary" content={centers} />}
+        {loading === -1 && (
+          <Container justify="center" align="center" sx={{ height: "500px", width: "100%" }}>
+            <Typography color="secondary" sx={{ marginRight: "20px" }}>
+              {languageState.texts.Error.Connection}
+            </Typography>
+            <IconButton color="secondary" onClick={reloadCenters} variant="contained">
+              <ReplayIcon />
+            </IconButton>
+          </Container>
+        )}
+      </Container>
     </Box>
   );
 };

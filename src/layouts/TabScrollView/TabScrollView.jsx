@@ -19,7 +19,7 @@ import "./style.css";
 
 const TabScrollView = () => {
   const { languageState } = useLanguage();
-  const tabs = ["Fotograía", "Fotograía", "Fotograía", "Fotograía"];
+  const tabs = ["Fotografía", "Escritura", "Lectura", "Comida"];
 
   const cards = [
     <Card route="/home" img={bruce} imageProps={{ alt: "bruce" }}>

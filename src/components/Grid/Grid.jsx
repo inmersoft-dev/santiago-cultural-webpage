@@ -37,18 +37,11 @@ const Grid = (props) => {
   return (
     <MuiGrid sx={{ ...sx, flexGrow: 1 }} container spacing={0}>
       <MuiGrid item>
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
+        <motion.div variants={container} initial="hidden" animate="visible">
           <MuiGrid container justifyContent="center" spacing={0}>
             {content.map((item, i) => (
               <MuiGrid key={`grid${i}`} sx={{ paddingRight: 0, marginBottom: "30px" }} item>
-                <motion.div variants={ulItem} viewport={{ once: true }}>
-                  {item}
-                </motion.div>
+                <motion.div variants={ulItem}>{item}</motion.div>
               </MuiGrid>
             ))}
           </MuiGrid>

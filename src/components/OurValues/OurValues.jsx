@@ -1,15 +1,21 @@
 /* eslint-disable arrow-body-style */
 /* eslint-disable react/function-component-definition */
+
+// @mui components
 import { Box, Typography, Divider, useTheme } from "@mui/material";
-import ValueItem from "components/ValueItem/ValueItem";
-import React from "react";
+
+// context
+import { useLanguage } from "context/LanguageProvider";
+
+// own components
+import ValueItem from "./ValueItem/ValueItem";
 
 // Import Css of component
 import "./our-values.css";
 
-const values = [1, 2, 3, 4, 5, 6];
-
 const OurValues = () => {
+  const { languageState } = useLanguage();
+
   const theme = useTheme();
   return (
     <Box className="our-values__container" sx={{ backgroundColor: theme.palette.primary.main }}>
@@ -18,7 +24,7 @@ const OurValues = () => {
           variant="h4"
           sx={{ color: theme.palette.secondary.main, fontWeight: "bold", textAlign: "center" }}
         >
-          Nuestros Valores
+          {languageState.texts.AboutUs.Values.Title}
         </Typography>
         <Divider
           sx={{
@@ -31,8 +37,8 @@ const OurValues = () => {
         />
       </Box>
       <Box className="our-values__values-items-container">
-        {values.map((i) => (
-          <ValueItem key={i} />
+        {languageState.texts.AboutUs.Values.Values.map((item, i) => (
+          <ValueItem key={i.Title} content={item} />
         ))}
       </Box>
     </Box>

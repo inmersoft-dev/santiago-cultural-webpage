@@ -12,28 +12,34 @@ import "./carousel-item-dots.css";
 // eslint-disable-next-line react/prop-types
 const CarouselItemDots = ({ colorColum }) => {
   return (
-    <div className="carousel-item-dots__container">
+    <Box className="carousel-item-dots__container">
       <Box className="carousel-item-dots__wrapper" sx={{ display: { lg: "none", xs: "flex" } }}>
-        <div className="carousel-item-dots__left">
+        <Box className="carousel-item-dots__left">
           <Typography variant="body1">
             Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget
             dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
             nascetur.Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes,
             nascetur
           </Typography>
-        </div>
-        <div className="carousel-item-dots__center">
-          <div className="carousel-item-dots__center-img-container">
+        </Box>
+        <Box className="carousel-item-dots__center">
+          <Box
+            className="carousel-item-dots__center-img-container"
+            sx={{
+              img: {
+                width: "100% !important",
+                height: "100% !important",
+              },
+            }}
+          >
             <Image
               img={ImgCarouselDots}
-              width="100%"
-              height="100%"
               style={{
                 borderRadius: "10px",
               }}
             />
-          </div>
-        </div>
+          </Box>
+        </Box>
       </Box>
       <Box className="carousel-item-dots__left" sx={{ display: { lg: "flex", xs: "none" } }}>
         <Typography variant="body1">
@@ -44,16 +50,22 @@ const CarouselItemDots = ({ colorColum }) => {
         </Typography>
       </Box>
       <Box className="carousel-item-dots__center" sx={{ display: { lg: "flex", xs: "none" } }}>
-        <div className="carousel-item-dots__center-img-container">
+        <Box
+          className="carousel-item-dots__center-img-container"
+          sx={{
+            img: {
+              width: "100% !important",
+              height: "100% !important",
+            },
+          }}
+        >
           <Image
             img={ImgCarouselDots}
-            width="100%"
-            height="100%"
             style={{
               borderRadius: "10px",
             }}
           />
-        </div>
+        </Box>
       </Box>
       <Box className="carousel-item-dots__right" sx={{ backgroundColor: colorColum }}>
         <Typography variant="body1">Lorem ipsum dolor sit amet</Typography>
@@ -67,7 +79,7 @@ const CarouselItemDots = ({ colorColum }) => {
           Ver Producto
         </Button>
       </Box>
-    </div>
+    </Box>
   );
 };
 

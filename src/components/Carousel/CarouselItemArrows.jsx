@@ -28,8 +28,14 @@ const CarouselItemArrows = () => {
         </div>
       </div>
       <div className="car-item-arrows__right">
-        <Box className="car-item-arrows__right-img-container" sx={{position:{md:"relative", xs:"absolute"}}}>
-          <Image img={ImgArticle} height="100%" width="100%" style={{ objectFit: "cover" }} />
+        <Box
+          className="car-item-arrows__right-img-container"
+          sx={{
+            img: { width: "100% !important", height: "100% !important" },
+            position: { md: "relative", xs: "absolute" },
+          }}
+        >
+          <Image img={ImgArticle} style={{ objectFit: "cover" }} />
         </Box>
       </div>
     </div>

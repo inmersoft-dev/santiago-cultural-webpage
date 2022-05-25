@@ -19,12 +19,14 @@ const Image = (props) => {
 Image.defaultProps = {
   className: {},
   style: {},
+  height: 35,
+  width: 35,
 };
 
 Image.propTypes = {
   img: PropTypes.string.isRequired,
-  width: PropTypes.string.isRequired,
-  height: PropTypes.string.isRequired,
+  width: PropTypes.number,
+  height: PropTypes.number,
   className: PropTypes.objectOf(PropTypes.string || PropTypes.number),
   style: PropTypes.objectOf(PropTypes.string || PropTypes.number),
 };

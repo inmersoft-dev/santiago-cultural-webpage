@@ -13,6 +13,9 @@ import Container from "components/Container/Container";
 // layouts
 import Hero from "layouts/Hero/Hero";
 
+// images
+import bg3 from "assets/images/bg3.jpg";
+
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
@@ -40,13 +43,13 @@ const ContactUs = () => {
 
   return (
     <Box>
-      <Hero>
+      <Hero bg={bg3}>
         <Box>
           <Container
             direction="column"
             justify="flex-start"
             sx={{
-              background: `${theme.palette.secondary.main}Cc`,
+              background: `${theme.palette.secondary.main}e6`,
               height: "100vh",
               width: { lg: "50vw", md: "60vw", xs: "100vw" },
               marginLeft: { md: "10rem", xs: 0 },

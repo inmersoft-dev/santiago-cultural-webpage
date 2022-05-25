@@ -18,7 +18,7 @@ import Container from "components/Container/Container";
 import "./uikit/css/uikit.css";
 
 const ScrollView = (props) => {
-  const { title, content, sx, titleProps } = props;
+  const { title, content, sx, titleProps, empty } = props;
 
   const newSx = {
     padding: "60px 0",
@@ -50,25 +50,29 @@ const ScrollView = (props) => {
     <Container direction="column" sx={newSx}>
       <Typography {...titleProps}>{title}</Typography>
       <Box className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
-        <motion.ul
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid"
-        >
-          {content.map((item, i) => (
-            <Box
-              key={`s${i}`}
-              className="uk-panel"
-              sx={{ width: { md: "390px", xs: "335px" }, marginRight: "40px" }}
-            >
-              <motion.div variants={ulItem} viewport={{ once: true }}>
-                {item}
-              </motion.div>
-            </Box>
-          ))}
-        </motion.ul>
+        {content.length > 0 ? (
+          <motion.ul
+            variants={container}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="uk-slider-items uk-child-width-1-2 uk-child-width-1-3@m uk-grid"
+          >
+            {content.map((item, i) => (
+              <Box
+                key={`s${i}`}
+                className="uk-panel"
+                sx={{ width: { md: "390px", xs: "335px" }, marginRight: "40px" }}
+              >
+                <motion.div variants={ulItem} viewport={{ once: true }}>
+                  {item}
+                </motion.div>
+              </Box>
+            ))}
+          </motion.ul>
+        ) : (
+          <Typography>{empty}</Typography>
+        )}
       </Box>
     </Container>
   );
@@ -78,12 +82,14 @@ ScrollView.defaultProps = {
   sx: {},
   titleProps: { variant: "subtitle1", sx: { marginBottom: "20px" } },
   title: "",
+  empty: "",
 };
 
 ScrollView.propTypes = {
   sx: PropTypes.object,
   titleProps: PropTypes.object,
   title: PropTypes.string,
+  empty: PropTypes.string,
   content: PropTypes.arrayOf(PropTypes.node).isRequired,
 };
 
