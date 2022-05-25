@@ -29,11 +29,7 @@ export const loadFromServerGet = async (from, collection = "", id = "", lang = "
 /**
  * @param {string} from - The name of the endpoint to load data from.
  * @returns The data returned from the server.
- */
-import axios from "axios";
-import config from "config";
-
-const loadFromServerGet = async (collection = "", id = "", lang = "") => {
+ */ const loadFromServerGet = async (collection = "", id = "", lang = "") => {
   try {
     const response = await axios.get(
       `${config.serverUrl}/get${collection !== "" ? `?collection=${collection}` : ""}
