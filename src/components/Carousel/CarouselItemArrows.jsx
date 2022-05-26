@@ -13,9 +13,9 @@ import "./carousel-item-arrows.css";
 
 const CarouselItemArrows = () => {
   return (
-    <div className="car-item-arrows__container">
-      <div className="car-item-arrows__left">
-        <div className="car-item-arrows__left-text-container">
+    <Box className="car-item-arrows__container">
+      <Box className="car-item-arrows__left">
+        <Box className="car-item-arrows__left-text-container">
           <Typography variant="h4" mb={4}>
             Lorem ipsum dolor sit amet
           </Typography>
@@ -25,9 +25,9 @@ const CarouselItemArrows = () => {
             dolor.
           </Typography>
           <Button variant="contained">Ver Producto</Button>
-        </div>
-      </div>
-      <div className="car-item-arrows__right">
+        </Box>
+      </Box>
+      <Box className="car-item-arrows__right">
         <Box
           className="car-item-arrows__right-img-container"
           sx={{
@@ -37,8 +37,8 @@ const CarouselItemArrows = () => {
         >
           <Image img={ImgArticle} style={{ objectFit: "cover" }} />
         </Box>
-      </div>
-    </div>
+      </Box>
+    </Box>
   );
 };
 

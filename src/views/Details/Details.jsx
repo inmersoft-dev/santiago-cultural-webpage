@@ -18,6 +18,7 @@ import Loading from "components/Loading/Loading";
 import Image from "components/Image/Image";
 import Card from "components/Card/Card";
 import HtmlEditor from "components/HtmlEditor/HtmlEditor";
+import LightBox from "components/LightBox/LightBox";
 
 // services
 import { loadFromServerGet } from "services/get";
@@ -37,6 +38,12 @@ const Details = () => {
   const [loading, setLoading] = useState(1);
 
   const [object, setObject] = useState({});
+  const [lightBox, setLightBox] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(0);
+
+  const onLightBoxClose = () => {
+    setLightBox(false);
+  };
 
   const init = async () => {
     const params = data.substring(1).split("-");
@@ -182,6 +189,12 @@ const Details = () => {
             <Container
               sx={{ width: { md: "90%", xs: "100%" }, flexDirection: { md: "row", xs: "column" } }}
             >
+              <LightBox
+                index={selectedImage}
+                visible={lightBox}
+                onClose={onLightBoxClose}
+                images={object.headerImages ? [...object.headerImages] : [object.headerImage]}
+              />
               <Container
                 justify="center"
                 sx={{
@@ -194,12 +207,27 @@ const Details = () => {
                     height: { sm: "350px", xs: "250px" },
                     objectFit: "cover",
                     borderRadius: "1rem",
+                    cursor: "pointer",
                   },
                 }}
               >
-                <Image
-                  img={object.headerImages[0] ? object.headerImages[0].url : object.headerImage.url}
-                />
+                <Container
+                  extraProps={{
+                    onClick: () => {
+                      setLightBox(true);
+                      setSelectedImage(0);
+                    },
+                  }}
+                >
+                  <Image
+                    img={
+                      object.headerImages && object.headerImages[0]
+                        ? object.headerImages[0].url
+                        : object.headerImage.url
+                    }
+                  />
+                </Container>
+
                 <Container
                   sx={{
                     flexWrap: "wrap",
@@ -211,6 +239,10 @@ const Details = () => {
                     object.headerImages.length > 0 &&
                     object.headerImages.map((item, i) => (
                       <Box
+                        onClick={() => {
+                          setLightBox(true);
+                          setSelectedImage(i);
+                        }}
                         sx={{
                           img: {
                             width: { sm: "170px !important", xs: "137px !important" },
@@ -220,7 +252,7 @@ const Details = () => {
                           },
                         }}
                       >
-                        {i >= 0 && <Image img={item.url} />}
+                        {i > 0 && <Image img={item.url} />}
                       </Box>
                     ))}
                 </Container>

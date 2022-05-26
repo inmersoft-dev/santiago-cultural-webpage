@@ -21,15 +21,15 @@ import "swiper/css/pagination";
 // CSS
 import "./carousel.css";
 
-const Carousel = ({ CarouselItem, navigation, backgroundColor, pagination }) => {
+const Carousel = ({ items, CarouselItem, navigation, backgroundColor, pagination, sx }) => {
+  const newSx = {
+    backgroundColor: { backgroundColor },
+    padding: { lg: "0 7rem", md: "0 3rem", xs: "0 2rem 0 2rem" },
+    ...sx,
+  };
+
   return (
-    <Box
-      className="carousel__container"
-      sx={{
-        backgroundColor: { backgroundColor },
-        padding: { lg: "0 7rem", md: "0 3rem", xs: "0 2rem 0 2rem" },
-      }}
-    >
+    <Box className="carousel__container" sx={newSx}>
       <Swiper
         // install Swiper modules
         modules={[Navigation, Pagination]}
@@ -39,13 +39,17 @@ const Carousel = ({ CarouselItem, navigation, backgroundColor, pagination }) => 
         navigation={navigation}
         pagination={pagination}
         scrollbar={{ draggable: true }}
-        /* onSwiper={(swiper) => console.log(swiper)}
-        onSlideChange={() => console.log("slide change")} */
       >
-        <SwiperSlide> {CarouselItem} </SwiperSlide>
-        <SwiperSlide> {CarouselItem} </SwiperSlide>
-        <SwiperSlide> {CarouselItem} </SwiperSlide>
-        <SwiperSlide> {CarouselItem} </SwiperSlide>
+        {items ? (
+          items.map((item) => <SwiperSlide> {item} </SwiperSlide>)
+        ) : (
+          <>
+            <SwiperSlide> {CarouselItem} </SwiperSlide>
+            <SwiperSlide> {CarouselItem} </SwiperSlide>
+            <SwiperSlide> {CarouselItem} </SwiperSlide>
+            <SwiperSlide> {CarouselItem} </SwiperSlide>
+          </>
+        )}
       </Swiper>
     </Box>
   );
