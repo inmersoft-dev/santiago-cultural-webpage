@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/function-component-definition */
 /* eslint-disable arrow-body-style */
@@ -41,7 +42,7 @@ const Carousel = ({ items, CarouselItem, navigation, backgroundColor, pagination
         scrollbar={{ draggable: true }}
       >
         {items ? (
-          items.map((item) => <SwiperSlide> {item} </SwiperSlide>)
+          items.map((item, i) => <SwiperSlide key={i}> {item} </SwiperSlide>)
         ) : (
           <>
             <SwiperSlide> {CarouselItem} </SwiperSlide>

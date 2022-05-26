@@ -40,6 +40,13 @@ const Details = () => {
   const [object, setObject] = useState({});
   const [lightBox, setLightBox] = useState(false);
   const [selectedImage, setSelectedImage] = useState(0);
+  const [allImages, setAllImages] = useState([]);
+
+  const imgSX = {
+    objectFit: "cover",
+    borderRadius: "1rem",
+    cursor: "pointer",
+  };
 
   const onLightBoxClose = () => {
     setLightBox(false);
@@ -50,7 +57,6 @@ const Details = () => {
 
     const id = params[0];
     const collection = params[1];
-    console.log(params);
     try {
       const remoteData = await loadFromServerGet(
         "api/load/get",
@@ -58,8 +64,10 @@ const Details = () => {
         id,
         languageState.language
       );
-      console.log(remoteData);
       const transformedContent = [];
+      const localAllImages = [];
+      if (remoteData.headerImages)
+        remoteData.headerImages.forEach((item) => localAllImages.push(item.url));
       let imageList = [];
       remoteData.texts.content.forEach((item, i) => {
         if (item.type === "text") {
@@ -71,15 +79,20 @@ const Details = () => {
             imageList = [];
           } else transformedContent.push(item);
         } else {
+          localAllImages.push(item.url);
           imageList.push(
             <Box
               sx={{
                 img: {
                   width: "300px",
                   height: "300px",
-                  objectFit: "cover",
-                  borderRadius: "1rem",
+                  ...imgSX,
                 },
+              }}
+              onClick={() => {
+                setLightBox(true);
+                if (remoteData.headerImage) setSelectedImage(i + 1);
+                else setSelectedImage(i + remoteData.headerImages.length);
               }}
             >
               <Image img={item.url} />
@@ -99,6 +112,8 @@ const Details = () => {
         setLoading(-1);
       } else {
         setObject(remoteData);
+        console.log(localAllImages);
+        setAllImages(localAllImages);
         setLoading(0);
       }
     } catch (e) {
@@ -189,12 +204,15 @@ const Details = () => {
             <Container
               sx={{ width: { md: "90%", xs: "100%" }, flexDirection: { md: "row", xs: "column" } }}
             >
-              <LightBox
-                index={selectedImage}
-                visible={lightBox}
-                onClose={onLightBoxClose}
-                images={object.headerImages ? [...object.headerImages] : [object.headerImage]}
-              />
+              {allImages.length && (
+                <LightBox
+                  index={selectedImage}
+                  visible={lightBox}
+                  onClose={onLightBoxClose}
+                  images={[...allImages]}
+                />
+              )}
+
               <Container
                 justify="center"
                 sx={{
@@ -205,9 +223,7 @@ const Details = () => {
                   img: {
                     width: { sm: "350px", xs: "285px" },
                     height: { sm: "350px", xs: "250px" },
-                    objectFit: "cover",
-                    borderRadius: "1rem",
-                    cursor: "pointer",
+                    ...imgSX,
                   },
                 }}
               >
@@ -239,6 +255,7 @@ const Details = () => {
                     object.headerImages.length > 0 &&
                     object.headerImages.map((item, i) => (
                       <Box
+                        key={i}
                         onClick={() => {
                           setLightBox(true);
                           setSelectedImage(i);

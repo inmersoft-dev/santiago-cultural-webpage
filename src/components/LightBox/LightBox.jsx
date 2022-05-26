@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { useEffect, useState } from "react";
 
 // prop types
@@ -38,21 +39,20 @@ function LightBox(props) {
     const toRender = [];
     toRender.push(
       <Container justify="center" sx={{ img: imgSX }}>
-        <Image img={images[index].url} />
+        <Image img={images[index]} />
       </Container>
     );
-
     images.forEach((item, i) => {
       if (i !== index)
         toRender.push(
-          <Container justify="center" sx={{ img: imgSX }}>
-            <Image img={item.url} />
+          <Container key={i} justify="center" sx={{ img: imgSX }}>
+            <Image img={item} />
           </Container>
         );
     });
     setRender(toRender);
     setLoading(false);
-  });
+  }, [index]);
 
   return (
     <Container
