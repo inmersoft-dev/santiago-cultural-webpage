@@ -185,11 +185,12 @@ const Details = () => {
               <Container
                 justify="center"
                 sx={{
+                  flexDirection: { md: "column", xs: "row" },
                   width: { md: "400px", xs: "100%" },
                   height: "100%",
                   padding: "25px",
                   img: {
-                    width: { sm: "350px", xs: "250px" },
+                    width: { sm: "350px", xs: "285px" },
                     height: { sm: "350px", xs: "250px" },
                     objectFit: "cover",
                     borderRadius: "1rem",
@@ -199,12 +200,44 @@ const Details = () => {
                 <Image
                   img={object.headerImages[0] ? object.headerImages[0].url : object.headerImage.url}
                 />
+                <Container
+                  sx={{
+                    flexWrap: "wrap",
+                    display: { md: "flex", xs: "none" },
+                    marginLeft: { md: "0", sm: "10px" },
+                  }}
+                >
+                  {object.headerImages &&
+                    object.headerImages.length > 0 &&
+                    object.headerImages.map((item, i) => (
+                      <Box
+                        sx={{
+                          img: {
+                            width: { sm: "170px !important", xs: "137px !important" },
+                            height: { sm: "172px !important", xs: "137px !important" },
+                            marginTop: { md: "10px", xs: "0" },
+                            marginRight: i % 2 === 0 ? "10px" : "0",
+                          },
+                        }}
+                      >
+                        {i >= 0 && <Image img={item.url} />}
+                      </Box>
+                    ))}
+                </Container>
               </Container>
               <Container sx={{ marginTop: "20px", flex: 1, flexDirection: "column" }}>
-                <Typography variant="h5">{object.texts.title}</Typography>
-                <Typography variant="subtitle1" sx={{ marginBottom: "20px" }}>
-                  {object.texts.subtitle}
-                </Typography>
+                {object.texts.title && <Typography variant="h4">{object.texts.title}</Typography>}
+                {object.texts.subtitle && (
+                  <Typography variant="subtitle1" sx={{ margin: "20px 0" }}>
+                    {object.texts.subtitle}
+                  </Typography>
+                )}
+                {object.texts.name && <Typography variant="h4">{object.texts.name}</Typography>}
+                {object.texts.description && (
+                  <Typography variant="subtitle1" sx={{ margin: "20px 0", textAlign: "justify" }}>
+                    {object.texts.description}
+                  </Typography>
+                )}
 
                 {object.texts.content.map((item, i) => (
                   <Container key={`${i}`}>
