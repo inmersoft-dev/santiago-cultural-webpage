@@ -48,7 +48,7 @@ const ItemGrid = (props) => {
     <Card
       elevation={0}
       sx={{
-        width: { md: "389px", xs: "335px" },
+        width: { md: "389px", sm: "335px", xs: "300px" },
         border: `1px outset ${theme.palette[borderColor].main}`,
         borderRadius: "10px",
         m: 2,
@@ -83,7 +83,7 @@ const ItemGrid = (props) => {
           },
         }}
       >
-        <Link to={`/details:${element.id}-${element.type}`} target="_blank" rel="noreferrer">
+        <Link to={`/details:${element.id}-${element.type}`}>
           <Button
             variant="contained"
             size="small"
