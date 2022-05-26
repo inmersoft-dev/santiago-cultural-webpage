@@ -28,7 +28,8 @@ import Container from "components/Container/Container";
 import { useLanguage } from "context/LanguageProvider";
 
 const Card = (props) => {
-  const { elevation, contentPosition, route, children, img, imageProps, sx, border } = props;
+  const { elevation, contentPosition, route, children, buttonText, img, imageProps, sx, border } =
+    props;
 
   const { languageState } = useLanguage();
   const theme = useTheme();
@@ -70,7 +71,7 @@ const Card = (props) => {
               }}
               to={route}
             >
-              <Button variant="contained">{languageState.texts.Card.Button}</Button>
+              <Button variant="contained">{buttonText || languageState.texts.Card.Button}</Button>
             </Link>
           </CardActions>
         )}
@@ -83,6 +84,7 @@ Card.defaultProps = {
   contentPosition: "up",
   border: false,
   img: "",
+  buttonText: "",
   route: "",
   sx: {},
   imageProps: {},
@@ -93,6 +95,7 @@ Card.propTypes = {
   sx: PropTypes.object,
   imageProps: PropTypes.objectOf(PropTypes.string),
   children: PropTypes.node.isRequired,
+  buttonText: PropTypes.string,
   contentPosition: PropTypes.string,
   img: PropTypes.string,
   route: PropTypes.string,

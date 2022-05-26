@@ -25,12 +25,14 @@ import post from "services/post";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
+import { useRoute } from "context/RouterProvider";
 
 const Details = () => {
   const { data } = useParams();
   const theme = useTheme();
 
   const { languageState } = useLanguage();
+  const { setRouteState } = useRoute();
 
   const [loading, setLoading] = useState(1);
 
@@ -151,6 +153,7 @@ const Details = () => {
   };
 
   useEffect(() => {
+    setRouteState({ type: "set", to: -1 });
     reloadNews();
   }, []);
 

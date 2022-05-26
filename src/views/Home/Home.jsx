@@ -53,7 +53,12 @@ const Home = () => {
         const items = [];
         result.forEach((item) => {
           const element = (
-            <Card route="/home" img={item.headerImage.url} imageProps={{ alt: "bruce" }}>
+            <Card
+              route={`/details:${item.id}-news`}
+              img={item.headerImage.url}
+              imageProps={{ alt: "bruce" }}
+              buttonText={languageState.texts.Home.ReadMore}
+            >
               <Typography
                 color="secondary"
                 sx={{
