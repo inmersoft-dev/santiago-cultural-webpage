@@ -43,6 +43,7 @@ const Details = () => {
 
     const id = params[0];
     const collection = params[1];
+    console.log(params);
     try {
       const remoteData = await loadFromServerGet(
         "api/load/get",
@@ -195,7 +196,9 @@ const Details = () => {
                   },
                 }}
               >
-                <Image img={object.headerImage.url} />
+                <Image
+                  img={object.headerImages[0] ? object.headerImages[0].url : object.headerImage.url}
+                />
               </Container>
               <Container sx={{ marginTop: "20px", flex: 1, flexDirection: "column" }}>
                 <Typography variant="h5">{object.texts.title}</Typography>

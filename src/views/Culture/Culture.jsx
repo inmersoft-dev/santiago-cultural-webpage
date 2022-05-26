@@ -49,7 +49,7 @@ const Culture = () => {
           const element = {
             headerImage: item.headerImages.length > 0 ? item.headerImages[0].url : `${ImagCrash}`,
             id: item.id,
-            type: "place",
+            type: "places",
             texts: {
               title: item.texts.name,
               description: item.texts.description,
