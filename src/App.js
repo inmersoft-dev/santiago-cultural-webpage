@@ -72,14 +72,11 @@ const App = () => {
                   <Route path="/culture-centers" element={<Culture />} />
                   <Route path="/activities" element={<Activities />} />
                   <Route path="/news" element={<News />} />
+                  <Route path="/details:data" element={<Details />} />
                 </Route>
                 <Route exact path="/contact-us" element={<View noFooter />}>
                   <Route index element={<ContactUs />} />
                 </Route>
-                <Route exact path="/details:data" element={<View noFooter />}>
-                  <Route path="/details:data" element={<Details />} />
-                </Route>
-
                 <Route path="*" element={<NotFound />} />
               </Routes>
             </BrowserRouter>

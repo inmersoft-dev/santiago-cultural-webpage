@@ -166,7 +166,7 @@ const Details = () => {
         sx={{
           padding: { md: "100px 0", xs: "80px 20px" },
           paddingLeft: { md: "10rem", xs: "20px" },
-          paddingBottom: "100px",
+          paddingBottom: "20px",
         }}
       >
         <Box sx={{ minHeight: "600px" }}>
