@@ -50,6 +50,7 @@ const Details = () => {
         id,
         languageState.language
       );
+      console.log(remoteData);
       const transformedContent = [];
       let imageList = [];
       remoteData.texts.content.forEach((item, i) => {
@@ -167,22 +168,28 @@ const Details = () => {
       <Loading visible={loading === 1} />
       <Container
         sx={{
-          padding: { md: "100px 0", xs: "80px 20px" },
-          paddingLeft: { md: "10rem", xs: "20px" },
-          paddingBottom: "20px",
+          padding: {
+            lg: "10rem 10rem 50px 10rem",
+            md: "100px 0",
+            sm: "80px 60px 20px 60px",
+            xs: "80px 20px 20px 20px",
+          },
         }}
       >
         <Box sx={{ minHeight: "600px" }}>
           {loading === 0 && (
-            <Container sx={{ width: { lg: "80%", md: "90%" } }}>
+            <Container
+              sx={{ width: { md: "90%", xs: "100%" }, flexDirection: { md: "row", xs: "column" } }}
+            >
               <Container
+                justify="center"
                 sx={{
-                  width: " 400px",
+                  width: { md: "400px", xs: "100%" },
                   height: "100%",
                   padding: "25px",
                   img: {
-                    width: "350px",
-                    height: "350px",
+                    width: { sm: "350px", xs: "250px" },
+                    height: { sm: "350px", xs: "250px" },
                     objectFit: "cover",
                     borderRadius: "1rem",
                   },
@@ -195,6 +202,7 @@ const Details = () => {
                 <Typography variant="subtitle1" sx={{ marginBottom: "20px" }}>
                   {object.texts.subtitle}
                 </Typography>
+
                 {object.texts.content.map((item, i) => (
                   <Container key={`${i}`}>
                     {item.type === "text" && (
@@ -232,8 +240,8 @@ const Details = () => {
         {loadingNews === 0 && (
           <ScrollView
             sx={{
-              padding: { md: "40px 0", xs: "40px 20px" },
-              paddingLeft: { md: "10rem", xs: "20px" },
+              padding: { md: "40px 0", xs: "40px 0" },
+              paddingLeft: { lg: "10rem", md: "40px", sm: "60px", xs: "20px" },
             }}
             title={languageState.texts.Home.Subtitles[0]}
             empty={languageState.texts.Error.NoNews}

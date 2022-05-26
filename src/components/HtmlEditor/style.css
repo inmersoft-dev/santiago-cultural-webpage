@@ -12,6 +12,10 @@
   height: 0 !important;
 }
 
+.ql-editor p {
+  text-align: justify;
+}
+
 .no-toolbar .ql-container {
   padding: 0 !important;
   border: none !important;
