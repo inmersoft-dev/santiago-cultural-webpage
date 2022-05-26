@@ -17,6 +17,7 @@ import {
   CardMedia,
   Button,
   Typography,
+  Box,
 } from "@mui/material";
 
 // contexts
@@ -35,6 +36,13 @@ const ItemGrid = (props) => {
   const { headerImage, texts } = element;
 
   const theme = useTheme();
+
+  const hiddenTitle = {
+    overflow: "hidden",
+    width: "99%",
+    textOverflow: "ellipsis",
+    whiteSpace: "nowrap",
+  };
 
   return (
     <Card
@@ -59,10 +67,12 @@ const ItemGrid = (props) => {
         sx={{ borderRadius: "0 0 8px 8px" }}
       />
       <CardContent>
-        <Typography gutterBottom variant="body1" component="div">
+        <Typography gutterBottom variant="body1" component="div" sx={hiddenTitle}>
           {texts.title}
         </Typography>
-        <HtmlEditor value={texts.description} />
+        <Box sx={{ height: "50px", overflow: "hidden", textOverflow: "ellipsis", width: "99%" }}>
+          <HtmlEditor value={texts.description} />
+        </Box>
       </CardContent>
       <CardActions
         sx={{

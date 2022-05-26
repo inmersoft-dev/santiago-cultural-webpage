@@ -43,12 +43,10 @@
 
 .ql-container {
   border-radius: 0 0 10px 10px !important;
-  height: 300px !important;
 }
 
 .html-editor .column {
   display: flex;
   flex-direction: column;
-  height: 300px;
   flex: 1;
 }
