@@ -28,6 +28,9 @@ import post from "services/post";
 import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
+// images
+import Crash from "assets/images/crash";
+
 const Details = () => {
   const { data } = useParams();
   const theme = useTheme();
@@ -68,51 +71,52 @@ const Details = () => {
       const localAllImages = [];
       if (remoteData.headerImages)
         remoteData.headerImages.forEach((item) => localAllImages.push(item.url));
+      if (remoteData.headerImages.length === 0) remoteData.headerImages.push({ url: Crash });
       let imageList = [];
-      remoteData.texts.content.forEach((item, i) => {
-        if (item.type === "text") {
-          if (imageList.length > 1) {
-            transformedContent.push({
-              type: "carousel",
-              imageList,
-            });
-            imageList = [];
-          } else transformedContent.push(item);
-        } else {
-          localAllImages.push(item.url);
-          imageList.push(
-            <Box
-              sx={{
-                img: {
-                  width: "300px",
-                  height: "300px",
-                  ...imgSX,
-                },
-              }}
-              onClick={() => {
-                setLightBox(true);
-                if (remoteData.headerImage) setSelectedImage(i + 1);
-                else setSelectedImage(i + remoteData.headerImages.length);
-              }}
-            >
-              <Image img={item.url} />
-            </Box>
-          );
-          if (i === remoteData.texts.content.length - 1 && imageList.length === 1)
-            transformedContent.push(item);
-          else if (i === remoteData.texts.content.length - 1)
-            transformedContent.push({
-              type: "carousel",
-              imageList,
-            });
-        }
-      });
+      if (remoteData.texts.content)
+        remoteData.texts.content.forEach((item, i) => {
+          if (item.type === "text") {
+            if (imageList.length > 1) {
+              transformedContent.push({
+                type: "carousel",
+                imageList,
+              });
+              imageList = [];
+            } else transformedContent.push(item);
+          } else {
+            localAllImages.push(item.url);
+            imageList.push(
+              <Box
+                sx={{
+                  img: {
+                    width: "300px",
+                    height: "300px",
+                    ...imgSX,
+                  },
+                }}
+                onClick={() => {
+                  setLightBox(true);
+                  if (remoteData.headerImage) setSelectedImage(i + 1);
+                  else setSelectedImage(i + remoteData.headerImages.length);
+                }}
+              >
+                <Image img={item.url} />
+              </Box>
+            );
+            if (i === remoteData.texts.content.length - 1 && imageList.length === 1)
+              transformedContent.push(item);
+            else if (i === remoteData.texts.content.length - 1)
+              transformedContent.push({
+                type: "carousel",
+                imageList,
+              });
+          }
+        });
       remoteData.texts.content = [...transformedContent];
       if (remoteData.error) {
         setLoading(-1);
       } else {
         setObject(remoteData);
-        console.log(localAllImages);
         setAllImages(localAllImages);
         setLoading(0);
       }
@@ -204,7 +208,7 @@ const Details = () => {
             <Container
               sx={{ width: { md: "90%", xs: "100%" }, flexDirection: { md: "row", xs: "column" } }}
             >
-              {allImages.length && (
+              {allImages.length > 0 && (
                 <LightBox
                   index={selectedImage}
                   visible={lightBox}
@@ -252,7 +256,7 @@ const Details = () => {
                   }}
                 >
                   {object.headerImages &&
-                    object.headerImages.length > 0 &&
+                    object.headerImages.length > 1 &&
                     object.headerImages.map((item, i) => (
                       <Box
                         key={i}
