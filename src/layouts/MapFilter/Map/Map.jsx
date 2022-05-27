@@ -183,8 +183,8 @@ const Map = (props) => {
           });
           // handle success case
           const onSuccess = (position) => {
-            const { latitude, longitude } = position.coords;
-            flyToPoint({ geometry: { coordinates: [longitude, latitude] } });
+            // const { latitude, longitude } = position.coords;
+            // flyToPoint({ geometry: { coordinates: [longitude, latitude] } });
           };
 
           // handle error case
