@@ -31,6 +31,9 @@ import post from "services/post";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
+// images
+import pointImage from "assets/images/point.png";
+
 const Map = (props) => {
   const { visible } = props;
   const { languageState } = useLanguage();
@@ -43,6 +46,8 @@ const Map = (props) => {
   const [lng, setLng] = useState(-79.98476050000002);
   const [lat, setLat] = useState(21.801503428305598);
   const [zoom, setZoom] = useState(15);
+
+  const [userPosition, setUserPosition] = useState({});
 
   const init = async () => {
     try {
@@ -176,6 +181,33 @@ const Map = (props) => {
               "icon-allow-overlap": false,
             },
           });
+          // handle success case
+          const onSuccess = (position) => {
+            const { latitude, longitude } = position.coords;
+            flyToPoint({ geometry: { coordinates: [longitude, latitude] } });
+          };
+
+          // handle error case
+          const onError = () => {
+            setUserPosition("no");
+          };
+
+          // check if the Geolocation API is supported
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            // Add geolocate control to the map.
+            map.current.addControl(
+              new mapboxgl.GeolocateControl({
+                positionOptions: {
+                  enableHighAccuracy: true,
+                },
+                // When active the map will receive updates to the device's location as it changes.
+                trackUserLocation: true,
+                // Draw an arrow next to the location dot to indicate which direction the device is heading.
+                showUserHeading: true,
+              })
+            );
+          }
         }
       );
 
