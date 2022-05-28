@@ -1,9 +1,26 @@
 {
   "es": {
+    "all": {
+      "days": [
+        { "id": "sun", "label": "D", "name": "Domingo" },
+        { "id": "mon", "label": "L", "name": "Lunes" },
+        { "id": "tue", "label": "M", "name": "Martes" },
+        { "id": "wed", "label": "X", "name": "Miércoles" },
+        { "id": "thu", "label": "J", "name": "Jueves" },
+        { "id": "fri", "label": "V", "name": "Viernes" },
+        { "id": "sat", "label": "S", "name": "Sábado" }
+      ]
+    },
     "Error": {
       "NoNews": "No hay noticias",
       "Connection": "Hay problemas de conexión",
       "Reload": "Recargar"
+    },
+    "Details": {
+      "Labels": {
+        "Contact": "Información de contacto",
+        "Services": "Servicios"
+      }
     },
     "Home": {
       "ReadMore": "Leer más",
@@ -96,6 +113,7 @@
         "Button": "Búsqueda Avanzada"
       },
       "Calendar": {
+        "Schedule": "Horarios",
         "Today": "Hoy",
         "Months": [
           "Enero",

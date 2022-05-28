@@ -29,7 +29,7 @@ import News from "views/News/News";
 import ContactUs from "views/ContactUs/ContactUs";
 import Culture from "views/Culture/Culture";
 import NotFound from "views/NotFound/NotFound";
-import Details from "views/Details/Details";
+import Details from "views/Details/FidelDetails";
 
 // contexts
 import { useMode } from "context/ModeProvider";

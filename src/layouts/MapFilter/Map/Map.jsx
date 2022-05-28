@@ -31,11 +31,8 @@ import post from "services/post";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
-// images
-import pointImage from "assets/images/point.png";
-
 const Map = (props) => {
-  const { visible } = props;
+  const { visible, width, height, point } = props;
   const { languageState } = useLanguage();
 
   const [apiMap, setApiMap] = useState("");
@@ -46,8 +43,6 @@ const Map = (props) => {
   const [lng, setLng] = useState(-79.98476050000002);
   const [lat, setLat] = useState(21.801503428305598);
   const [zoom, setZoom] = useState(15);
-
-  const [userPosition, setUserPosition] = useState({});
 
   const init = async () => {
     try {
@@ -160,7 +155,10 @@ const Map = (props) => {
       setLat(map.current.getCenter().lat.toFixed(4));
       setZoom(map.current.getZoom().toFixed(2));
     });
-
+    if (point !== "") {
+      const [lat, lng] = point.split(",");
+      flyToPoint({ geometry: { coordinates: [lng, lat] } });
+    }
     map.current.on("load", () => {
       /* Add the data to your map as a layer */
       map.current.loadImage(
@@ -182,19 +180,19 @@ const Map = (props) => {
             },
           });
           // handle success case
-          const onSuccess = (position) => {
-            // const { latitude, longitude } = position.coords;
-            // flyToPoint({ geometry: { coordinates: [longitude, latitude] } });
-          };
+          /* const onSuccess = (position) => {
+            const { latitude, longitude } = position.coords;
+            flyToPoint({ geometry: { coordinates: [longitude, latitude] } });
+          }; */
 
           // handle error case
-          const onError = () => {
+          /* const onError = () => {
             setUserPosition("no");
-          };
+          }; */
 
           // check if the Geolocation API is supported
           if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(onSuccess, onError);
+            // navigator.geolocation.getCurrentPosition(onSuccess, onError);
             // Add geolocate control to the map.
             map.current.addControl(
               new mapboxgl.GeolocateControl({
@@ -232,14 +230,14 @@ const Map = (props) => {
   return (
     <Box
       sx={{
-        width: "100%",
+        width,
         flex: 1,
-        height: "694px",
+        height,
         transform: visible ? "translateX(0)" : "translateX(-600px)",
         transition: "transform 500ms ease",
       }}
     >
-      <Box>
+      <Box sx={{ width, height }}>
         <Box
           className="sidebar"
           sx={{
@@ -262,7 +260,8 @@ const Map = (props) => {
           ref={mapContainer}
           className="map-container"
           sx={{
-            height: "694px",
+            width,
+            height,
           }}
         />
       </Box>
@@ -270,8 +269,17 @@ const Map = (props) => {
   );
 };
 
+Map.defaultProps = {
+  width: "100%",
+  height: "694px",
+  point: "",
+};
+
 Map.propTypes = {
   visible: PropTypes.bool.isRequired,
+  width: PropTypes.string,
+  height: PropTypes.string,
+  point: PropTypes.string,
 };
 
 export default Map;

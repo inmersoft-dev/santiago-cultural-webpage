@@ -6,17 +6,17 @@ import PropTypes from "prop-types";
 import { ThreeDots, Rings } from "react-loader-spinner";
 
 // @mui components
-import { useTheme, Box } from "@mui/material";
+import { Box } from "@mui/material";
 
 // theme
 import light from "assets/theme/light";
+import dark from "assets/theme/dark";
 
 // styles
 import "./style.css";
 
 const Loading = (props) => {
-  const theme = useTheme();
-  const { type, visible, id, width, height, position, extra, background } = props;
+  const { type, visible, id, width, height, position, extra, background, color } = props;
   return (
     <Box
       className={type}
@@ -36,7 +36,7 @@ const Loading = (props) => {
       {type === "center" ? (
         <ThreeDots
           ariaLabel="loading-indicator"
-          color={theme.palette.primary.main}
+          color={color}
           height={type === "center" ? 20 : 100}
           width={type === "center" ? 50 : 100}
           timeout={0}
@@ -44,7 +44,7 @@ const Loading = (props) => {
       ) : (
         <Rings
           ariaLabel="loading-indicator"
-          color={theme.palette.primary.main}
+          color={color}
           height={type === "center" ? 20 : 100}
           width={type === "center" ? 50 : 100}
           timeout={0}
@@ -61,6 +61,7 @@ Loading.defaultProps = {
   height: "100vh",
   position: "absolute",
   background: `${light.palette.secondary.dark}94`,
+  color: dark.palette.primary.main,
   extra: {},
 };
 
@@ -72,6 +73,7 @@ Loading.propTypes = {
   height: PropTypes.string,
   position: PropTypes.string,
   background: PropTypes.string,
+  color: PropTypes.string,
   extra: PropTypes.objectOf(PropTypes.string),
 };
 

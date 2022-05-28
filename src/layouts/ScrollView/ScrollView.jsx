@@ -48,7 +48,7 @@ const ScrollView = (props) => {
 
   return (
     <Container direction="column" sx={newSx}>
-      <Typography {...titleProps}>{title}</Typography>
+      {title !== "" && <Typography {...titleProps}>{title}</Typography>}
       <Box className="uk-position-relative uk-visible-toggle" data-tabindex="-1" data-uk-slider>
         {content.length > 0 ? (
           <motion.ul
