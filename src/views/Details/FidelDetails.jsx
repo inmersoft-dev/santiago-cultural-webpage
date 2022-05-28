@@ -7,23 +7,9 @@ import { useParams } from "react-router-dom";
 
 // @mui icons
 import ReplayIcon from "@mui/icons-material/Replay";
-import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 // @mui components
-import {
-  Typography,
-  IconButton,
-  Box,
-  useTheme,
-  Divider,
-  Button,
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-} from "@mui/material";
-
-// @mui icons
-import CalendarTodayIcon from "@mui/icons-material/CalendarToday";
+import { Typography, IconButton, Box, useTheme, Divider } from "@mui/material";
 
 // services
 import { loadFromServerGet } from "services/get";
@@ -36,9 +22,6 @@ import { useRoute } from "context/RouterProvider";
 // utils
 import { toSentenceCase } from "utils/functions";
 
-// layouts
-import Map from "layouts/MapFilter/Map/Map";
-
 // images
 import Crash from "assets/images/crash";
 
@@ -50,6 +33,8 @@ import Image from "components/Image/Image";
 import Card from "components/Card/Card";
 import LightBox from "components/LightBox/LightBox";
 import ContactInfo from "./ContactInfo/ContactInfo";
+import DetailsMap from "./DetailsMap/DetailsMap";
+import Scheduler from "./Scheduler/Scheduler";
 
 const Details = () => {
   const { data } = useParams();
@@ -251,17 +236,25 @@ const Details = () => {
         sx={{
           width: "100%",
           padding: {
-            lg: "10rem 0 50px 0",
+            lg: "0 0 50px 0",
             md: "100px 0",
-            sm: "80px 60px 20px 60px",
-            xs: "80px 20px 20px 20px",
+            sm: "80px 0",
+            xs: "80px 0",
           },
         }}
       >
         <Box sx={{ minHeight: "600px", width: "100%" }}>
           {loading === 0 && (
             <>
-              <Container sx={{ width: "100%", flexDirection: { md: "row", xs: "column" } }}>
+              <Container
+                sx={{
+                  width: "100%",
+                  flexDirection: { md: "row", xs: "column" },
+                  padding: { sm: "0 60px", xs: "0 20px" },
+                  paddingTop: "10rem !important",
+                  background: theme.palette.primary.dark,
+                }}
+              >
                 {allImages.length > 0 && (
                   <LightBox
                     index={selectedImage}
@@ -303,7 +296,12 @@ const Details = () => {
                   </Container>
                 </Container>
                 <Container
-                  sx={{ marginTop: "20px", flex: 1, flexDirection: "column", width: "500px" }}
+                  sx={{
+                    marginTop: "20px",
+                    flex: 1,
+                    flexDirection: "column",
+                    width: { md: "500px", xs: "100%" },
+                  }}
                 >
                   {object.placeType && (
                     <ScrollView
@@ -344,105 +342,30 @@ const Details = () => {
               </Container>
               <Container
                 align="center"
-                sx={{ width: "100%", padding: "0 10rem", flexDirection: "column" }}
+                sx={{
+                  width: "100%",
+                  padding: { md: "0 10rem", xs: "20px" },
+                  marginTop: "40px",
+                  flexDirection: "column",
+                }}
               >
-                <Container
-                  align="center"
-                  justify="space-between"
-                  sx={{ width: { lg: "80%", md: "90%" } }}
-                >
-                  <Typography variant="h3">
-                    {languageState.texts.Activities.Calendar.Schedule}
-                  </Typography>
-                  <Button variant="outlined" sx={{ alignItems: "center", textTransform: "none" }}>
-                    <CalendarTodayIcon />
-                    <Typography sx={{ margin: "0 10px" }}>
-                      {languageState.texts.Activities.Calendar.Months[new Date().getMonth()]}
-                    </Typography>
-                    <Typography>{new Date().getFullYear()}</Typography>
-                  </Button>
-                </Container>
-                <Container justify="center" sx={{ width: "100%", margin: "40px 0  20px 0" }}>
-                  <Divider
-                    sx={{
-                      width: { lg: "79%", md: "89%" },
-                      borderColor: theme.palette.primary.dark,
-                    }}
-                  />
-                </Container>
-                <Container justify="center" sx={{ width: "100%" }}>
-                  {languageState.texts.all.days.map((item) => (
-                    <Container key={item.id} sx={{ flexDirection: "column", marginRight: "20px" }}>
-                      <Container justify="center" sx={{ width: "center", fontWeight: "bold" }}>
-                        {item.label}
-                      </Container>
-
-                      <Typography>
-                        {`${object.schedule[item.id].s.getHours()}:${
-                          object.schedule[item.id].s.getMinutes() < 10
-                            ? `0${object.schedule[item.id].s.getMinutes()}`
-                            : object.schedule[item.id].s.getMinutes()
-                        }`}
-                        -
-                        {`${object.schedule[item.id].e.getHours()}:${
-                          object.schedule[item.id].e.getMinutes() < 10
-                            ? `0${object.schedule[item.id].e.getMinutes()}`
-                            : object.schedule[item.id].e.getMinutes()
-                        }`}
-                      </Typography>
-                    </Container>
-                  ))}
-                </Container>
+                {object.schedule && (
+                  <Container
+                    align="center"
+                    sx={{ flexDirection: "column", width: "100%", padding: "0 20px" }}
+                  >
+                    <Scheduler schedule={object.schedule} />
+                  </Container>
+                )}
                 {object.phone !== "" || object.web !== "" ? (
                   <ContactInfo phone={object.phone} web={object.web} />
                 ) : (
                   <Box />
                 )}
               </Container>
-              <Container sx={{ padding: "40px 0 40px 5rem" }}>
-                <Container sx={{ flexDirection: "column", width: "50%" }}>
-                  {object.services && (
-                    <Accordion sx={{ background: "none", width: "100%" }} elevation={0}>
-                      <AccordionSummary
-                        expandIcon={
-                          <ExpandMoreIcon
-                            sx={{ color: theme.palette.primary.contrastText, fontSize: "50px" }}
-                          />
-                        }
-                        aria-controls="panel1a-content"
-                        id="panel1a-header"
-                      >
-                        <Container sx={{ flexDirection: "column" }}>
-                          <Typography
-                            variant="h4"
-                            sx={{ fontWeight: "bold", color: theme.palette.primary.dark }}
-                          >
-                            {languageState.texts.Details.Labels.Services}
-                          </Typography>
-                        </Container>
-                      </AccordionSummary>
-                      <AccordionDetails>
-                        {object.services.map((item) => (
-                          <Container align="center" sx={{ marginBottom: "5px" }}>
-                            <Typography
-                              variant="h6"
-                              sx={{ fontSize: "3.3rem", fontWeight: "bold", marginRight: "10px" }}
-                            >
-                              •
-                            </Typography>
-                            <Typography variant="h6" sx={{ fontWeight: "bold" }}>
-                              {item}
-                            </Typography>
-                          </Container>
-                        ))}
-                      </AccordionDetails>
-                    </Accordion>
-                  )}
-                </Container>
-                <Container sx={{ width: "50%" }}>
-                  <Map visible point={object.location} />
-                </Container>
-              </Container>
+              {object.location && (
+                <DetailsMap services={object.services} location={object.location} />
+              )}
             </>
           )}
           {loading === -1 && (
