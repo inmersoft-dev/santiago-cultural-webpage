@@ -237,7 +237,7 @@ const Details = () => {
           width: "100%",
           padding: {
             lg: "0 0 50px 0",
-            md: "100px 0",
+            md: "80px 0",
             sm: "80px 0",
             xs: "80px 0",
           },

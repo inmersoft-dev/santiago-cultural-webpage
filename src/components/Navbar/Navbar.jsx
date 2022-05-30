@@ -135,6 +135,12 @@ const Navbar = () => {
     }, 505);
   }, [onScroll]);
 
+  useEffect(() => {
+    setInterval(() => {
+      setOnScroll(false);
+    }, [600]);
+  }, []);
+
   return (
     <Box sx={{ flexGrow: 1, width: "100vw", position: "absolute" }}>
       <SearchModal visible={showSearch} onClose={onCloseSearch} />

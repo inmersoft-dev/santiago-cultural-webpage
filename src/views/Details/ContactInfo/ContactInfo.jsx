@@ -26,7 +26,7 @@ const ContactInfo = (props) => {
       align="center"
       sx={{ width: "100%", flexDirection: "column", marginTop: "50px", marginBottom: "50px" }}
     >
-      <Typography variant="h4" sx={{ fontWeight: "bold" }}>
+      <Typography variant="h4" sx={{ fontWeight: "bold", width: "100%", textAlign: "center" }}>
         {languageState.texts.Details.Labels.Contact}
       </Typography>
       {phone !== "" && (
@@ -38,7 +38,7 @@ const ContactInfo = (props) => {
             margin: "10px 0",
           }}
         >
-          <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h5" sx={{ fontWeight: "bold", width: "100%", textAlign: "center" }}>
             {phone}
           </Typography>
         </Link>
@@ -50,10 +50,18 @@ const ContactInfo = (props) => {
           rel="noopener"
           sx={{ textDecoration: "none", display: "flex" }}
         >
-          <Typography variant="h5" sx={{ color: theme.palette.primary.dark, fontWeight: "500" }}>
+          <Typography
+            variant="h5"
+            sx={{
+              color: theme.palette.primary.dark,
+              fontWeight: "500",
+              width: "100%",
+              textAlign: "center",
+            }}
+          >
             {web}
           </Typography>
-          <IosShareIcon sx={{ marginLeft: "10px" }} />
+          <IosShareIcon sx={{ marginLeft: "10px", color: theme.palette.primary.dark }} />
         </Link>
       )}
     </Container>
