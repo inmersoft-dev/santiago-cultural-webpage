@@ -36,6 +36,7 @@ import { useLanguage } from "context/LanguageProvider";
 import { useRoute } from "context/RouterProvider";
 
 // images
+import bg1 from "assets/images/bg1.jpg";
 import bruce from "assets/images/bruce-mars.jpg";
 
 const Activities = () => {
@@ -256,7 +257,7 @@ const Activities = () => {
 
   return (
     <Box sx={{ background: theme.palette.primary.main }}>
-      <Hero />
+      <Hero bg={bg1} />
       <Box
         sx={{
           padding: { md: "40px 10rem", xs: "40px 40px" },
@@ -359,7 +360,7 @@ const Activities = () => {
           justify="center"
           sx={{
             background: theme.palette.secondary.main,
-            padding: { lg: "40px 10rem 100px 10rem", xs: "40px 20px 0 20px" },
+            padding: { lg: "40px 10rem 100px 10rem", xs: "40px 20px 60px 20px" },
           }}
         >
           <Box sx={{ width: { lg: "1050px", md: "800px" }, overflow: "auto" }}>
