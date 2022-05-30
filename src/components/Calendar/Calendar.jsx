@@ -76,7 +76,7 @@ const CCalendar = () => {
   };
 
   return (
-    <Container direction="column">
+    <Container direction="column" sx={{ width: "100%" }}>
       <Container align="center">
         <Button onClick={now} variant="outlined" sx={{ marginRight: "20px" }}>
           {languageState.texts.Activities.Calendar.Today}

@@ -22,7 +22,10 @@ const ContactInfo = (props) => {
   const { phone, web } = props;
 
   return (
-    <Container align="center" sx={{ width: "100%", flexDirection: "column", marginTop: "50px" }}>
+    <Container
+      align="center"
+      sx={{ width: "100%", flexDirection: "column", marginTop: "50px", marginBottom: "50px" }}
+    >
       <Typography variant="h4" sx={{ fontWeight: "bold" }}>
         {languageState.texts.Details.Labels.Contact}
       </Typography>

@@ -70,7 +70,7 @@ const App = () => {
                   <Route index element={<Home />} />
                   <Route path="/about-us" element={<AboutUs />} />
                   <Route path="/culture-centers" element={<Culture />} />
-                  <Route path="/activities" element={<Activities />} />
+                  <Route path="/activities:view" element={<Activities />} />
                   <Route path="/news" element={<News />} />
                   <Route path="/details:data" element={<Details />} />
                 </Route>

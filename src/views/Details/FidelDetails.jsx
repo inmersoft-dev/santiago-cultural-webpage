@@ -374,7 +374,7 @@ const Details = () => {
               <Typography sx={{ marginRight: "20px" }}>
                 {languageState.texts.Error.Connection}
               </Typography>
-              <IconButton color="primary" onClick={reload} variant="contained">
+              <IconButton color="secondary" onClick={reload} variant="contained">
                 <ReplayIcon />
               </IconButton>
             </Container>

@@ -34,6 +34,7 @@ const Scheduler = (props) => {
               borderColor: theme.palette.secondary.dark,
             },
           }}
+          href={`${process.env.PUBLIC_URL}/activities:2`}
         >
           <CalendarTodayIcon />
           <Typography sx={{ margin: "0 10px", fontWeight: "bold" }}>

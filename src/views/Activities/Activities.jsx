@@ -1,6 +1,8 @@
 /* eslint-disable react/function-component-definition */
 import { useState, useEffect } from "react";
 
+import { useParams } from "react-router-dom";
+
 // @mui components
 import {
   Box,
@@ -37,12 +39,25 @@ import { useRoute } from "context/RouterProvider";
 import bruce from "assets/images/bruce-mars.jpg";
 
 const Activities = () => {
+  const { view } = useParams();
+
   const { routeState, setRouteState } = useRoute();
   const { languageState } = useLanguage();
   const theme = useTheme();
 
   const [active, setActive] = useState(0);
-  const [view, setView] = useState(0);
+
+  const [setted, setSetted] = useState(false);
+  const [currentView, setCurrentView] = useState(view ? Number(view.substring(1)) : 0);
+
+  useEffect(() => {
+    if (view && !setted) {
+      setCurrentView(Number(view.substring(1)));
+      setTimeout(() => {
+        setSetted(true);
+      }, 100);
+    }
+  }, [currentView]);
 
   const cards = [
     <Card
@@ -223,7 +238,7 @@ const Activities = () => {
   }, []);
 
   useEffect(() => {
-    if (routeState.jndex || routeState.jndex === 0) setView(routeState.jndex);
+    if (routeState.jndex || routeState.jndex === 0) setCurrentView(routeState.jndex);
   }, [routeState.jndex]);
 
   const handleRadio = (e) => {
@@ -236,7 +251,7 @@ const Activities = () => {
     while (node.nodeName.toLowerCase() !== "button") node = node.parentNode;
 
     const { id } = node;
-    setView(Number(id.substring(1)));
+    setCurrentView(Number(id.substring(1)));
   };
 
   return (
@@ -319,7 +334,7 @@ const Activities = () => {
           <Divider sx={{ border: `1px solid ${theme.palette.secondary.main}` }} />
         </Box>
       </Box>
-      {view === 0 && (
+      {currentView === 0 && (
         <Box>
           <Grid
             sx={{ padding: { lg: "80px 10rem 40px 10rem", xs: "40px 20px 0 20px" } }}
@@ -338,8 +353,8 @@ const Activities = () => {
           />
         </Box>
       )}
-      {view === 1 && <MapFilter />}
-      {view === 2 && (
+      {currentView === 1 && <MapFilter />}
+      {currentView === 2 && (
         <Container
           justify="center"
           sx={{
@@ -347,7 +362,9 @@ const Activities = () => {
             padding: { lg: "40px 10rem 100px 10rem", xs: "40px 20px 0 20px" },
           }}
         >
-          <Calendar />
+          <Box sx={{ width: { lg: "1050px", md: "800px" }, overflow: "auto" }}>
+            <Calendar />
+          </Box>
         </Container>
       )}
     </Box>
