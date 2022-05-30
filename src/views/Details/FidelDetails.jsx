@@ -250,7 +250,7 @@ const Details = () => {
                 sx={{
                   width: "100%",
                   flexDirection: { md: "row", xs: "column" },
-                  padding: { sm: "0 60px", xs: "0 20px" },
+                  padding: { md: "0 60px 0 0", sm: "0 40px", xs: "0 20px" },
                   paddingTop: "10rem !important",
                   background: theme.palette.primary.dark,
                 }}
@@ -272,9 +272,10 @@ const Details = () => {
                     height: "100%",
                     paddingRight: "25px",
                     img: {
-                      width: { lg: "100%", sm: "350px", xs: "285px" },
+                      width: { lg: "100%", sm: "100%", xs: "285px" },
                       height: { lg: "100%", sm: "350px", xs: "250px" },
                       ...imgSX,
+                      borderRadius: "0",
                     },
                   }}
                 >

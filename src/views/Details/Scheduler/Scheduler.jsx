@@ -13,47 +13,11 @@ import Container from "components/Container/Container";
 
 // contexts
 import { useLanguage } from "context/LanguageProvider";
-import ScrollView from "layouts/ScrollView/ScrollView";
-import { useEffect, useState } from "react";
 
 const Scheduler = (props) => {
   const { languageState } = useLanguage();
   const { schedule } = props;
   const theme = useTheme();
-
-  const [days, setDays] = useState([]);
-
-  useEffect(() => {
-    const result = [];
-    languageState.texts.all.days.forEach((item) => {
-      result.push(
-        <Container
-          key={item.id}
-          align="center"
-          sx={{ flexDirection: "column", marginRight: "20px", width: "88px" }}
-        >
-          <Container justify="center" sx={{ width: "center", fontWeight: "bold" }}>
-            {item.label}
-          </Container>
-
-          <Typography sx={{ textAlign: "center" }}>
-            {`${schedule[item.id].s.getHours()}:${
-              schedule[item.id].s.getMinutes() < 10
-                ? `0${schedule[item.id].s.getMinutes()}`
-                : schedule[item.id].s.getMinutes()
-            }`}
-            -
-            {`${schedule[item.id].e.getHours()}:${
-              schedule[item.id].e.getMinutes() < 10
-                ? `0${schedule[item.id].e.getMinutes()}`
-                : schedule[item.id].e.getMinutes()
-            }`}
-          </Typography>
-        </Container>
-      );
-    });
-    setDays(result);
-  });
 
   return (
     <>
@@ -66,6 +30,9 @@ const Scheduler = (props) => {
             textTransform: "none",
             borderColor: theme.palette.primary.dark,
             color: theme.palette.primary.contrastText,
+            hover: {
+              borderColor: theme.palette.secondary.dark,
+            },
           }}
         >
           <CalendarTodayIcon />
@@ -75,26 +42,45 @@ const Scheduler = (props) => {
           <Typography>{new Date().getFullYear()}</Typography>
         </Button>
       </Container>
-      <Container justify="center" sx={{ width: "100%", margin: "40px 0  20px 0" }}>
+      <Container
+        justify="center"
+        sx={{ width: "100%", margin: { md: "40px 0 20px 0", sm: "10px 0 20px 0" } }}
+      >
         <Divider
           sx={{
-            width: { xl: "79%", md: "99%" },
+            width: { xl: "79%", md: "99%", xs: "100%" },
             borderColor: theme.palette.primary.dark,
           }}
         />
       </Container>
-      <Container sx={{ display: { lg: "none", xs: "flex" } }}>
-        <ScrollView title="" empty="" content={days} />
-      </Container>
-      <Container justify="center" sx={{ width: "100%", display: { xs: "none", lg: "flex" } }}>
+      <Container
+        justify="center"
+        sx={{ width: "100%", flexDirection: { xs: "column", lg: "row" } }}
+      >
         {languageState.texts.all.days.map((item) => (
           <Container
             key={item.id}
             align="center"
-            sx={{ flexDirection: "column", marginRight: "20px", width: "88px" }}
+            sx={{
+              flexDirection: { xs: "row", lg: "column" },
+              marginRight: "20px",
+              width: { lg: "97px", xs: "100%" },
+            }}
           >
-            <Container justify="center" sx={{ width: "center", fontWeight: "bold" }}>
+            <Container
+              justify="center"
+              sx={{ fontWeight: "bold", display: { lg: "flex", xs: "none" } }}
+            >
               {item.label}
+            </Container>
+            <Container
+              sx={{
+                marginRight: "10px",
+                display: { lg: "none", xs: "flex" },
+                width: "75px",
+              }}
+            >
+              <Typography sx={{ fontWeight: "bold" }}>{item.name}</Typography>
             </Container>
 
             <Typography sx={{ textAlign: "center" }}>
@@ -103,7 +89,7 @@ const Scheduler = (props) => {
                   ? `0${schedule[item.id].s.getMinutes()}`
                   : schedule[item.id].s.getMinutes()
               }`}
-              -
+              {" - "}
               {`${schedule[item.id].e.getHours()}:${
                 schedule[item.id].e.getMinutes() < 10
                   ? `0${schedule[item.id].e.getMinutes()}`

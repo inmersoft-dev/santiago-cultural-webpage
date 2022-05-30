@@ -25,8 +25,18 @@ const DetailsMap = (props) => {
   const { services, location } = props;
 
   return (
-    <Container sx={{ padding: { lg: "40px 0 40px 5rem", xs: "40px 0 40px 20px" } }}>
-      <Container sx={{ flexDirection: "column", width: "50%" }}>
+    <Container
+      sx={{
+        flexDirection: { xs: "column-reverse", md: "row" },
+      }}
+    >
+      <Container
+        sx={{
+          flexDirection: "column",
+          width: { md: "50%", xs: "100%" },
+          padding: { lg: "40px 0 40px 5rem", xs: "40px 0 40px 20px" },
+        }}
+      >
         {services && (
           <Accordion sx={{ background: "none", width: "100%" }} elevation={0}>
             <AccordionSummary
@@ -65,7 +75,7 @@ const DetailsMap = (props) => {
           </Accordion>
         )}
       </Container>
-      <Container sx={{ width: "50%" }}>
+      <Container sx={{ width: { md: "50%", xs: "100%" } }}>
         <Map visible point={location} />
       </Container>
     </Container>

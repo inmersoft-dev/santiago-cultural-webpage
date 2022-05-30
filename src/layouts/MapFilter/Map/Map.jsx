@@ -31,6 +31,9 @@ import post from "services/post";
 // contexts
 import { useLanguage } from "context/LanguageProvider";
 
+// images
+import Crash from "assets/images/crash";
+
 const Map = (props) => {
   const { visible, width, height, point } = props;
   const { languageState } = useLanguage();
@@ -53,9 +56,9 @@ const Map = (props) => {
       } else {
         const localPoints = [];
         result.forEach((item) => {
-          const { id, location } = item;
+          const { id, location, headerImages } = item;
           // const [placeType] = item.placeType;
-          const { name } = item.texts;
+          const { name, description } = item.texts;
           const [lng, lat] = location.split(",");
           localPoints.push({
             type: "Feature",
@@ -63,6 +66,8 @@ const Map = (props) => {
             properties: {
               id,
               name,
+              headerImages,
+              description,
               type: "places",
               phoneFormatted: "(202) 234-7336",
               phone: "2022347336",
@@ -98,14 +103,19 @@ const Map = (props) => {
     /** Check if there is already a popup on the map and if so, remove it */
     if (popUps[0]) popUps[0].remove();
 
-    const { name, id, type } = currentFeature.properties;
+    const { name, id, type, headerImages, description } = currentFeature.properties;
 
     // eslint-disable-next-line no-unused-vars
-    const popup = new mapboxgl.Popup({ closeOnClick: true })
+    new mapboxgl.Popup({ closeOnClick: true })
       .setLngLat(currentFeature.geometry.coordinates)
       .setHTML(
-        `<h3>${name}</h3>` +
-          `<h4><a href="${process.env.PUBLIC_URL}/details:${id}-${type}">${languageState.texts.Home.SeePlace}</a></h4>`
+        `<img src=${
+          headerImages && headerImages[0] ? headerImages[0].url : Crash
+        } alt="place-image"/>` +
+          `<div class="popup-content">` +
+          `<h3 class="title">${name}</h3>` +
+          `<p>${description}</p>` +
+          `<h3><a href="${process.env.PUBLIC_URL}/details:${id}-${type}">${languageState.texts.Home.SeePlace}</a></h3></div>`
       )
       .addTo(map.current);
   };
