@@ -12,8 +12,6 @@ import "./style.css";
 
 // react-map-gl
 // eslint-disable-next-line no-unused-vars
-import ReactMapGL, { Marker } from "react-map-gl";
-// styles
 import "mapbox-gl/dist/mapbox-gl.css";
 
 import mapboxgl from "!mapbox-gl";
@@ -57,7 +55,6 @@ const Map = (props) => {
         const localPoints = [];
         result.forEach((item) => {
           const { id, location, headerImages } = item;
-          // const [placeType] = item.placeType;
           const { name, description } = item.texts;
           const [lng, lat] = location.split(",");
           localPoints.push({
@@ -67,7 +64,7 @@ const Map = (props) => {
               id,
               name,
               headerImages,
-              description,
+              description,  
               type: "places",
               phoneFormatted: "(202) 234-7336",
               phone: "2022347336",
