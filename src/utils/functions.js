@@ -1,3 +1,4 @@
+/* eslint-disable import/prefer-default-export */
 /**
  * It takes a string, splits it into an array of words, capitalizes the first letter of each word, and
  * then joins the array back into a string
@@ -19,4 +20,4 @@ export const toSentenceCase = (string) => {
   return result;
 };
 
-export const getWeekAround = (day) => {};
+// export const getWeekAround = (day) => {};

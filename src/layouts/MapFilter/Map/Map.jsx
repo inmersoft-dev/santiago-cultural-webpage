@@ -64,7 +64,7 @@ const Map = (props) => {
               id,
               name,
               headerImages,
-              description,  
+              description,
               type: "places",
               phoneFormatted: "(202) 234-7336",
               phone: "2022347336",
