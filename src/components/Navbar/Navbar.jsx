@@ -250,10 +250,10 @@ const Navbar = () => {
                     aria-labelledby="composition-button"
                     onKeyDown={handleListKeyDown}
                   >
-                    {languageState.texts.Navbar.Links[menu].menu.map((item) => (
+                    {languageState.texts.Navbar.Links[menu].menu.map((item, index) => (
                       <Link
                         key={item.label}
-                        to={languageState.texts.Navbar.Links[menu].route}
+                        to={`${languageState.texts.Navbar.Links[menu].route}:${index}`}
                         style={{ textDecoration: "none" }}
                       >
                         <MenuItem
